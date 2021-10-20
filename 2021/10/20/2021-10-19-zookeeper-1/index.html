@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="pineapple-man">
+    <title>ZooKeeper（一）环境配置 - pineapple-man</title>
+    <meta name="author" content="pineapple-man">
+    
+    
+        <link rel="icon" href="https://pineapple-man.github.io/assets/images/logo.svg">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"pineapple-man","sameAs":["https://github.com/pineapple-man"],"image":"logo.jpg"},"articleBody":"\nZooKeeper单机安装分为两种方式：压缩包安装和Docker安装本文都会介绍；另一方面，ZK 集群同样有不同的配置方式，本文主要记录如何通过 Docker 创建 ZooKeeper 集群。\n🎯本文将以zk-3.5.7版本为基础，介绍不同方式的安装步骤\n源码安装单机 ZK\n¶资源准备\n📖前往官网进行下载\n\n\n\n¶安装\n🎶由于ZooKeeper是由Java编写的，所以需要基础的 Java 环境\n123456# 在下载 ZooKeeper 文件的目录下解压文件tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz # 进入到解压目录cd apache-zookeeper-3.5.7-bin# ZooKeeper 简单配置，配置文件名必须为zoo.cfg，否则启动将出错cp conf/zoo_sample.cfg conf/zoo.cfg\n¶配置\n12345678910111213141516# 通信心跳时间， Zookeeper服务器与客户端心跳时间，单位毫秒tickTime=2000# Leader 与 Follower初始连接时能容忍的最多心跳数（tickTime的数量）# 超过则通信失败initLimit=10# Leader 与 Foloower 同步通信时限如果超过 syncLimit * tickTime# Leader 认为 Follwer 死掉，从服务器列表中删除 FollwersyncLimit=5# 保存 ZooKeeper 中的数据，默认是tmp目录，生产环境一定要更改dataDir=/root/zk/zkDataDir\t#这里更改为一个持久化目录# 客户端连接端口，通常不做修改clientPort=2181\n🎶必须修改dataDir配置，因为这是持久化数据保存的目录，不能为/tmp（/tmp目录会被Linux系统定时清理）；如果配置的目录不存在，zookeeper会自动创建\n¶简单的操作\n1234567891011121314151617# 启动 zookeeper[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh start# 查看进程是否启动[root@localhost zookeeper-3.5.7]$ jps60000 QuorumPeerMain60060 Jps# 查看状态[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh status/usr/bin/javaZooKeeper JMX enabled by defaultUsing config: /root/zk/zookeeper-3.5.7/bin/../conf/zoo.cfg# 启动客户端连接服务端[root@localhost zookeeper-3.5.7]$ bin/zkCli.sh# 退出客户端[zk: localhost:2181(CONNECTED) 0] quit# 停止 Zookeeper[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh s\n容器单机安装 ZK\n容器的方式非常简单，只要有docker环境就可以了\n12345# 拉取最新的 zooKeeper 镜像docker pull zookeeper# 部署 zk，由于需要做存储卷绑定，所以需要开启--privileged，否则将会出错docker run --privileged --network host -v /data/zookeeper_data/data:/data -v /data/zookeeper_data/conf:/conf  --name zk-2181 zookeeper\n创建 ZK 集群\n🎶血的教训，一定要先关闭防火墙，否则总是出现稀奇古怪的问题\n\n\n\n主机名\nIP地址\n\n\n\n\nMaster\n192.168.117.128\n\n\nnode1\n192.168.117.129\n\n\nnode2\n192.168.117.130\n\n\n\n🎶三台服务器能够相互之间通过主机名ping通，对集群中的每一台主机进行如下操作：\n1234mkdir /data/zookeeper/datamkdir /data/zookeeper/confcd /data/zookeeper/datatouch myid\n¶创建机器编号\n集群中不同主机，对应的机器编号是不同的，分配的机器编号如下\n\n\n\n主机\nzk服务器编号\n\n\n\n\nmaster\n0\n\n\nnode1\n1\n\n\nnode2\n2\n\n\n\n12# 修改每个主机的 zk 服务器编号文件，例如 master 主机的编号修改过程如下echo &quot;0&quot; &gt;&gt; /data/zookeeper/data/myid\n其余主机类似的操作，仅仅是服务器编号不同\n¶修改配置文件\n将集群中每一台主机的配置文件zoo.cfg修改如下:\n12345678910111213141516tickTime=2000initLimit=10syncLimit=5dataDir=/datadataLogDir=/data/logclientPort=2181# 在 zoo.cfg 下面增加以下配置：Server.A=B:C:D的形式server.0=192.168.117.128:2888:3888server.1=192.168.117.129:2888:3888server.2=192.168.117.130:2888:3888\n\n\nA：标识服务器编号\n\n\nB：标识服务器地址\n\n\nC：标识服务器 Follower 与集群中的 Leader 服务器交换信息的端口\n\n\nD：标识再选举通信端口，如果Leader 服务器挂了，这个端口就是用来执行选举时服务器相互通信的端口，通过这个端口进行重新选举leader\n\n\n¶启动容器\n1docker run -d --rm --privileged --network host -v /data/zookeeper_data/data:/data -v /data/zookeeper_data/conf:/conf -p 2888:2888 -p 3888:3888  --name zk zookeeper\n¶查看 zk 集群状态\n完成以上步骤，现在检查zk集群是否真的搭建完成\n12345678910# 即可进入 zk 容器中docker exec -it zk /bin/bash# 进入容器后，输入以下命令查看zk集群状态./bin/zkServer.sh status# 输入以下信息表示 zk 集群创建完成ZooKeeper JMX enabled by defaultUsing config: /conf/zoo.cfgClient port found: 2181. Client address: localhost. Client SSL: false.Mode: follower","dateCreated":"2021-10-20T14:27:42+08:00","dateModified":"2021-10-20T15:24:58+08:00","datePublished":"2021-10-20T14:27:42+08:00","description":"ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）","headline":"ZooKeeper（一）环境配置","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://pineapple-man.github.io/2021/10/20/2021-10-19-zookeeper-1/"},"publisher":{"@type":"Organization","name":"pineapple-man","sameAs":["https://github.com/pineapple-man"],"image":"logo.jpg","logo":{"@type":"ImageObject","url":"logo.jpg"}},"url":"https://pineapple-man.github.io/2021/10/20/2021-10-19-zookeeper-1/","keywords":"分布式组件, ZooKeeper"}</script>
+    <meta name="description" content="ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="ZooKeeper（一）环境配置">
+<meta property="og:url" content="https://pineapple-man.github.io/2021/10/20/2021-10-19-zookeeper-1/">
+<meta property="og:site_name" content="pineapple-man">
+<meta property="og:description" content="ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pineapple-man.github.io/assets/images/zookeeper/image-20211012000505154.png">
+<meta property="og:image" content="https://pineapple-man.github.io/assets/images/zookeeper/image-20211012000511505.png">
+<meta property="og:image" content="https://pineapple-man.github.io/assets/images/zookeeper/image-20211012000516730.png">
+<meta property="article:published_time" content="2021-10-20T06:27:42.851Z">
+<meta property="article:modified_time" content="2021-10-20T07:24:58.367Z">
+<meta property="article:author" content="pineapple-man">
+<meta property="article:tag" content="分布式组件">
+<meta property="article:tag" content="ZooKeeper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pineapple-man.github.io/assets/images/zookeeper/image-20211012000505154.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://pineapple-man.github.io/assets/images/logo.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-oth3meuzcjopbgwqbdvoxqknhcm0sy9wkullcc94zhkkop3pmfrpl5t4fzzz.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-210516333-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-210516333-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            pineapple-man
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/logo.jpg" alt="作者的图片"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/logo.jpg" alt="作者的图片"/>
+                </a>
+                <h4 class="sidebar-profile-name">pineapple-man</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>做一个菠萝：站得笔直，头戴王冠，内心甜美</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="首页"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">首页</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="分类"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">分类</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="标签"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">标签</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="归档"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">归档</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="搜索"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">搜索</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="#about"
+                            
+                            rel="noopener"
+                            title="关于"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">关于</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/pineapple-man"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            ZooKeeper（一）环境配置
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-10-20T14:27:42+08:00">
+	
+		    10月 20, 2021
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/ZooKeeper/">ZooKeeper</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">源码安装单机 ZK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%87%86%E5%A4%87"><span class="toc-text">资源准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">简单的操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">容器单机安装 ZK</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">创建 ZK 集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%BA%E5%99%A8%E7%BC%96%E5%8F%B7"><span class="toc-text">创建机器编号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-zk-%E9%9B%86%E7%BE%A4%E7%8A%B6%E6%80%81"><span class="toc-text">查看 zk 集群状态</span></a></li></ol></li></ol>
+<p>ZooKeeper单机安装分为两种方式：<strong>压缩包安装</strong>和<strong>Docker安装</strong>本文都会介绍；另一方面，ZK 集群同样有不同的配置方式，本文主要记录如何通过 Docker 创建 ZooKeeper 集群。</p>
+<p>🎯本文将以zk-3.5.7版本为基础，介绍不同方式的安装步骤</p>
+<h1>源码安装单机 ZK</h1>
+<h2 id="资源准备"><a class="header-anchor" href="#资源准备">¶</a>资源准备</h2>
+<p>📖前往<a target="_blank" rel="noopener" href="https://zookeeper.apache.org/">官网</a>进行下载</p>
+<p><img src="/assets/images/zookeeper/image-20211012000505154.png" alt="image-20211012000505154"></p>
+<p><img src="/assets/images/zookeeper/image-20211012000511505.png" alt="image-20211012000511505"></p>
+<p><img src="/assets/images/zookeeper/image-20211012000516730.png" alt="image-20211012000516730"></p>
+<h2 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h2>
+<p>🎶由于<code>ZooKeeper</code>是由Java编写的，所以<strong>需要基础的 Java 环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在下载 ZooKeeper 文件的目录下解压文件</span></span><br><span class="line">tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz </span><br><span class="line"><span class="comment"># 进入到解压目录</span></span><br><span class="line"><span class="built_in">cd</span> apache-zookeeper-3.5.7-bin</span><br><span class="line"><span class="comment"># ZooKeeper 简单配置，配置文件名必须为zoo.cfg，否则启动将出错</span></span><br><span class="line">cp conf/zoo_sample.cfg conf/zoo.cfg</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a class="header-anchor" href="#配置">¶</a>配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通信心跳时间， Zookeeper服务器与客户端心跳时间，单位毫秒</span></span><br><span class="line">tickTime=2000</span><br><span class="line"></span><br><span class="line"><span class="comment"># Leader 与 Follower初始连接时能容忍的最多心跳数（tickTime的数量）</span></span><br><span class="line"><span class="comment"># 超过则通信失败</span></span><br><span class="line">initLimit=10</span><br><span class="line"></span><br><span class="line"><span class="comment"># Leader 与 Foloower 同步通信时限如果超过 syncLimit * tickTime</span></span><br><span class="line"><span class="comment"># Leader 认为 Follwer 死掉，从服务器列表中删除 Follwer</span></span><br><span class="line">syncLimit=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存 ZooKeeper 中的数据，默认是tmp目录，生产环境一定要更改</span></span><br><span class="line">dataDir=/root/zk/zkDataDir	<span class="comment">#这里更改为一个持久化目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端连接端口，通常不做修改</span></span><br><span class="line">clientPort=2181</span><br></pre></td></tr></table></figure>
+<p>🎶必须修改<code>dataDir</code>配置，因为这是持久化数据保存的目录，不能为<code>/tmp</code>（<code>/tmp</code>目录会被Linux系统定时清理）；如果配置的目录不存在，zookeeper会自动创建</p>
+<h2 id="简单的操作"><a class="header-anchor" href="#简单的操作">¶</a>简单的操作</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 zookeeper</span></span><br><span class="line">[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh start</span><br><span class="line"><span class="comment"># 查看进程是否启动</span></span><br><span class="line">[root@localhost zookeeper-3.5.7]$ jps</span><br><span class="line">60000 QuorumPeerMain</span><br><span class="line">60060 Jps</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh status</span><br><span class="line">/usr/bin/java</span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /root/zk/zookeeper-3.5.7/bin/../conf/zoo.cfg</span><br><span class="line"><span class="comment"># 启动客户端连接服务端</span></span><br><span class="line">[root@localhost zookeeper-3.5.7]$ bin/zkCli.sh</span><br><span class="line"><span class="comment"># 退出客户端</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 0] quit</span><br><span class="line"><span class="comment"># 停止 Zookeeper</span></span><br><span class="line">[root@localhost zookeeper-3.5.7]$ bin/zkServer.sh s</span><br></pre></td></tr></table></figure>
+<h1>容器单机安装 ZK</h1>
+<p>容器的方式非常简单，只要有<code>docker</code>环境就可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取最新的 zooKeeper 镜像</span></span><br><span class="line">docker pull zookeeper</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署 zk，由于需要做存储卷绑定，所以需要开启--privileged，否则将会出错</span></span><br><span class="line">docker run --privileged --network host -v /data/zookeeper_data/data:/data -v /data/zookeeper_data/conf:/conf  --name zk-2181 zookeeper</span><br></pre></td></tr></table></figure>
+<h1>创建 ZK 集群</h1>
+<p>🎶血的教训，一定<strong>要先关闭防火墙</strong>，否则总是出现稀奇古怪的问题</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">主机名</th>
+<th style="text-align:center">IP地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Master</td>
+<td style="text-align:center">192.168.117.128</td>
+</tr>
+<tr>
+<td style="text-align:center">node1</td>
+<td style="text-align:center">192.168.117.129</td>
+</tr>
+<tr>
+<td style="text-align:center">node2</td>
+<td style="text-align:center">192.168.117.130</td>
+</tr>
+</tbody>
+</table>
+<p>🎶三台服务器能够相互之间通过主机名<code>ping</code>通，对集群中的每一台主机进行如下操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/zookeeper/data</span><br><span class="line">mkdir /data/zookeeper/conf</span><br><span class="line"><span class="built_in">cd</span> /data/zookeeper/data</span><br><span class="line">touch myid</span><br></pre></td></tr></table></figure>
+<h2 id="创建机器编号"><a class="header-anchor" href="#创建机器编号">¶</a>创建机器编号</h2>
+<p>集群中不同主机，对应的机器编号是不同的，分配的机器编号如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">主机</th>
+<th style="text-align:center">zk服务器编号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">master</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">node1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">node2</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改每个主机的 zk 服务器编号文件，例如 master 主机的编号修改过程如下</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;0&quot;</span> &gt;&gt; /data/zookeeper/data/myid</span><br></pre></td></tr></table></figure>
+<p>其余主机类似的操作，仅仅是服务器编号不同</p>
+<h2 id="修改配置文件"><a class="header-anchor" href="#修改配置文件">¶</a>修改配置文件</h2>
+<p>将集群中每一台主机的配置文件<code>zoo.cfg</code>修改如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">tickTime=2000</span><br><span class="line"></span><br><span class="line">initLimit=10</span><br><span class="line"></span><br><span class="line">syncLimit=5</span><br><span class="line"></span><br><span class="line">dataDir=/data</span><br><span class="line"></span><br><span class="line">dataLogDir=/data/<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line">clientPort=2181</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 zoo.cfg 下面增加以下配置：Server.A=B:C:D的形式</span></span><br><span class="line">server.0=192.168.117.128:2888:3888</span><br><span class="line">server.1=192.168.117.129:2888:3888</span><br><span class="line">server.2=192.168.117.130:2888:3888</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>A：标识服务器编号</p>
+</li>
+<li>
+<p>B：标识服务器地址</p>
+</li>
+<li>
+<p>C：标识服务器 Follower 与集群中的 Leader 服务器交换信息的端口</p>
+</li>
+<li>
+<p>D：标识再选举通信端口，如果Leader 服务器挂了，这个端口就是用来执行选举时服务器相互通信的端口，通过这个端口进行重新选举leader</p>
+</li>
+</ul>
+<h2 id="启动容器"><a class="header-anchor" href="#启动容器">¶</a>启动容器</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --rm --privileged --network host -v /data/zookeeper_data/data:/data -v /data/zookeeper_data/conf:/conf -p 2888:2888 -p 3888:3888  --name zk zookeeper</span><br></pre></td></tr></table></figure>
+<h2 id="查看-zk-集群状态"><a class="header-anchor" href="#查看-zk-集群状态">¶</a>查看 zk 集群状态</h2>
+<p>完成以上步骤，现在检查zk集群是否真的搭建完成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 即可进入 zk 容器中</span></span><br><span class="line">docker <span class="built_in">exec</span> -it zk /bin/bash</span><br><span class="line"><span class="comment"># 进入容器后，输入以下命令查看zk集群状态</span></span><br><span class="line">./bin/zkServer.sh status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入以下信息表示 zk 集群创建完成</span></span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /conf/zoo.cfg</span><br><span class="line">Client port found: 2181. Client address: localhost. Client SSL: <span class="literal">false</span>.</span><br><span class="line">Mode: follower</span><br></pre></td></tr></table></figure>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/ZooKeeper/" rel="tag">ZooKeeper</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/" rel="tag">分布式组件</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2021 pineapple-man. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/logo.jpg" alt="作者的图片"/>
+        
+            <h4 id="about-card-name">pineapple-man</h4>
+        
+            <div id="about-card-bio"><p>做一个菠萝：站得笔直，头戴王冠，内心甜美</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>待就业</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                西安
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">没有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://pineapple-man.github.io/2021/10/20/2021-10-19-zookeeper-1/"
+                            aria-label=": ZooKeeper（一）环境配置"
+                        >
+                            <h3 class="media-heading">ZooKeeper（一）环境配置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2021年10月20日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather">ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="没有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 1 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover-v1.2.0.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/script-kcoiyt1nxfue7qgcpkrcixymglcc3cuxeg98fy01hqww4nblnhd2ees6j6yc.min.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+    
+<script src="/assets/js/moment-with-locales.js"></script>
+
+    
+<script src="/assets/js/algoliasearch.js"></script>
+
+    <script>
+      var algoliaClient = algoliasearch('BT5EAVRTWW', 'c921172a492a2ac85bc708c47a19188f');
+      var algoliaIndex = algoliaClient.initIndex('myblog');
+    </script>
+
+
+    </body>
+</html>
