@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+  - "14" # use nodejs v14 LTS 解决yarn报错问题
+cache: npm
+branches:
+  only:
+    - main # build master branch only
+install: # 解决yarn报错问题
+  - yarn
+script:
+  - hexo clean # 解决缓存文件未更新问题
+  - hexo generate # generate static files
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: main
+  local-dir: public
