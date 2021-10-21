@@ -15,13 +15,14 @@ categories: Spring 全家桶
 excerpt: 本文简单介绍 SpringMVC 中异常处理的使用方式
 ---
 <!--toc-->
-# 概述
+
+## 概述
 
 :book:系统中异常包括：**编译时异常**和**运行时异常**(`RuntimeException`)，前者通过捕获异常从而获取异常信息，后者主要通过规范代码开发、通过测试手段减少运行时异常的发生
 
 :sparkles:在开发中，不管是dao层、service层还是controller层，都有可能抛出异常，在springmvc中，能将所有类型的异常处理从各处理过程解耦出来，既保证了相关处理过程的功能较单一，也实现了异常信息的统一处理和维护
 
-# 异常处理流程
+## 异常处理流程
 
 下图是 Spring MVC 的异常处理流程
 
@@ -31,7 +32,7 @@ excerpt: 本文简单介绍 SpringMVC 中异常处理的使用方式
 
 :sparkles:**springmvc提供全局异常处理器（一个系统只有一个异常处理器）进行统一异常处理**
 
-# Spring MVC中自带的简单异常处理器
+## Spring MVC中自带的简单异常处理器
 
 springmvc中自带了一个异常处理器叫SimpleMappingExceptionResolver，该处理器实现了HandlerExceptionResolver 接口，**全局异常处理都需要实现`HandlerExceptionResolver `接口**
 
@@ -81,7 +82,7 @@ public class CustomException extends Exception {
 
 :notebook:使用SimpleMappingExceptionResolver进行异常处理，具有**集成简单**、有**良好的扩展性**（可以任意增加自定义的异常和异常显示页面）、对已**有代码没有入侵性**等优点，但该方法**仅能获取到异常信息**，若想要在出现异常时，进行额外操作，`SimpleMappingExceptionResolver`不太合适
 
-# 自定义全局异常处理器
+## 自定义全局异常处理器
 
 :sailboat:全局异常处理器处理思路：
 
@@ -123,7 +124,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
 <bean class="ssm.exception.CustomExceptionResolver"></bean> 
 ```
 
-# 注解实现异常管理
+## 注解实现异常管理
 
 :sparkles:异常处理主要使用三个注解：`@ExceptionHandler`，`@ControllerAdvice`和`@RestControllerAdvice`
 
@@ -132,7 +133,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
 
 :notes:因为`@ExceptionHandler`注解的方式已经足够强大，所以很少通过实现`HandlerExceptionResolver`来自定义异常处理策略
 
-## `@ExceptionHandler`
+### `@ExceptionHandler`
 
 :sparkles:`@ExceptionHandler`注解特点
 
@@ -164,7 +165,7 @@ public class LocationController {
 
 如果在每个Controller里面都写异常解析器还是很麻烦的，可以使用`@RestControllerAdvice`或者`@ControllerAdvice`统一处理异常
 
-## `@RestControllerAdvice`&`@ControllerAdvice`
+### `@RestControllerAdvice`&`@ControllerAdvice`
 
 :question:都能进行异常管理，@RestControllerAdvice和@ControllerAdvice有什么区别呢？
 
@@ -191,7 +192,7 @@ public class MyExceptionHandler {
 - 如果能够精确定义为异常发生点，则以精确异常为准
 - 如果一个异常能被多个解析器所处理，则选择继承关系最近的解析器
 
-# 附录
+## 附录
 
 [SpringMVC中的统一异常处理](https://blog.csdn.net/eson_15/article/details/51731567)
 
