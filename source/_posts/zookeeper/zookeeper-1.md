@@ -1,6 +1,6 @@
 ---
 title: ZooKeeper（一）环境配置
-date: 2021-10-19 +0800
+date: 2021-10-19 19:53:14
 tags: [分布式组件,ZooKeeper]
 toc:  true
 metaAlignment: center
