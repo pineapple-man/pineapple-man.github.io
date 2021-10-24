@@ -105,8 +105,8 @@ public class Worker implements CleanAble {
         System.out.println("我是清洁工，我在扫地");        
     }
 }
-//班长类代码修改如下
-public class Monitor {
+//劳动委员类代码修改如下
+public class LaborCommander {
     public static CleanAble getCleaner() {
         Student student = new Student();
         if (student.canClean()) {
@@ -118,7 +118,7 @@ public class Monitor {
 //班长代码修改如下
 public class Monitor {
     public void command() {
-        Monitor.getCleaner().clean();
+        LaborCommander.getCleaner().clean();
     }
 }
 
