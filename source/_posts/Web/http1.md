@@ -1,0 +1,292 @@
+---
+title: HTTP协议（一）
+toc: true
+clearReading: true
+thumbnailImage: 'https://upload.wikimedia.org/wikipedia/commons/8/83/Internet1.svg'
+thumbnailImagePosition: right
+metaAlignment: center
+categories: Java Web
+tags:
+  - Web
+  - HTTP
+keywords: HTTP
+excerpt: 本文简单记录HTTP协议相关知识
+date: 2021-10-24 23:00:19
+---
+<!-- toc -->
+
+<!-- toc -->
+## HTTP 与 HTTP协议
+
+:thinking:HTTP 是什么？
+{% alert success no-icon %}
+**HTTP**是Hyper Text Transfer Protocol（超文本传输协议）的缩写，用于服务器和本地浏览器之间传输数据。
+{% endalert %}
+:thinking:HTTP协议是什么？
+{% alert success no-icon %}
+Http协议就是：客户端(浏览器)和服务器通信时，双方在发送数据时遵守规范
+{% endalert %}
+:notes:Http协议中的数据又称为**报文**，目前,`HTTP协议`主要使用的版本为：`HTTP/1.0`、`HTTP/1.1`。其中`HTTP/1.1`为当前使用的主流版本,因此主要对此版本进行学习。
+
+## HTTP工作原理
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/HTTP.png %}
+
+HTTP协议工作在**客户端/服务端架构上**，浏览器作为 HTTP 客户端通过 URI（统一资源标识符，Uniform Resource Identifiers）来传输数据和建立连接，向 HTTP 服务端（WEB服务器）发送所有请求；HTTP协议在客户端与服务端之间是通过可靠的链接交换信息，**是一个无状态的请求/响应协议**。
+
+- HTTP客户端：是一个应用程序（Web浏览器或其他任何客户端），通过连接到服务器达到向服务器发送一个或多个HTTP的请求的目的。
+- HTTP服务端：是一个应用程序（通常是一个web服务，如Apache Web服务器或Nginx服务器等），通过接受客户端的请求并向客户端发送HTTP响应数据
+
+|                        HTTP 特点                         |                           详细描述                           |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| HTTP 是<font style="color:red;font-weight:bold">无连接的</font> | 无连接的含义是限制每次连接只处理一个请求<br />服务器处理完客户的请求，并收到客户的应答后，立即断开连接，以节省传输时间 |
+| HTTP 是<font style="color:red;font-weight:bold">媒体独立的</font> | 一旦客户端和服务器协定数据格式，任何类型的数据都可以通过HTTP发送<br />客户端以及服务器指定使用适合的`MIME-type`内容类型 |
+| HTTP 是<font style="color:red;font-weight:bold">无状态的</font> | 无状态意味着：HTTP协议对于事务处理没有记忆能力；<br />如果后续处理需要之前信息，则此信息必须重传，这样可能导致每次连接传送的数据量增大，但由于服务器不保存状态信息，能够快速响应客户端 |
+
+下图展示了HTTP协议通信流程：
+
+{% image fancybox  fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/cgiarch.gif %}
+
+:notes:属于解释
+
+- CGI:（Conmmon Gateway Interface）通用网关接口是： <font style="color:red;font-weight:bold">HTTP 服务器与用户主机上的程序进行“交互”的一种工具</font>，用户主机上的程序需要运行在网络服务器上，<font style="color:red;font-weight:bold">绝大多数`CGI`程序被用来解释、处理表单的输入信息，并在服务器产生相应的处理或将相应的信息反馈给浏览器</font>。**CGI程序使网页具有交互功能**
+- MIME Type：指资源的媒体类型，MIME Type是互联网（IETF）组织协商确定的一种数据规范，大多数的web服务器和用户代理都会支持这个规范
+
+## HTTP协议格式
+
+HTTP协议格式规定了客户端与服务端之间通信时的规范，具体要求如下图：
+
+###  请求报文格式
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/http请求报文格式.png %}
+
+#### GET 请求下的协议格式
+
+在互联网环境下，通常是客户端向服务端发起资源请求，而很少出现服务端向客户端发起资源请求，所以GET请求往往只有Request过程，并且请求报文中不包含请求体
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/GET请求报文格式.png %}
+
+:sparkles:对应的请求头格式如下：
+```http
+GET /servlet/helloServlet HTTP/1.1
+```
+
+#### POST 请求下的协议格式
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/POST请求报文格式.png %}
+
+:notes:请求资源路径参数可以使用符号`?`、`+`表达不同的涵义
+
+#### 触发请求分类
+
+在前端页面中不同的行为将会导致不同的请求方式，下表总结了相关行为与HTTP协议的行为
+<table >
+    <tbody>
+        <tr>
+         <th align="center">GET请求</th>
+      <th align="center" >POST请求</th>
+        </tr>
+        <tr align="center" ><td>form标签，method=get</td><td rowspan=6>form标签，method=post</td></tr>
+    	<tr align="center" ><td>a标签</td></tr>
+    	<tr align="center" ><td>link标签引入css</td></tr>
+    	<tr align="center" ><td>script标签引入js文件</td></tr>
+    	<tr align="center" ><td>iframe标签引入html页面</td></tr>
+    	<tr align="center" ><td>在浏览器地址栏中输入地址后敲回车</td>
+    </tbody>
+</table>
+
+### HTTP 请求方法
+
+常用的请求分为：<font style="color:blue;font-weight:bold">GET请求</font>和<font style="color:blue;font-weight:bold">POST请求</font>,而每种不同的请求，仍然具有`request`以及`response`过程
+
+| HTTP请求方法 |                           详细描述                           |
+| :------: | :----------------------------------------------------------: |
+| **GET**  |                     向特定的资源发出请求                     |
+| **POST** | 向特定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中，POST请求可能会导致新的资源的创建或已有资源的修改 |
+
+### 请求头信息
+
+不同的请求头记录了客户端与服务端之间通信的状态，常见请求头说明
+
+|     请求头      |              涵义              |
+| :-------------: | :----------------------------: |
+|     Accept      |  表示客户端可以接收的数据类型  |
+| Accpet-Languege |  表示客户端可以接收的语言类型  |
+|   User-Agent    |     表示客户端浏览器的信息     |
+|      Host       | 表示请求时的服务器 ip 和端口号 |
+
+###  响应报文格式
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/http响应报文格式.png %}
+
+:sparkles:各个段的含义
+
+- 响应行：表明当前响应报文信息
+- 响应头：`key:value`格式，不同的`key`，表示有不同的含义
+- 响应体：回传给客户端的数据
+
+:notes:Refresh的意义是"N秒之后刷新本页面或访问指定页面"，而不是"每隔N秒刷新本页面或访问指定页面"。因此，连续刷新要求每次都发送一个Refresh头，而发送204状态代码则可以阻止浏览器继续刷新，不管是使用Refresh头还是＜META HTTP-EQUIV="Refresh" ...＞。
+
+## HTTP 状态码
+
+当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含HTTP状态码的信息头（server header）用以响应浏览器的请求。
+
+### 常见 HTTP 状态码
+
+| 状态码 |          说明           |
+| :----: | :---------------------: |
+|  200   |        请求成功         |
+|  301   | 资源被永久转移到其他URL |
+|  404   |     请求资源不存在      |
+|  500   |     内部服务器错误      |
+
+### HTTP 状态码分类
+
+HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：
+
+| 分类 | 分类描述                                       |
+| ---- | ---------------------------------------------- |
+| 1**  | 信息，服务器收到请求，需要请求者继续执行操作   |
+| 2**  | 成功，操作被成功接收并处理                     |
+| 3**  | 重定向，需要进一步的操作以完成请求             |
+| 4**  | 客户端错误，请求包含语法错误或无法完成请求     |
+| 5**  | 服务器错误，服务器在处理请求的过程中发生了错误 |
+
+### 响应头信息
+
+Content-type(内容类型)，一般是指网页中存在的content-type，用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式，什么编码读取这个文件，告诉客户端实际返回的内容类型
+
+响应报文信息如下：
+
+```http
+POST 127.0.0.1 HTTP/1.1
+Content-Type: text/html; charset=utf-8
+Content-Type: multipart/form-data; boundary=something
+```
+
+### 查看报文信息
+
+在`Chrome`浏览器的开发者选项下可以清楚的看到相关信息，如下图：
+
+{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/google查看报文.png %}
+
+## 附录
+
+### 状态码列表
+
+<h4 align="center">1**状态码列表</h4>
+
+| 状态码 | 状态码英文名称      |                            描述                            |
+| :----: | ------------------- | :--------------------------------------------------------: |
+|  100   | Continue            |               客户端应该继续发送剩下的请求               |
+|  101   | Switching Protocols | 服务器转换协议：服务器将遵从客户的请求转换到另外一种协议 |
+
+<h4 align="center">2**状态码列表</h4>
+
+| 状态码 |        状态码英文名称         |                             描述                             |
+| :----: | :---------------------------: | :----------------------------------------------------------: |
+|  200   |              OK               |               请求成功。一般用于GET与POST请求                |
+|  201   |            Created            |               已创建。成功请求并创建了新的资源               |
+|  202   |           Accepted            |              已接受。已经接受请求，但未处理完成              |
+|  203   | Non-Authoritative Information | 非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本 |
+|  204   |          No Content           | 无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档 |
+|  205   |         Reset Content         | 重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域 |
+|  206   |        Partial Content        |            部分内容。服务器成功处理了部分GET请求             |
+
+<h4 align="center">3**状态码列表</h4>
+
+| 状态码 |   状态码英文名称   |                             描述                             |
+| :----: | :----------------: | :----------------------------------------------------------: |
+|  300   |  Multiple Choices  | 多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择 |
+|  301   | Moved Permanently  | 永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替 |
+|  302   |       Found        | 临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI |
+|  303   |     See Other      |        查看其它地址。与301类似。使用GET和POST请求查看        |
+|  304   |    Not Modified    | 未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源 |
+|  305   |     Use Proxy      |            使用代理。所请求的资源必须通过代理访问            |
+|  306   |       Unused       |                    已经被废弃的HTTP状态码                    |
+|  307   | Temporary Redirect |           临时重定向。与302类似。使用GET请求重定向           |
+
+<h4 align="center">4**状态码列表</h4>
+
+| 状态码 |         状态码英文名称          |                             描述                             |
+| :----: | :-----------------------------: | :----------------------------------------------------------: |
+|  400   |           Bad Request           |             客户端请求的语法错误，服务器无法理解             |
+|  401   |          Unauthorized           |                    请求要求用户的身份认证                    |
+|  402   |        Payment Required         |                        保留，将来使用                        |
+|  403   |            Forbidden            |        服务器理解请求客户端的请求，但是拒绝执行此请求        |
+|  404   |            Not Found            | 服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置"您所请求的资源无法找到"的个性页面 |
+|  405   |       Method Not Allowed        |                   客户端请求中的方法被禁止                   |
+|  406   |         Not Acceptable          |          服务器无法根据客户端请求的内容特性完成请求          |
+|  407   |  Proxy Authentication Required  | 请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权 |
+|  408   |        Request Time-out         |           服务器等待客户端发送的请求时间过长，超时           |
+|  409   |            Conflict             | 服务器完成客户端的 PUT 请求时可能返回此代码，服务器处理请求时发生了冲突 |
+|  410   |              Gone               | 客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置 |
+|  411   |         Length Required         |    服务器无法处理客户端发送的不带Content-Length的请求信息    |
+|  412   |       Precondition Failed       |                 客户端请求信息的先决条件错误                 |
+|  413   |    Request Entity Too Large     | 由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息 |
+|  414   |      Request-URI Too Large      |        请求的URI过长（URI通常为网址），服务器无法处理        |
+|  415   |     Unsupported Media Type      |               服务器无法处理请求附带的媒体格式               |
+|  416   | Requested range not satisfiable |                     客户端请求的范围无效                     |
+|  417   |       Expectation Failed        |               服务器无法满足Expect的请求头信息               |
+
+<h4 align="center">5**状态码列表</h4>
+
+| 状态码 |       状态码英文名称       |                             描述                             |
+| :----: | :------------------------: | :----------------------------------------------------------: |
+|  500   |   Internal Server Error    |                 服务器内部错误，无法完成请求                 |
+|  501   |      Not Implemented       |             服务器不支持请求的功能，无法完成请求             |
+|  502   |        Bad Gateway         | 作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应 |
+|  503   |    Service Unavailable     | 由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中 |
+|  504   |      Gateway Time-out      |      充当网关或代理的服务器，未及时从远端服务器获取请求      |
+|  505   | HTTP Version not supported |        服务器不支持请求的HTTP协议的版本，无法完成处理        |
+
+### 请求方法
+
+HTTP 标准中可以使用多种请求方法，HTTP/1.0 定义了三种请求方法： `GET`、`POST `和` HEAD`方法，HTTP/1.1 新增了六种请求方法：`OPTIONS`、`PUT`、`PATCH`、`DELETE`、`TRACE `和 `CONNECT `方法。
+
+|  Action  |                             含义                             |
+| :------: | :----------------------------------------------------------: |
+| OPTIONS  | 返回服务器针对特定资源所支持的HTTP请求方法，也可以利用向Web服务器发送'*'的请求来俄从事服务器的功能性 |
+|   HEAD   | 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回，这一方法可以在不必传输整个响应内容的理况下，就可以获取包含在响应消息头中的元信息 |
+| **GET**  |                     向特定的资源发出请求                     |
+| **POST** | 向特定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中，POST请求可能会导致新的资源的创建或已有资源的修改 |
+|   PUT    |                向指定资源位置上传其最新的内容                |
+|  DELETE  |            请求服务器删除Request-URI所标识的资源             |
+|  TRACE   |           回显服务器收到的请求，主要用于测试或诊断           |
+| CONNECT  |   HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器    |
+|  PATCH   |        是对PUT方法的补充，用来对已知资源进行局部更新         |
+
+### MIME类型
+
+MIME（Multipurpose Internet Mail Extensions）是 HTTP 协议中规定的数据类型。多功能 Internet 邮件扩充服务。MIME 类型的格式是“大类型/小类型” ， 并与某一种文件的扩展名相对应。  
+
+:sparkles:常见MIME类型总结如下：
+
+|             MIME 类型             |        文件        |
+| :-------------------------------: | :----------------: |
+|      .html , .htm text/html       | 超文本标记语言文本 |
+|          .txt text/plain          |      普通文本      |
+|       .rtf application/rtf        |      RTF 文本      |
+|          .gif image/gif           |      GIF 图形      |
+|       .jpeg,.jpg image/jpeg       |     JPEG 图形      |
+|          .au audio/basic          |    au 声音文件     |
+| mid,.midi audio/midi,audio/x-midi |   MIDI 音乐文件    |
+|  .ra, .ram audio/x-pn-realaudio   | RealAudio 音乐文件 |
+|       .mpg,.mpeg video/mpeg       |     MPEG 文件      |
+|       .avi video/x-msvideo        |      AVI 文件      |
+|      .gz application/x-gzip       |     GZIP 文件      |
+|      .tar application/x-tar       |      TAR 文件      |
+
+:sparkles:以 application 开头的媒体格式类型
+
+|         媒体格式         |               描述               |
+| :----------------------: | :------------------------------: |
+|  application/xhtml+xml   |            XHTML格式             |
+|     application/xml      |           XML数据格式            |
+|     application/json     |           JSON数据格式           |
+|     application/pdf      |             pdf格式              |
+| application/octet-stream | 二进制流数据（如常见的文件下载） |
+
+:notes:multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式
+
+:older_man:点击查看[Content-Type内容](https://www.runoob.com/http/http-content-type.html)
