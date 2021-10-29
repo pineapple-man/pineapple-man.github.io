@@ -2,10 +2,10 @@
 title: cookie 介绍
 toc: true
 clearReading: true
-thumbnailImagePosition: bottom
+thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 21:35:19
-thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/8/80/Cookie_stack.jpg
+thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/cookie.jpg
 categories: Java Web
 tags: 
     - Web
