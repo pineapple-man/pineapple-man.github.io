@@ -41,7 +41,6 @@ JRE 表示 Java运行时环境，**保证 Java 代码能够运行的最低要求
 
 {% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210328003808395.png %}
 
-
 ## 附录
 
 [Differences between JDK, JRE and JVM](https://www.geeksforgeeks.org/differences-jdk-jre-jvm/?ref=lbp)
