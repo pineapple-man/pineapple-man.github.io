@@ -24,6 +24,7 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
+    "jquery": "^3.6.0",
     "jsdom": "^18.0.0",
     "markdown-it-emoji": "^2.0.0",
     "twemoji": "^13.1.0"
