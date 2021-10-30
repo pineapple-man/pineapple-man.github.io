@@ -6,7 +6,7 @@ thumbnailImagePosition: bottom
 metaAlignment: center
 date: 2021-10-30 19:02:27
 thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/1200px-YAML_Logo.svg.png
-categories: 通用技能
+categories: 其他
 tags: 文件格式
 keywords: yaml
 excerpt: 本文主要讲解yaml的语法以及规范

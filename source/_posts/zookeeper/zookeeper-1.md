@@ -4,7 +4,7 @@ date: 2021-10-19 19:53:14
 tags: [分布式组件,ZooKeeper]
 toc:  true
 metaAlignment: center
-categories: ZooKeeper
+categories: 中间件
 excerpt: ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）
 ---
 <!-- toc -->
