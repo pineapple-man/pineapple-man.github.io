@@ -19,3 +19,5 @@ deploy:
   on:
     branch: main
   local-dir: public
+  email: mingchaohu720@gmail.com
+  name: Travis
