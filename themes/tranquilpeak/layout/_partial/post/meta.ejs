@@ -1,13 +1,23 @@
 <div class="<%= (classes ? classes.join(' ') : '') %>">
     <time datetime="<%= post.date.format() %>">
-	<% if (post.lang) { %>
-		    <%= post.date.locale(post.lang).format(__('date_format')) %>
-    	<% } else { %>
-		    <%= post.date.locale(page.lang).format(__('date_format')) %>
-    	<% } %>
+        <% if (post.lang) { %>
+            <%= post.date.locale(post.lang).format(__('date_format')) %>
+                <% } else { %>
+                    <%= post.date.locale(page.lang).format(__('date_format')) %>
+                        <% } %>
     </time>
-    <% if ((post.categories) && (post.categories.length > 0)) { %>
-        <span><%= __('post.categorized_in')  %> </span>
+    <% if ((post.categories) && (post.categories.length> 0)) { %>
+        <span>
+            <%= __('post.categorized_in') %>
+        </span>
         <%- partial('category', {categories: post.categories})%>
-    <% } %>
+            <% } %>
+                <i class="fas fa-book-open"></i>
+                本文共<span class="post-count">
+                    <%- wordcount(post.content) %>
+                </span>字
+                <i class="far fa-clock"></i>
+                阅读预计<span class="post-count">
+                    <%- min2read(post.content,{cn: 110, en: 70}) %>
+                </span>分钟
 </div>
