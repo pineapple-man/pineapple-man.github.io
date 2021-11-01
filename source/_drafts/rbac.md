@@ -22,3 +22,7 @@ RBAC（全称：Role-Based Access Control）基于角色的权限访问控制，
 ![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211031194436350.png)
 
 在RBAC模型中，角色是系统根据管理中相对稳定的职权和责任来划分，每种角色可以完成一定的职能。用户通过 饰演不同的角色获得角色所拥有的权限，一旦某个用户成为某角色的成员，则此用户可以完成该角色所具有的职 能。通过将权限指定给角色而不是用户，在权限分派上提供了极大的灵活性和极细的权限指定粒度。
+
+## 附录
+
+[权限系统与RBAC模型概述](https://www.cnblogs.com/shijiaqi1066/p/3793894.html)
