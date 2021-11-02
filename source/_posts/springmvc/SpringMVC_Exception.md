@@ -1,18 +1,15 @@
 ---
 title: SpringMVC 异常处理流程
 date: 2021-10-20 19:53:14
-last_modified_at: 2021-10-21 +0800
 clearReading: true
 thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/springMVC_Exception.png
 thumbnailImagePosition: right
 metaAlignment: center
-tags: [SpringMVC]
-keywords:
-    - SpringMVC
-    - 异常处理
+tags: SpringMVC
+keywords: SpringMVC
 toc:  true
 categories: Spring 全家桶
-excerpt: 本文简单介绍 SpringMVC 中异常处理的使用方式
+excerpt: 本文简单介绍 SpringMVC 中异常的使用方式
 ---
 <!--toc-->
 
@@ -26,7 +23,7 @@ excerpt: 本文简单介绍 SpringMVC 中异常处理的使用方式
 
 下图是 Spring MVC 的异常处理流程
 
-![SpringMVC 异常处理](https://gitee.com/mingchaohu/blog-image/raw/master/image/springMVC_Exception.png)
+{% image fancybox  fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/springMVC_Exception.png %}
 
 如上图所示，系统的dao、service、controller出现异常都通过throws Exception向上抛出，最后由springmvc前端控制器交由**异常处理器**进行异常处理
 

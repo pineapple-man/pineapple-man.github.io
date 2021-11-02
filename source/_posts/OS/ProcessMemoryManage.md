@@ -7,7 +7,7 @@ thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/c5xbq6w
 thumbnailImagePosition: bottom
 metaAlignment: center
 categories: 操作系统
-tags: [操作系统]
+tags: 操作系统
 keywords: 
     - RSS
     - VSS
@@ -15,7 +15,6 @@ keywords:
     - USS
     - 进程内存管理
 excerpt: 本文将简单介绍操作系统中评估进程内存占用的四个指标
-comments: false
 ---
 
 <!--toc-->
