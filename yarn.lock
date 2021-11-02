@@ -896,6 +896,11 @@ hexo-util@^2.0.0, hexo-util@^2.1.0, hexo-util@^2.4.0:
     prismjs "^1.17.1"
     strip-indent "^3.0.0"
 
+hexo-wordcount@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/hexo-wordcount/-/hexo-wordcount-6.0.1.tgz#5a60efc9d3c8e421956f2fd6683ca94a8a795264"
+  integrity sha512-tbo2P9xRWEKQmRf7+XuPjx9It1MnaE26nA+EEb2DN39gK1x+26W7Nm4Iyp4AugQjBWYYDx7OLn4gp1WFxQpQew==
+
 hexo@^5.0.0:
   version "5.4.0"
   resolved "https://registry.npm.taobao.org/hexo/download/hexo-5.4.0.tgz?cache=0&sync_timestamp=1613894935063&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhexo%2Fdownload%2Fhexo-5.4.0.tgz#77d57fa1c29f3ab05964fe4ebd9c44e23df51b37"
@@ -1072,10 +1077,10 @@ js-yaml@^4.0.0:
   dependencies:
     argparse "^2.0.1"
 
-jsdom@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.npmmirror.com/jsdom/download/jsdom-18.0.0.tgz?cache=0&sync_timestamp=1633714173424&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fjsdom%2Fdownload%2Fjsdom-18.0.0.tgz#0fa974638cd26dfc33f0d84c7526d0a3e5df5dc8"
-  integrity sha1-D6l0Y4zSbfwz8NhMdSbQo+XfXcg=
+jsdom@^18.0.1:
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-18.0.1.tgz#7317c91be425f31ff25814ad427eed8a2a310b61"
+  integrity sha512-mgVzrYP4IJiJKVqXkAdBn+jg+nQgPusBxTJulz3m1Y/1RIrkk8aDoNaQE5BNbHwe72WwiwE7k3Av2THXDpvzPQ==
   dependencies:
     abab "^2.0.5"
     acorn "^8.5.0"
