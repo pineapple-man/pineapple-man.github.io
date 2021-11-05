@@ -2,8 +2,6 @@
 title: npm 使用记录
 toc: true
 clearReading: true
-thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/npm.png'
-thumbnailImagePosition: right
 metaAlignment: center
 categories: 其他
 tags: Web
