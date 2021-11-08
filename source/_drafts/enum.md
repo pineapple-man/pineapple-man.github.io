@@ -1,10 +1,9 @@
 ---
-title: 深入分析 enum (1)
+title: 深入分析 enum
 toc: true
 clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
-date: 2021-10-22 12:39:03
 thumbnailImage:
 categories: JDK
 tags: Java

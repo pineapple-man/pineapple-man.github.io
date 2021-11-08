@@ -4,7 +4,6 @@ toc: true
 clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
-date: 2021-10-23 14:45:07
 thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/s33322882.jpg
 categories: 读书笔记
 tags: 
