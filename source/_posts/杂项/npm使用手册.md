@@ -46,7 +46,25 @@ npm uninstall <Module Name>		#卸载相应的模组
 
 ## 安装配置node.js
 
-系统给我们提供了对`node.js`的管理工具:`n`
+Node 官网已经把 linux 下载版本更改为已编译好的版本了，我们可以直接下载解压后使用：
+
+```shell
+# wget https://nodejs.org/dist/v10.9.0/node-v10.9.0-linux-x64.tar.xz    // 下载
+# tar xf  node-v10.9.0-linux-x64.tar.xz       // 解压
+# cd node-v10.9.0-linux-x64/                  // 进入解压目录
+# ./bin/node -v                               // 执行node命令 查看版本
+```
+使用 ln 命令来设置软连接，将解压文件的`bin`目录下的相关命令放置到系统环境变量中
+```shell
+ln -s /YOUR/INSTALL/PATH/nodejs/bin/npm   /usr/local/bin/ 
+ln -s /YOUR/INSTALL/PATH/nodejs/bin/node   /usr/local/bin/
+```
+配置国内镜像源
+```shell
+npm config set registry http://registry.npm.taobao.org
+```
+
+如果已经有`npm`工具，可以使用`n`命令管理npm
 
 ```shell
 npm install -g n    # n管理工具的安装
@@ -165,3 +183,5 @@ set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ && npm install no
 [node-sass 安装失败报错的原因及解决办法(整理)](https://www.cnblogs.com/gitnull/p/10188030.html)
 
 [No parser and no filepath given, using 'babel' the parser now but this will throw an error in ...](https://blog.csdn.net/weixin_41888813/article/details/101345744)
+
+[Node.js 安装配置](https://www.runoob.com/nodejs/nodejs-install-setup.html)
