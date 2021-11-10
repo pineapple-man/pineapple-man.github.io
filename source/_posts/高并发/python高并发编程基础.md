@@ -2,33 +2,29 @@
 title: Python高并发编程基础
 toc: true
 clearReading: true
+thumbnailImagePosition: right
 metaAlignment: center
-categories: 
-     - 高并发
-tags: 
-    - Python
-    - 高并发
-keywords: 
-    - Python
-    - 高并发
-    - 多进程
-    - 多线程
+categories:
+  - 高并发
+tags:
+  - Python
+  - 高并发
+keywords:
+  - Python
+  - 高并发
+  - 多进程
+  - 多线程
 excerpt: 这是一篇关于Python高并发编程的文章
 action: true
+date: 2021-11-10 12:54:28
+thumbnailImage:
 ---
 <!-- toc -->
 
+
 ## 概述
 
-作为一种解释型的语言，Python的速度并不算慢。如果对速度有很高的要求的话，可以选择用更快的语言实现，比如C或C++，然后用Python调用
-
-解释器将Python转换成一种中间语言，叫做Python字节码，类似于汇编语言，但是包含一些更高级的指令。当一个运行一个Python程序的时候，评估循环不断将Python字节码转换成机器码。解释型语言的好处是方便编程和调试，但是程序的运行速度慢。
-
-其中的一种解决办法是，用C语言实现一些第三方的库，然后在Python中使用
-
-另一种方法是使用即时编译器来替换Cpython，例如PyPy，PyPy对代码生成和Python的运行速度做了优化
-
-Python提供了很多可以利用并行的模块，我们将着重讨论这些并行编程的模块
+解释器将Python转换成一种中间语言，叫做Python字节码，类似于汇编语言，但是包含一些更高级的指令。当运行一个Python程序的时候，评估循环不断将Python字节码转换成机器码。解释型语言的好处是**方便编程和调试，但是程序的运行速度慢**。Python提供了很多可以利用并行的模块，我们将着重讨论这些并行编程的模块
 
 ## 基于线程的并行
 
@@ -44,11 +40,7 @@ Python通过标准库的 `threading` 模块来管理线程，线程模块的主�
 使用线程最简单的一个方法是，用一个目标函数实例化一个Thread然后调用 `start()` 方法启动它。Python的threading模块提供了 `Thread()` 方法在不同的线程中运行函数或处理过程等
 
 ```python
-class threading.Thread(group=None,
-                       target=None,
-                       name=None,
-                       args=(),
-                       kwargs={})
+class threading.Thread(group=None,target=None,name=None,args=(),kwargs={})
 ```
 
 - `group`: 一般设置为 `None` ，这是为以后的一些特性预留的
@@ -84,7 +76,7 @@ class myThread (threading.Thread):
 
 ## 基于进程的并行
 
-产生（spawn）的意思是，由父进程创建子进程。父进程既可以在产生子进程之后继续异步执行，也可以暂停等待子进程创建完成之后再继续执行。Python的multiprocessing库通过以下几步创建进程：
+产生（spawn）的意思是：**由父进程创建子进程**，父进程既可以在产生子进程之后继续异步执行，也可以暂停等待子进程创建完成之后再继续执行。`Python`的`multiprocessing`库通过以下几步创建进程：
 
 1. 创建进程对象
 2. 调用 `start()` 方法，开启进程的活动
