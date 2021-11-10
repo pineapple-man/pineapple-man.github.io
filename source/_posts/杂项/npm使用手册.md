@@ -69,13 +69,22 @@ n --latest		#安装最新版
 
 ### 通过官网下载安装
 
-访问[官网](https://nodejs.org/dist/)查看相应的软件包
+Node 官网已经把 linux 下载版本更改为已编译好的版本了，我们可以直接下载解压后使用：
 
 ```shell
-wget url_path		        #访问官网查找相应的软件包下载到本地
-tar -xvf node_vxxx.tar.gz	#解压软件包到当前路径
-mv ./node_vxxx /usr/local/n/versions/node/xxx		#将自行下载的软件包托管在n的管理目录下，借助n进行管理
-n                           #选择需要使用的版本，即完成了特定版本node的安装
+# wget https://nodejs.org/dist/v10.9.0/node-v10.9.0-linux-x64.tar.xz    // 下载
+# tar xf  node-v10.9.0-linux-x64.tar.xz       // 解压
+# cd node-v10.9.0-linux-x64/                  // 进入解压目录
+# ./bin/node -v                               // 执行node命令 查看版本
+```
+使用 ln 命令来设置软连接，将解压文件的`bin`目录下的相关命令放置到系统环境变量中
+```shell
+ln -s /YOUR/INSTALL/PATH/nodejs/bin/npm   /usr/local/bin/ 
+ln -s /YOUR/INSTALL/PATH/nodejs/bin/node   /usr/local/bin/
+```
+配置国内镜像源
+```shell
+npm config set registry http://registry.npm.taobao.org
 ```
 
 > FAQ
@@ -157,6 +166,14 @@ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
 
 // window 下
 set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ && npm install node-sass
+```
+### cnpm 无法使用
+在Linux下安装的`npm`由于脚本所在位置不同，所以存在系统找不到命令的情况，只需要将安装的脚本也加入到系统的环境变量中就可以了
+```shell
+npm uninstall cnpm -g   # 先删除已经安装的cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org #重新安装 cnpm
+ln -s /YOUR/INSTALL/PATH/node-v10.15.1-linux-x64/bin/cnpm /usr/local/bin/cnpm   #将脚本链接到环境变量中
+cnpm -v #测试是否成功
 ```
 ## 附录
 
