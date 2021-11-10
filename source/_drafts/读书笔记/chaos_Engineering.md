@@ -2,9 +2,6 @@
 title: 《混沌工程—Netflix系统工程稳定性之道》笔记
 toc: true
 clearReading: true
-thumbnailImagePosition: right
-metaAlignment: center
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/s33322882.jpg
 categories: 读书笔记
 tags: 
     - 混沌工程

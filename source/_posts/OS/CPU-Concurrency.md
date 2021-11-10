@@ -5,7 +5,6 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-22 19:53:14
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/v2-e898e919d0061b49ac2fe8ac0ad190ec_720w.jpg
 categories: 高并发
 tags: 操作系统
 keywords: 

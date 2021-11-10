@@ -3,7 +3,6 @@ title: 进程内存管理(1)
 date: 2021-10-21 23:47:15
 toc:  true
 clearReading: true
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/c5xbq6wsov.png
 thumbnailImagePosition: bottom
 metaAlignment: center
 categories: 操作系统

@@ -2,8 +2,6 @@
 title: SpringMVC 异常处理流程
 date: 2021-10-20 19:53:14
 clearReading: true
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/springMVC_Exception.png
-thumbnailImagePosition: right
 metaAlignment: center
 tags: SpringMVC
 keywords: SpringMVC
