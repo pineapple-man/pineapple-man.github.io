@@ -6,7 +6,7 @@ thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
 categories: Spring 全家桶
-tags: 服务注册中心
+tags: 微服务
 keywords: 服务注册中心
 excerpt: Eureka
 ---
