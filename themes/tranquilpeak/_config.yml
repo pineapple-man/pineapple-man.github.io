@@ -155,7 +155,7 @@ sidebar_behavior: 2
 # enjoy wide images and cover images. (true: enable, false: disable)
 clear_reading: true
 # Display thumbnail image of each post on index pages (false: disabled, true: enabled)
-thumbnail_image: false
+thumbnail_image: true
 # Display thumbnail image at the right of title in index pages (`right`, `left` or `bottom`)
 # Set this value to `right` if you have old posts to keep the old style on them
 # and define `thumbnailImagePosition` on a post to overwrite this setting
