@@ -209,6 +209,11 @@ ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
+any-promise@^1.1.0:
+  version "1.3.0"
+  resolved "https://registry.nlark.com/any-promise/download/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
+  integrity sha1-q8av7tzqUugJzcA3au0845Y10X8=
+
 anymatch@~3.1.2:
   version "3.1.2"
   resolved "https://registry.nlark.com/anymatch/download/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
@@ -266,7 +271,7 @@ binary-extensions@^2.0.0:
   resolved "https://registry.nlark.com/binary-extensions/download/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha1-dfUC7q+f/eQvyYgpZFvk6na9ni0=
 
-bluebird@^3.2.2, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5:
+bluebird@^3.2.2, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.nlark.com/bluebird/download/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha1-nyKcFb4nJFT/qXOs4NvueaGww28=
@@ -295,6 +300,14 @@ bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/bytes/download/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
+
+camel-case@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.nlark.com/camel-case/download/camel-case-3.0.0.tgz?cache=0&sync_timestamp=1624608083534&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcamel-case%2Fdownload%2Fcamel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
+  integrity sha1-yjw2iKTpzzpM2nd9xNy8cTJJz3M=
+  dependencies:
+    no-case "^2.2.0"
+    upper-case "^1.1.1"
 
 camel-case@^4.0.0:
   version "4.1.2"
@@ -327,6 +340,13 @@ chokidar@^3.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+clean-css@^4.2.1, clean-css@^4.2.3:
+  version "4.2.4"
+  resolved "https://registry.npmmirror.com/clean-css/download/clean-css-4.2.4.tgz?cache=0&sync_timestamp=1634992398113&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fclean-css%2Fdownload%2Fclean-css-4.2.4.tgz#733bf46eba4e607c6891ea57c24a989356831178"
+  integrity sha1-czv0brpOYHxokepXwkqYk1aDEXg=
+  dependencies:
+    source-map "~0.6.0"
+
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.nlark.com/color-convert/download/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
@@ -350,6 +370,11 @@ command-exists@^1.2.8:
   version "1.2.9"
   resolved "https://registry.npm.taobao.org/command-exists/download/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha1-xQclrzgIyKsCYP1gsB+/oluVT2k=
+
+commander@^2.19.0:
+  version "2.20.3"
+  resolved "https://registry.npmmirror.com/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1634886357672&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
 
 commander@^5.1.0:
   version "5.1.0"
@@ -483,6 +508,13 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.nlark.com/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+
+deep-assign@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.nlark.com/deep-assign/download/deep-assign-2.0.0.tgz#ebe06b1f07f08dae597620e3dd1622f371a1c572"
+  integrity sha1-6+BrHwfwja5ZdiDj3RYi83GhxXI=
+  dependencies:
+    is-obj "^1.0.0"
 
 deep-is@~0.1.3:
   version "0.1.4"
@@ -729,6 +761,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.nlark.com/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
+
 hexo-algoliasearch@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/hexo-algoliasearch/download/hexo-algoliasearch-1.0.0.tgz#6cd697c5e8d8325fbedd23160ba25c216a561d57"
@@ -764,6 +801,13 @@ hexo-deployer-git@^3.0.0:
     hexo-util "^2.1.0"
     moment "^2.18.0"
     nunjucks "^3.2.1"
+
+hexo-filter-mermaid-diagrams@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.nlark.com/hexo-filter-mermaid-diagrams/download/hexo-filter-mermaid-diagrams-1.0.5.tgz#1e32fc4e46eab90cf3a375b5c830a9f2aef1640f"
+  integrity sha1-HjL8TkbquQzzo3W1yDCp8q7xZA8=
+  dependencies:
+    deep-assign "^2.0.0"
 
 hexo-front-matter@^2.0.0:
   version "2.0.0"
@@ -824,6 +868,19 @@ hexo-log@^2.0.0:
   integrity sha1-HcyOlgApsIshmU/ixWxOPWNG6JM=
   dependencies:
     chalk "^4.0.0"
+
+hexo-neat@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.nlark.com/hexo-neat/download/hexo-neat-1.0.9.tgz#ddde4984f922d2a5caa659b84b147873b1aecdb7"
+  integrity sha1-3d5JhPki0qXKplm4SxR4c7Guzbc=
+  dependencies:
+    bluebird "^3.7.2"
+    clean-css "^4.2.3"
+    html-minifier "^4.0.0"
+    minimatch "^3.0.4"
+    object-assign "^4.1.1"
+    stream-to-array "^2.3.0"
+    uglify-js "~3.10.0"
 
 hexo-pagination@1.0.0:
   version "1.0.0"
@@ -941,6 +998,19 @@ html-encoding-sniffer@^3.0.0:
   dependencies:
     whatwg-encoding "^2.0.0"
 
+html-minifier@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.nlark.com/html-minifier/download/html-minifier-4.0.0.tgz#cca9aad8bce1175e02e17a8c33e46d8988889f56"
+  integrity sha1-zKmq2LzhF14C4XqMM+RtiYiIn1Y=
+  dependencies:
+    camel-case "^3.0.0"
+    clean-css "^4.2.1"
+    commander "^2.19.0"
+    he "^1.2.0"
+    param-case "^2.1.1"
+    relateurl "^0.2.7"
+    uglify-js "^3.5.1"
+
 htmlparser2@^6.0.0:
   version "6.1.0"
   resolved "https://registry.nlark.com/htmlparser2/download/htmlparser2-6.1.0.tgz?cache=0&sync_timestamp=1631386311915&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhtmlparser2%2Fdownload%2Fhtmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"
@@ -1034,6 +1104,11 @@ is-number@^7.0.0:
   version "7.0.0"
   resolved "https://registry.nlark.com/is-number/download/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha1-dTU0W4lnNNX4DE0GxQlVUnoU8Ss=
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.nlark.com/is-obj/download/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 is-plain-object@^3.0.0:
   version "3.0.1"
@@ -1145,6 +1220,11 @@ linkify-it@^3.0.1:
   integrity sha1-qYuvRM5FpVDvtNScdp0HUkzC+i4=
   dependencies:
     uc.micro "^1.0.1"
+
+lower-case@^1.1.1:
+  version "1.1.4"
+  resolved "https://registry.nlark.com/lower-case/download/lower-case-1.1.4.tgz?cache=0&sync_timestamp=1624607698082&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flower-case%2Fdownload%2Flower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
+  integrity sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -1335,6 +1415,13 @@ nib@^1.1.2:
   dependencies:
     stylus "0.54.5"
 
+no-case@^2.2.0:
+  version "2.3.2"
+  resolved "https://registry.nlark.com/no-case/download/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
+  integrity sha1-YLgTOWvjmz8SiKTB7V0efSi0ZKw=
+  dependencies:
+    lower-case "^1.1.1"
+
 no-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.nlark.com/no-case/download/no-case-3.0.4.tgz#d361fd5c9800f558551a8369fc0dcd4662b6124d"
@@ -1361,6 +1448,11 @@ nwsapi@^2.2.0:
   version "2.2.0"
   resolved "https://registry.nlark.com/nwsapi/download/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha1-IEh5qePQaP8qVROcLHcngGgaOLc=
+
+object-assign@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.nlark.com/object-assign/download/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+  integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -1400,6 +1492,13 @@ optionator@^0.8.1:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
     word-wrap "~1.2.3"
+
+param-case@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.nlark.com/param-case/download/param-case-2.1.1.tgz?cache=0&sync_timestamp=1624607700998&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fparam-case%2Fdownload%2Fparam-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
+  integrity sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
+  dependencies:
+    no-case "^2.2.0"
 
 parse5@6.0.1:
   version "6.0.1"
@@ -1475,6 +1574,11 @@ readdirp@~3.6.0:
   integrity sha1-dKNwvYVxFuJFspzJc0DNQxoCpsc=
   dependencies:
     picomatch "^2.2.1"
+
+relateurl@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.nlark.com/relateurl/download/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
+  integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
 resolve-url@^0.2.1:
   version "0.2.1"
@@ -1595,9 +1699,9 @@ source-map@0.1.x:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.6.1, source-map@~0.6.1:
+source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
-  resolved "https://registry.nlark.com/source-map/download/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  resolved "https://registry.nlark.com/source-map/download/source-map-0.6.1.tgz?cache=0&sync_timestamp=1624608014898&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsource-map%2Fdownload%2Fsource-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha1-dHIq8y6WFOnCh6jQu95IteLxomM=
 
 source-map@^0.7.3:
@@ -1619,6 +1723,13 @@ sprintf-js@~1.0.2:
   version "1.5.0"
   resolved "https://registry.npm.taobao.org/statuses/download/statuses-1.5.0.tgz?cache=0&sync_timestamp=1609654090567&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstatuses%2Fdownload%2Fstatuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+
+stream-to-array@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.nlark.com/stream-to-array/download/stream-to-array-2.3.0.tgz#bbf6b39f5f43ec30bc71babcb37557acecf34353"
+  integrity sha1-u/azn19D7DC8cbq8s3VXrOzzQ1M=
+  dependencies:
+    any-promise "^1.1.0"
 
 strip-ansi@^6.0.0:
   version "6.0.1"
@@ -1762,6 +1873,16 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   resolved "https://registry.npm.taobao.org/uc.micro/download/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
   integrity sha1-nEEagCpAmpH8bPdAgbq6NLJEmaw=
 
+uglify-js@^3.5.1:
+  version "3.14.3"
+  resolved "https://registry.npmmirror.com/uglify-js/download/uglify-js-3.14.3.tgz#c0f25dfea1e8e5323eccf59610be08b6043c15cf"
+  integrity sha1-wPJd/qHo5TI+zPWWEL4ItgQ8Fc8=
+
+uglify-js@~3.10.0:
+  version "3.10.4"
+  resolved "https://registry.npmmirror.com/uglify-js/download/uglify-js-3.10.4.tgz#dd680f5687bc0d7a93b14a3482d16db6eba2bfbb"
+  integrity sha1-3WgPVoe8DXqTsUo0gtFttuuiv7s=
+
 universalify@^0.1.0, universalify@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npm.taobao.org/universalify/download/universalify-0.1.2.tgz?cache=0&sync_timestamp=1603180004159&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Funiversalify%2Fdownload%2Funiversalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
@@ -1771,6 +1892,11 @@ unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/unpipe/download/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
+
+upper-case@^1.1.1:
+  version "1.1.3"
+  resolved "https://registry.nlark.com/upper-case/download/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
+  integrity sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
 
 urix@^0.1.0:
   version "0.1.0"
