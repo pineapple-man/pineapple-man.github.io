@@ -81,10 +81,10 @@ sidebar:
         #     title: global.linkedin
         #     url: https://www.linkedin.com/profile/
         #     icon: fab fa-linkedin
-        # mail:
-        #     title: global.mail
-        #     url: mailto://mingchaohu720@gmail.com
-        #     icon: fa fa-envelope
+        mail:
+            title: global.mail
+            url: mailto://mingchaohu720@gmail.com
+            icon: fa fa-envelope
     # rss:
     #     rss:
     #         title: global.rss
@@ -164,7 +164,7 @@ thumbnail_image_position: right
 # there is no thumbnail image as the thumbnail image
 # Set this value to `true` if you have old posts that use the cover image or the first photo as the thumbnail image
 # and set `autoThumbnailImage` to `false` on a post to overwrite this setting
-auto_thumbnail_image: true
+auto_thumbnail_image: false
 # Your blog cover picture. I STRONGLY recommend you to use a CDN to speed up loading of pages.
 # There is many free CDN like Cloudinary or you can also use indirectly
 # by using services like Google Photos.
