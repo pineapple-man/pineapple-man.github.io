@@ -3,7 +3,9 @@ title: JVM概述
 toc: true
 metaAlignment: center
 date: 2021-10-23 20:25:47
-categories: JVM
+categories: 
+- Java
+- JVM
 tags: JVM
 keywords: 
     - JVM

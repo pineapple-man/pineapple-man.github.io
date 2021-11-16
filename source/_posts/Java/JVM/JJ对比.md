@@ -4,7 +4,9 @@ toc: true
 clearReading: true
 thumbnailImagePosition: bottom
 metaAlignment: center
-categories: JVM
+categories: 
+- Java
+- JVM
 tags: JVM
 keywords:
   - JDK
