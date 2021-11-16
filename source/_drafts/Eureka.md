@@ -5,8 +5,8 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
-categories: Spring 全家桶
-tags: 微服务
+categories: Java
+tags: SpringCloud
 keywords: 服务注册中心
 excerpt: Eureka
 ---

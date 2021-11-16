@@ -6,7 +6,6 @@ thumbnailImagePosition: bottom
 metaAlignment: center
 categories: 
 - Java
-- JVM
 tags: JVM
 keywords:
   - JDK

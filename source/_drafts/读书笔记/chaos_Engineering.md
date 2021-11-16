@@ -2,7 +2,7 @@
 title: 《混沌工程—Netflix系统工程稳定性之道》笔记
 toc: true
 clearReading: true
-categories: 读书笔记
+categories: 生活
 tags: 
     - 混沌工程
 keywords:

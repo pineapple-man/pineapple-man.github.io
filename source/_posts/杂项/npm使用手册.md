@@ -3,11 +3,11 @@ title: npm 使用记录
 toc: true
 clearReading: true
 metaAlignment: center
-categories: 其他
+categories: 通用技能
 tags: Web
 excerpt: 本文用于记录 npm 工具的常用操作
 date: 2021-11-04 18:41:21
-keywords:
+keywords: npm
 ---
 <!-- toc -->
 

@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-22 19:53:14
-categories: 高并发
+categories: 操作系统
 tags: 操作系统
 keywords: 
     - CPU

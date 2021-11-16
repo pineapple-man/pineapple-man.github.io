@@ -8,7 +8,6 @@ date: 2021-10-30 19:44:30
 thumbnailImage:
 categories: 
 - Java
-- JDK
 tags: Java
 keywords: ArrayList
 excerpt: 本文主要讲解 JDK 中 ArrayList的源码

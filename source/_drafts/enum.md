@@ -5,7 +5,8 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
-categories: JDK
+categories: 
+- Java
 tags: Java
 keywords:
 - enum

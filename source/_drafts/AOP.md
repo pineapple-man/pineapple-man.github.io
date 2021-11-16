@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
-categories: Spring 全家桶
+categories: Java
 tags: Spring
 keywords: 
     -AOP
