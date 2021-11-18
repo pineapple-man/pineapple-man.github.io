@@ -111,7 +111,7 @@ JSP 技术可以让我们在页面中嵌入 Java 代码，但是这样的技术�
 ## 如何设计 RESTful 风格的 API
 
 既然 RESTful API 是基于 REST，那么到底应该如何设计 RESTful API 的接口？
-#### 使用名词而不是动词
+### 使用名词而不是动词
 
 {% alert success no-icon%}
 
@@ -128,7 +128,7 @@ https://api.example.com/v1/employees
 
 {%endalert%}
 
-#### GET 方法和查询参数不应该涉及状态改变
+### GET 方法和查询参数不应该涉及状态改变
 
 {% alert success no-icon%}
 
@@ -136,7 +136,7 @@ https://api.example.com/v1/employees
 
 {%endalert%}
 
-#### 使用复数名词
+### 使用复数名词
 
 不要混淆名词单数和复数，为了保持简单，对所有资源使用复数：
 
@@ -148,7 +148,7 @@ https://api.example.com/v1/employees
 /settings 而部署 /setting
 
 {%endalert%}
-#### 使用子资源表达关系
+### 使用子资源表达关系
 
 如果一个资源与另外一个资源有关系，使用子资源：
 
@@ -159,7 +159,7 @@ GET /cars/711/drivers/4 返回 car 711的4号司机
 
 {%endalert%}
 
-#### 为集合提供过滤、排序、选择和分页等功能
+### 为集合提供过滤、排序、选择和分页等功能
 
 **Filtering** 过滤:
 
@@ -193,11 +193,11 @@ GET /cars/711/drivers/4 返回 car 711的4号司机
 使用 limit 和offset.实现分页，缺省limit=20 和offset=0；`GET /cars?offset=10&limit=5`，为了将总数发给客户端，使用订制的HTTP头： X-Total-Count.
 {%endalert%}
 
-#### 版本化 API
+### 版本化 API
 
 版本化 API 能够方便的进行 API 的版本控制，不要发布无版本的 API 项目庞大之后不容易管理，使用简单数字，避免小数点如`2.5`，一般在 Url 后面使用 `?v`，或者如下方法`/blog/api/v1`
 
-#### 允许覆盖 HTTP 方法
+### 允许覆盖 HTTP 方法
 
 一些代理只支持 **POST** 和 **GET** 两种请求方式，为了使这些有限方法支持 RESTful API，使用订制的HTTP头 **X-HTTP-Method-Override** 来覆盖POST 方法，最终根据`X-HTTP-Method-Override`头部信息，进行请求方式的判断
 
