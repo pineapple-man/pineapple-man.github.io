@@ -2,7 +2,7 @@ name: deploying Hexo project to GitHub pages
 on:
   push:
     branches:
-      - master # master 分支有 push 行为时就触发这个 action
+      - main # master 分支有 push 行为时就触发这个 action
 
 jobs:
   build-and-deploy:
