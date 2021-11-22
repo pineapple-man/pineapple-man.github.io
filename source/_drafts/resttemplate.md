@@ -1,5 +1,5 @@
 ---
-title: RestTemplate
+title: Spring RestTemplate
 toc: true
 clearReading: true
 thumbnailImagePosition: right
@@ -55,7 +55,5 @@ public RestTemplate restTemplate(RestTemplateBuilder builder) {
 [RestTemplate用法说明](https://www.jianshu.com/p/2a59bb937d21)
 
 [Spring之RestTemplate使用小结](https://juejin.cn/post/6844903656165212174)
-
-[RestTemplate使用教程](https://www.cnblogs.com/f-anything/p/10084215.html)
 
 [Spring RestTemplate](https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/)

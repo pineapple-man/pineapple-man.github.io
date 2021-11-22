@@ -90,3 +90,28 @@ APache POI是Apache软件基金会的开源项目，由 Java 编写的免费开�
 |   Font    |                          Excel字体                           |
 | CellStyle |                         格子单元样式                         |
 
+## 基本操作
+
+### 创建 `Excel`
+
+```java
+XSSFWorkbook workbook = new XSSFWorkbook();
+XSSFSheet sheet = workbook.createSheet("test");
+FileOutputStream fileOutputStream = new FileOutputStream("test.xlsx");
+workbook.write(fileOutputStream);
+fileOutputStream.close();
+```
+
+### 创建单元格
+
+```java
+XSSFWorkbook workbook = new XSSFWorkbook();
+XSSFSheet sheet = workbook.createSheet("test");
+XSSFRow row = sheet.createRow(3);
+XSSFCell cell = row.createCell(0);
+cell.setCellValue("input data");
+FileOutputStream fileOutputStream = new FileOutputStream("test.xlsx");
+workbook.write(fileOutputStream);
+fileOutputStream.close();
+```
+
