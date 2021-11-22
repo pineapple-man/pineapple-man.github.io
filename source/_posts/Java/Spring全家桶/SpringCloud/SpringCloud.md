@@ -7,7 +7,7 @@ metaAlignment: center
 categories: Java
 tags: SpringCloud
 keywords: SpringCloud
-excerpt: 作为 Spring 家族中的重量级角色—— SpringCloud 到底是做什么的？
+excerpt: 作为 Spring 家族中的重量级角色—— Spring Cloud 到底是做什么的？本文是 Spring Cloud 学习的入口
 date: 2021-11-04 22:59:53
 thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/springcloudAlibaba.jpg
 ---
@@ -50,6 +50,13 @@ Spring Cloud provides tools for developers to quickly build some of the common p
 
 {% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/Cloud升级.png %}
 
+## 服务治理
+{% alert success no-icon%}
+
+在传统的 RPC 远程调用框架中，每个服务于服务之间依赖关系十分复杂，管理起来比较繁琐，所以需要使用一种智能的服务治理（管理）软件，来管理服务于服务之间依赖关系，实现服务调用、服务发现、服务注册、负载和容错等
+{%endalert%}
+在 Spring Cloud 中可以选择使用 `Eureka`,`Zookeeper`,`Consul`和`Nacos` 其中 `Eureka`已经停更，所以目前社区新星 `Nacos` 关注度还挺高的，不过一些旧的项目仍然在使用 `Eureka` 和 `Zookeeper`
+:book:目前已经总结的有{% post_link Eureka "Eureka 常用操作"%}
 ## 学习资料
 
 [Spring Cloud官方文档](https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/)
