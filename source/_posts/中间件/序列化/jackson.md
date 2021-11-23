@@ -9,7 +9,7 @@ thumbnailImage:
 categories: 中间件
 tags: Web
 keywords: jackson
-excerpt: 本文主要讲解 Spring 种的序列化工具——Jackson
+excerpt: 本文主要讲解 Spring 中的序列化工具——Jackson
 ---
 <!-- toc -->
 

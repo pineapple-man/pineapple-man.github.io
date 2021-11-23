@@ -17,18 +17,17 @@ https://gitee.com/mingchaohu/blog-image/raw/master/image/apache-shiro-logo.png
 
 ## Shiro 的提问
 
-> :thinking:为什么需要使用 Shiro ？
->
-> :thinking:只能使用 Shiro 吗？
->
-> :thinking:什么是 shiro ？
->
-> - Apache Shiro 是 Java 的一个安全（权限）框架
->
-> :sparkles:Shiro 有什么特点
->
-> - Shiro 可以非常容易的开发出足够好的应用，其不仅可以用在`JavaSE`环境，也可以用在`JavaEE`环境
-> - Shiro 可以完成：认证、授权、加密、会话管理、Web继承、缓存等
+:thinking:为什么需要使用 Shiro ？
+
+:thinking:只能使用 Shiro 吗？
+
+:thinking:什么是 shiro ？
+
+Apache Shiro 是 Java 的一个安全（权限）框架
+
+:sparkles:Shiro 有什么特点
+
+Shiro 可以非常容易的开发出足够好的应用，其不仅可以用在`JavaSE`环境，也可以用在`JavaEE`环境，Shiro 可以完成：认证、授权、加密、会话管理、Web继承、缓存等
 
 ## Shiro 功能架构图
 
