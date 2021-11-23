@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 00:16:06
-thumbnailImage:
+thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/mybatis.jpg'
 categories: 中间件
 tags: 
     - MyBatis
@@ -119,7 +119,5 @@ MyBatis 的逆向工程使用起来非常方便，仅需要两步（**配置依�
 ## 附录
 
 [官方文档](http://www.mybatis.org/generator)
-
 [IDEA中利用MyBatis Generator逆向工程](https://www.yisu.com/zixun/207459.html)
-
 [MyBatis逆向工程笔记——CSDN](https://blog.csdn.net/eson_15/article/details/51694684)
