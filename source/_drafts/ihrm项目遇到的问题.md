@@ -14,3 +14,7 @@ excerpt: 本文主要记录疑问
 Spring BeanMap是干什么的
 mybatis中字符串连接
 https://blog.csdn.net/CopyCow/article/details/80531993
+
+mybatis 传入参数
+https://blog.csdn.net/earthhour/article/details/79635633
+https://blog.csdn.net/lbqlzch/article/details/106592009

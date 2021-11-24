@@ -34,9 +34,9 @@ one model may not always be ideal for all participating clients
 
 - 参与的客户端并不局限于本地培训或测试目标分布；各个客户端先天对训练数据的分布一无所知
 
-
-
 :question:目前感觉大多数的实验的确都是在做`Non-iid`，但是对于实验中，每个客户端样本的数据分本感觉就没有合理的使用，甚至就没有做假设，完全一类数据一种客户端，这样就完全没有使用数据本身的分布信息，感觉这里少点idea 去做这个
+
+并且在进行验证和测试时的数据设置还有点问题？
 
 #### method/measures used
 
@@ -47,7 +47,9 @@ one model may not always be ideal for all participating clients
 
 - 提出了一个灵活的联合学习框架，允许客户个性化到特定的目标数据分布，而不考虑他们可用的本地训练数据
 - 引入了一种方法来高效地计算上传模型的最优加权组合，并以此加权组合执行联邦更新
-- 
+- 客户端可以区分好的其他客户端的模型是否适合自己，做出不同权重的聚合
+
+如何更新找到最优的 $w$ 以及对每个客户端找到最优的 $\theta$
 
 [FedFomo论文阅读笔记](https://blog.csdn.net/weixin_42534493/article/details/119759371)
 
