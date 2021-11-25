@@ -16,8 +16,8 @@ thumbnailImage:
 
 本周主要确定下来几件事情：
 
-1. 第二周都没好好看论文，总是三心二意，本周多看了一些文章
-2. 
+1. 第二周都没好好看论文，总是三心二意，本周多看了一些文章（还是没好好看论文:persevere:）
+2. 突然被调去给其他人做实验，所以时间用去学习一些中间件
 
 ## 论文笔记
 
@@ -43,6 +43,8 @@ one model may not always be ideal for all participating clients
 - 每一个客户端最终上交到 server 的权重，不再是执行简单的聚合操作，而是每个客户端之和它任务相近的客户端进行聚合操作，从而获得针对特定任务的更强模型（找到一种任务相关性的模型聚合方式）
 - 针对于如何找到客户端之间的任务相关性，在每个客户端对其他客户端的模型进行评测，只是对于好的模型，进行聚合平均，不好的模型舍弃（怎么感觉有点风险？并且这样还要 Server 干什么尼？）
 
+由于优化各个客户端的聚合权重非常的困难，所以提出了一种在客户端优化权重的方法，最终效果能够达到 $w^\star$ 的一阶近似效果（first-order approximation）所以文章的名字叫做 FIRST ORDER MODEL OPTIMIZATION 
+
 #### key findings
 
 - 提出了一个灵活的联合学习框架，允许客户个性化到特定的目标数据分布，而不考虑他们可用的本地训练数据
@@ -56,6 +58,9 @@ one model may not always be ideal for all participating clients
 ### Heterogeneity for the Win: One-Shot Federated Clustering
 
 无监督的联邦学习，和之前看的聚类联邦学习不同，就看了一个摘要
+
+### An Efficient Framework for Clustered Federated Learning
+
 
 
 
