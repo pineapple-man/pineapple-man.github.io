@@ -67,13 +67,13 @@ one model may not always be ideal for all participating clients
 
 ## 额外补充的知识
 
-|                                                              |      |      |
-| :----------------------------------------------------------: | :--: | :--: |
-|                                                              |      |      |
-| [K-Means的三种迭代算法](https://blog.csdn.net/joeland209/article/details/72147763) |      |      |
-|                                                              |      |      |
-|                                                              |      |      |
-|                                                              |      |      |
+|                                                              |                        机器学习库学习                        |      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
+|                                                              | [TensorFlow Core](https://www.tensorflow.org/overview?hl=zh-cn) |      |
+| [K-Means的三种迭代算法](https://blog.csdn.net/joeland209/article/details/72147763) | [Python使用pandas处理CSV文件](https://blog.csdn.net/atnanyang/article/details/70832257) |      |
+|                                                              | [Python之Pandas 简介与Pandas 读取csv文件及相关操作01](https://www.cnblogs.com/luckyplj/p/13193985.html) |      |
+|                                                              |                                                              |      |
+|                                                              |                                                              |      |
 
 
 

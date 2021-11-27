@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
-categories: JVM
+categories: Java
 tags: JVM
 keywords: 进程内存结构
 excerpt: 之前写过操作系统中进程的内存结构，那么作为 Java 的操作系统，在 JVM 中一个进程是如何抽象的？

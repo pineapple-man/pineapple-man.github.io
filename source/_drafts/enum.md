@@ -7,7 +7,7 @@ metaAlignment: center
 thumbnailImage:
 categories: 
 - Java
-tags: Java
+tags: JDK
 keywords:
 - enum
 excerpt: 枚举的概念很早就知道了，但是一直感觉认识尚浅，决定在这里对枚举进行总结
