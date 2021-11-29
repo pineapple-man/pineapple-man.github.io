@@ -162,7 +162,7 @@ PID  USER PR NI VIRT   RES    SHR   S  %CPU %MEM  TIME+    COMMAND
 
 ### 详细展示每个CPU使用情况
 
-进入top视图的时候，按“1”将详细展示出每颗CPU的占用情况，展示效果如下：
+进入top视图的时候，按`1`将详细展示出每颗CPU的占用情况，展示效果如下：
 
 ![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211025115840582.png)
 
@@ -194,9 +194,33 @@ P：根据CPU使用百分比大小进行排序；
 T：根据时间/累计时间进行排序；
 w：将当前设置写入~/.toprc文件中
 ```
+## 常见问题汇总
+下面列出在使用 `top` 命令时，出现的一些疑惑点，并给出相关的解答
+### 出现 `kswapd0` 进程 CPU 占用过高
+swap 分区的作用是**当物理内存不足时，会将一部分硬盘当做虚拟内存来使用**。kswapd0 占用过高是因为物理内存不足，使用swap分区与内存换页操作交换数据，导致CPU占用过高
 
+{% alert success no-icon%}
+可以通过修改  `/etc/sys/vm/swappiness`  里面的数值来修改 swap 分区使用与否，默认 60，数值越大表示更多的使用 swap 分区。这个交换参数控制内核从物理内存移出进程，移到交换空间。该参数从0到100，当该参数=0，表示只要有可能就尽力避免交换进程移出物理内存;该参数=100，这告诉内核疯狂的将数据移出物理内存移到 swap 缓存中。设置 `vm.swappiness=0` 后并不代表禁用 swap 分区，只是告诉内核，能少用到 swap 分区就尽量少用到，设置 vm.swappiness=100 的话，则表示尽量使用 swap 分区
+{%endalert%}
+:question:Swap 的分配会对系统性能产生影响吗？
+{% alert success no-icon%}
+swap 分配策略不同，会对系统性能产生较明显的影响。分配太多的 Swap 空间会浪费磁盘空间，而 Swap 空间太少，则系统会发生错误。如果系统的物理内存用光了，系统会跑得很慢（大部分 CPU 占用率用于进行内存页的扇入和扇出），但仍能运行；如果Swap空间用光了，那么系统就会发生错误
+{%endalert%}
+下面举一个例子：
+{% alert warning no-icon%}
+例如，Web服务器能根据不同的请求数量衍生出多个服务进程（或线程），如果Swap空间用完，则服务进程无法启动，通常会出现“application is out of memory”的错误，严重时会造成服务进程的死锁。因此Swap空间的分配是很重要的
+{%endalert%}
+
+:question:不同的 swap 分配策略会严重影响到系统性能，那么到底应该如何分配 swap 分区？
+{% alert success no-icon%}
+通常情况下，Swap空间应大于或等于物理内存的大小，最小不应小于64M，通常 Swap 空间的大小应是物理内存的2-2.5倍。
+
+**但根据不同的应用，应有不同的配置**：如果是小的桌面系统，则只需要较小的Swap空间，而大的服务器系统则视情况不同需要不同大小的Swap空间。特别是数据库服务器和 Web 服务器，随着访问量的增加，对 Swap 空间的要求也会增加，一般来说对于 4G 以下的物理内存，配置 2 倍的 swap，4G 以上配置 1 倍
+{%endalert%}
+
+另一方面，Swap 分区的数量对性能也有很大的影响。因为 Swap 交换的操作是磁盘 IO 的操作，如果有多个 Swap 交换区，Swap 空间的分配会以轮流的方式操作于所有的 Swap，这样会大大均衡 IO 的负载，加快 Swap 交换的速度。如果只有一个交换区，所有的交换操作会使交换区变得很忙，使系统大多数时间处于等待状态，效率很低。用性能监视工具会发现，此时 CPU 负载并不高，而系统却慢。这说明，系统的瓶颈在 IO 上，依靠提高 CPU 的速度解决不了问题，需要增大物理内存或者减少交互分区的
 ## 附录
 
 [Linux - top命令查看服务器CPU与内存占用](https://blog.csdn.net/J080624/article/details/80526310)
-
 [Linux中top命令输出指标详解](https://www.jianshu.com/p/af584c5a79f2)
+[Linux kswapd0 进程CPU占用过高](https://www.cnblogs.com/aaron911/p/11002338.html)
