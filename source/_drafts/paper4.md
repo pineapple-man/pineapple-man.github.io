@@ -16,7 +16,7 @@ thumbnailImage:
 
 本周主要确定下来几件事情：
 
-1. 
+1. 由于确定了三周的复现实验（工业故障预测），碰巧之前又没有做过，所以疯狂的看论文和做实验
 
 ## 论文笔记
 
@@ -59,18 +59,64 @@ VFL is applicable to the cases that two datasets share the same sample ID space 
 
 ### A Vertical Federated Learning Method for Interpretable Scorecard and Its Application in Credit Scoring
 
+纵向逻辑回归，数据集使用的是私密的信用卡记录
+
+#### research questions
+
+
+#### hypotheses
+
+
+#### method/measures used
+
+
+#### key findings
+
 
 
 ### Predict Failures in Production Lines A Two-stage Approach with Clustering and Supervised Learning
+
+对 bosch 数据集进行故障预测的一篇论文，发表时间比较早，提出了两步进行处理：先将数据进行聚类随后在每个聚类上再进行故障预测
+
+#### research questions
+
+
+#### hypotheses
+
+
+#### method/measures used
+
+
+#### key findings
+### A new data analytics framework emphasising preprocessing of data to generate insights into complex manufacturing systems  
+#### research questions
+
+
+#### hypotheses
+
+
+#### method/measures used
+
+#### key findings
+
+### A Quasi-Newton Method Based Vertical Federated Learning Framework for Logistic Regression  
+
 
 
 
 ## 额外补充的知识
 
-| 相关算法 |                        机器学习库学习                        |                           基础知识                           |
-| :------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|          |    [特征处理经验](https://zhuanlan.zhihu.com/p/166440574)    | [2.1. 数据操作](https://zh-v2.d2l.ai/chapter_preliminaries/ndarray.html) |
-|          | [一日一学--如何对数值型特征进行分桶](https://cloud.tencent.com/developer/article/1590912) | [【机器学习】逻辑回归（非常详细）](https://zhuanlan.zhihu.com/p/74874291) |
-|          | [特征工程之特征缩放&特征编码](https://zhuanlan.zhihu.com/p/56902262) | [Bosch Production Line Performance](https://www.kaggle.com/c/bosch-production-line-performance/data) |
-|          | [线性回归模型与pytorch实现](https://zhuanlan.zhihu.com/p/86982616) |                                                              |
+|                             算法                             |                          机器学习库                          |                           基础知识                           |                           数据清洗                           | 数据集                                                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | ------------------------------------------------------------ |
+| [随机森林 – Random forest](https://easyai.tech/ai-definition/random-forest/) |    [特征处理经验](https://zhuanlan.zhihu.com/p/166440574)    | [2.1. 数据操作](https://zh-v2.d2l.ai/chapter_preliminaries/ndarray.html) | [pandas中的reset_index()](https://www.cnblogs.com/keye/p/11229863.html) | [Give Me Some Credit](https://www.kaggle.com/c/GiveMeSomeCredit/data) |
+| [一文全面掌握分层随机抽样](https://zhuanlan.zhihu.com/p/219994476) | [一日一学--如何对数值型特征进行分桶](https://cloud.tencent.com/developer/article/1590912) | [pytorch使用（四）训练网络](https://blog.csdn.net/GYGuo95/article/details/78821633) | [pandas并行读入大文件数据](https://zhuanlan.zhihu.com/p/87278482) | [Default of Credit Card Clients Dataset](https://www.kaggle.com/uciml/default-of-credit-card-clients-dataset) |
+| [【机器学习】逻辑回归（非常详细）](https://zhuanlan.zhihu.com/p/74874291) | [特征工程之特征缩放&特征编码](https://zhuanlan.zhihu.com/p/56902262) | [Bosch Production Line Performance](https://www.kaggle.com/c/bosch-production-line-performance/data) | [python numpy中setdiff1d的用法](https://blog.csdn.net/qq_36556893/article/details/89916399) | [Give Me Some Credit 处理方法1](https://www.kaggle.com/wangtianyue/notebook-datamining/data) |
+|                                                              | [线性回归模型与pytorch实现](https://zhuanlan.zhihu.com/p/86982616) | [ROC及AUC计算方法及原理](https://blog.csdn.net/yinyu19950811/article/details/81288287) | [pandas常用函数之diff](https://blog.csdn.net/You_are_my_dream/article/details/70022464) | [Give Me Some Credit 处理方法2](https://www.kaggle.com/mostig/starter-give-me-some-credit) |
+|                                                              | [每天一点sklearn之KFold(9.8)](https://zhuanlan.zhihu.com/p/81673486) | [Pytorch代码实践之逻辑回归](https://blog.csdn.net/YyangWwei/article/details/116049408) | [Pandas的read_csv和 to_csv函数参数分析详解 ，pandas的read_csv和to_csv使用方法](https://blog.csdn.net/qq_41895190/article/details/103332440) | [GiveMeSomeCredit-EDA, LOGISTIC REGRESSION, WOE](https://www.kaggle.com/sarboldipo/givemesomecredit-eda-logistic-regression-woe) |
+|                                                              | [sklearn.metrics.roc_auc_score()函数用法](https://blog.csdn.net/A__tree/article/details/107742766) | [Pytorch详解BCELoss和BCEWithLogitsLoss](https://blog.csdn.net/qq_22210253/article/details/85222093) | [pandas中mode()怎么使用?](https://segmentfault.com/q/1010000008252098) |                                                              |
+|                                                              | [pytorch学习 中 torch.squeeze() 和torch.unsqueeze()的用法](https://blog.csdn.net/xiexu911/article/details/80820028) |    [学习笔记3：k折交叉验证（k-fold cross validation）]()     | [Python Statsmodels 统计包之 OLS 回归](https://zhuanlan.zhihu.com/p/22692029) |                                                              |
+|                                                              | [Pytorch数据加载——Dataset和DataLoader详解](https://blog.csdn.net/loveliuzz/article/details/108756253) | [混淆矩阵是什么意思？](https://www.zhihu.com/question/36883196) | [数据挖掘模型中的IV和WOE详解](https://blog.csdn.net/kevin7658/article/details/50780391) |                                                              |
+|                                                              |                                                              | [Python之日志处理（logging模块）](https://www.cnblogs.com/yyds/p/6901864.html) | [sklearn 数据预处理1: StandardScaler](https://blog.csdn.net/u012609509/article/details/78554709) |                                                              |
+|                                                              |                                                              | [python - NumPy 追加与 Python 追加](https://www.coder.work/article/363814) | [pandas学习（四）--数据的归一化](https://blog.csdn.net/hjxzb/article/details/78610961) |                                                              |
+|                                                              |                                                              | [Python中numpy数组的合并](https://blog.csdn.net/hustqb/article/details/78090365) |                                                              |                                                              |
 
