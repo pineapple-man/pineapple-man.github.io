@@ -1,18 +1,15 @@
 ---
-title: pip 踩坑指北
+title: pip
 toc: true
 clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
+thumbnailImage:
 categories: Python
 tags: Python
 keywords: pip
-excerpt: 本文记录平时在使用 pip 时遇到的问题，以及对应的解决方法链接
-date: 2021-12-04 23:18:07
-thumbnailImage:
+excerpt: 本文记录平时在使用 pip 时遇到的问题
 ---
-<!-- toc -->
-
 
 ## Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None))
 https://blog.csdn.net/qq_25964837/article/details/80295041
