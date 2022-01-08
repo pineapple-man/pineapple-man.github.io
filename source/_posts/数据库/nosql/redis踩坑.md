@@ -149,8 +149,7 @@ slave 从头开始复制，会将 master 所有的内容都拷贝到 slaver 中
 
 其中一台从机down后情况如何？依照原有它能跟上大部队吗？
 {% alert success no-icon %}
-不能跟上，每次与master断开之后，都需要重新连接，除非配置进 redis.conf 文件
-（具体位置：redis.conf搜寻`##### REPLICATION ####`）
+不能跟上，每次与master断开之后，都需要重新连接，除非配置进 redis.conf 文件（具体位置：redis.conf搜寻`##### REPLICATION ####`）
 {% endalert %}
 
 
