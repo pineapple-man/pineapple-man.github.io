@@ -1,5 +1,5 @@
 ---
-title: npm 使用记录
+title: npm 工具详解
 toc: true
 clearReading: true
 metaAlignment: center
@@ -178,7 +178,7 @@ cnpm -v #测试是否成功
 ## 附录
 
 [C盘清理，移动node 依赖和缓存文件](https://blog.csdn.net/qq_34817440/article/details/104260701)
-
 [node-sass 安装失败报错的原因及解决办法(整理)](https://www.cnblogs.com/gitnull/p/10188030.html)
-
 [No parser and no filepath given, using 'babel' the parser now but this will throw an error in ...](https://blog.csdn.net/weixin_41888813/article/details/101345744)
+[Module build failed: Error: Node Sass does not yet support your current environment: OS X 64-bit wit](https://blog.csdn.net/liyanhui1001/article/details/84379226)
+[npm 安装 chromedriver 失败的解决办法](https://segmentfault.com/a/1190000008310875)
