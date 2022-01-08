@@ -36,7 +36,8 @@ socket 是一个二元组，表现形式就是:`<IP地址,Port>`，具有如下�
 - 网络通信其实就是 Socket 间的通信
 - 数据在两个 Socket 间通过 IO 流传输数据
 {%endalert%}
-
+Java Socket 常见操作
+{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/Java-io-socket.jpeg %}
 ## InetAddress类
 
 此类主要进行 IP 地址相关操作，{% hl_text red %} 此类没有可以访问的构造方法{% endhl_text %}
