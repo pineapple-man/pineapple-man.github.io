@@ -44,8 +44,16 @@ excerpt: 本文主要记录使用 Maven 的过程中遇到的问题
 
 {% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-config-parameters.png %}
 
-
-
+## Github 下载多模块项目，构建失败
+一个合理的 git 仓库提交后的内容是不应该存在idea种`*.iml`文件的，但是这样如果是多模块项目，拉到本地；相对于正常的模块项目，模块并不会自动识别，此时需要手动配置成多模块项目
+:one: 导入模块
+{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-import.png %}
+{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/mave-module-import.png %}
+:two: 从外部模型导入模块
+{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-from-outside-import.png %}
+<!-- 通过以上两步即完成了多模块项目的搭建，之后会自动生成`iml`文件 -->
 ## 附录
 [^1]: https://blog.csdn.net/pange1991/article/details/48596869
 [^2]: https://blog.csdn.net/jiangyu1013/article/details/95042611
+[构建Maven多模块项目](https://zhuanlan.zhihu.com/p/84175296)
+[导入模块生成.iml模块描述文件](https://blog.csdn.net/u010003835/article/details/84101041)
