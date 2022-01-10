@@ -1,5 +1,5 @@
 ---
-title: Java 网络 API
+title: Java TCP/IP Socket 编程（一）基本套接字
 toc: true
 clearReading: true
 thumbnailImagePosition: right
@@ -7,7 +7,7 @@ metaAlignment: center
 categories: Java
 tags: JDK
 keywords: 网络
-excerpt: 'Java 作为应用层程序，并不会与 C 一样，与协议接触的非常紧凑，并且本章主要是对传输层协议(UDP,TCP)相关 API 类的介绍'
+excerpt: 'Java 作为应用层程序，并不会与 C 一样，与协议接触的非常紧凑，并且本章主要是对 Java 中基本套接字的学习'
 date: 2021-12-31 22:44:02
 thumbnailImage:
 ---
@@ -30,16 +30,33 @@ thumbnailImage:
 - 可靠
 {%endalert%}
 
-socket 是一个二元组，表现形式就是:`<IP地址,Port>`，具有如下特点：
+
+socket（套接字）是一种抽象层，应用程序通过它来发送和接受数据，就像应用程序打开一个文件句柄，将数据读写到稳定的存储器上一样。使用 socket 可以将应用程序添加到网络中，并与处于同一个网络中的其他应用程序进行通信。一台计算机上的应用程序向 socket 写入的信息能够被另一台计算机上的另一个应用程序读取，反之亦然。
+
+不同类型的 socket 与不同类型的底层协议族以及同一协议族中的不同协议栈相关联，目前 TCP/IP 协议族中的主要 socket 类型为 流套接字（stream socket）和数据包套接字（datagram socket）
+
+{% alert info no-icon %}
+- 流套接字将 TCP 作为其端对端协议（底层使用 IP 协议），提供了一个可信赖的字节流服务。一个 TCP/IP 流套接字代表了 TCP 连接的一端
+- 数据报套接字使用 UDP 协议（底层同样适用 IP 协议），提供了一个 best-effort 的数据报服务，应用程序可以通过它发送最长 65500 字节的信息。
+
+{% endalert %}
+
+
+一个 TCP/IP 套接字由一个互联网地址，一个端对端协议（TCP 协议或 UDP 协议）以及一个端口号唯一确定，下图描述了一个主机中，应用程序、套接字抽象层、协议、端口号之间的逻辑关系。{% hl_text red %} 一个套接字抽象层可以被多个应用程序引用。{% endhl_text %}
+{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java/20220109001727.png %}
+
+Socket 具有如下特点：
 {% alert success no-icon%}
 - 通信的两端都有`socket`
 - 网络通信其实就是 Socket 间的通信
 - 数据在两个 Socket 间通过 IO 流传输数据
 {%endalert%}
+
+
 Java Socket 常见操作
 {% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/Java-io-socket.jpeg %}
 ## InetAddress类
-
+InetAddress 类代表了一个网络目标地址，包括主机名和数字类型的地址信息。该类有两个子类：`Inet4Address`和`Inet6Address`
 此类主要进行 IP 地址相关操作，{% hl_text red %} 此类没有可以访问的构造方法{% endhl_text %}
 
 一个类没有可以访问的构造方法,可能是如下三种情况:
