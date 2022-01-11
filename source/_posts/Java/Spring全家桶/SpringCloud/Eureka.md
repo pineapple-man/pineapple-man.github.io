@@ -504,7 +504,5 @@ eureka:
 ## 附录
 
 [官方中文文档](http://docs.springcloud.cn/user-guide/eureka/)
-
 [微服务之服务发现 Eureka的介绍与使用](https://martian101.github.io/2017/04/20/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0-Eureka%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/)
-
 [Eureka学习文档资料](http://docs.springcloud.cn/user-guide/eureka/)
