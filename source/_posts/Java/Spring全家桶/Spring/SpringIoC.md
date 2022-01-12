@@ -869,10 +869,7 @@ public class AopUserService {
 :notes:`@Component(value)`中的`value`属性是可以省略不写的，默认值是：**首字母小写的类名**，如果书写了，value 等价与`<bean>`中的 id 属性
 
 ### 组件扫描详细配置
-
-#### .实现扫描过滤器
-
-可以选择在包中，默认扫描那些类，不扫描那些类
+实现扫描过滤器配置，可以选择在包中，默认扫描那些类，不扫描那些类
 
 ```xml
 <?xml version="0" encoding="UTF-?>
@@ -894,7 +891,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
  `use-default-filters="false"`：表示不适用默认过滤器，用户自己配置过滤器
  `<context:include-filter type="" expression="">`：设置那些内容进行扫描
-3. `<context:exclude-filter type="" expression="">`：设置那些内容不进行扫描
+`<context:exclude-filter type="" expression="">`：设置那些内容不进行扫描
 
 ## 注解方式实现属性注入
 
