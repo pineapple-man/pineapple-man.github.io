@@ -14,8 +14,13 @@ excerpt: 本文主要记录 Jedis 的常见用法
 <!-- toc -->
 ## 概述
 
-jedis 是 java redis 的简写，目的是通过 java 程序进行 redis 相关操作，如果想要使用此中间价，只需要向项目中引入以下依赖即可。
+{% alert success no-icon %}
 
+jedis 是 java redis 的简写，目的是通过 java 程序进行 redis 相关操作，类似于 JDBC 没有必要进行深入的研究，目前已经有比较好的 Spring 与 Redis 的整合方案。
+
+{% endalert %}
+
+如果想要使用此中间件，只需要向项目中引入以下依赖即可
 ```xml
 <dependency>
 	<groupId>redis.clients</groupId>
