@@ -100,10 +100,7 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 ## 附录
 
 [VSS,RSS,PSS,USS](https://www.iteye.com/blog/myeyeofjava-1837860)
-
 [psutil](https://psutil.readthedocs.io/en/stable/#psutil.Process.memory_info)
-
 [What is RSS and VSZ in Linux memory management](https://stackoverflow.com/questions/7880784/what-is-rss-and-vsz-in-linux-memory-management)
-
 [Linux内存管理 一个进程究竟占用多少空间？](https://cloud.tencent.com/developer/article/1683708)
 
