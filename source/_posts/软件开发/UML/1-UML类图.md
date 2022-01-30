@@ -8,6 +8,7 @@ categories: 软件开发
 tags: 设计模式
 keywords: UML
 excerpt: 本文主要记录 UML 中类图绘制的相关细节
+date: 2022-01-15 13:09:18
 ---
 <!-- toc -->
 ## 概念
