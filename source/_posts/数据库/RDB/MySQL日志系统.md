@@ -1,0 +1,187 @@
+---
+title: MySQL(五)日志系统
+toc: true
+clearReading: true
+thumbnailImagePosition: right
+metaAlignment: center
+date: 2022-02-01 00:59:22
+thumbnailImage:
+categories: 数据库
+tags: Database
+keywords: 日志系统
+excerpt: 本文主要记录 MySQL 中一个重点：日志系统
+---
+{% alert success no-icon %}
+
+在数据库中一条**查询语句**的执行过程一般是：连接器 --> 分析器 --> 优化器 --> 执行器等功能模块 --> 存储引擎。那么作为 MySQL 中一条简单的 SQL 更新语句是如何执行的？
+
+{% endalert %}
+<!-- toc -->
+
+## 概述
+
+首先从创建一个表的一条更新语句开始，下面是这个表的创建语句，这个表有一个主键 ID 和 一个整形字段 C
+
+```sql
+mysql> create table T(ID int primary key, c int);
+```
+
+{% alert warning no-icon %}
+
+此时想要将 `ID =2` 这一行的值加一，SQL 语句就会这么写：
+
+```sql
+mysql> update T set c=c+1 where ID=2;
+```
+
+{% endalert %}
+
+:boat: 查询语句经过的流程，更新语句同样也会经历一遍。
+
+1. 在执行语句之前要先连接数据库，这就是连接器的工作；
+2. 在一个表上进行更新操作时，跟这个表有关的查询缓存会失效，所以这条语句就会把表T上所有缓存结果都清空；
+3. 分析器会通过词法和语法解析知道当前是一条更新语句。优化器觉定使用 ID 这个索引
+4. 最终，执行器负责具体执行，查询到这一行，然后进行更新操作
+
+
+{% alert success no-icon %}
+
+与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我今天要讨论的主角：redo log（重做日志）和 binlog（归档日志）
+
+{% endalert %}
+
+## 重做日志(`redo log`)
+
+:question: 在 MySQL 里存在这样一个问题，如果当前系统是 I/O 密集型的，那么一条更新语句是否真的在物理磁盘上进行更新了？
+{% alert success no-icon %}
+
+如果每一次的更新操作都需要写进磁盘，那么每一次磁盘都要找到对应的那条记录，然后再更新，整个过程的 IO 成本、查找成本都很高；每一次都将记录写入到物理磁盘中，很影响系统的性能
+
+{% endalert %}
+
+为了解决这个问题，MySQL 设计者利用了日志相关技术，提高数据库更新效率。这种技术就是 MySQL 里经常说到的 WAL (`Write Ahead Logging`) 技术，它的关键点就是先写日志，再写磁盘，也就是在系统资源占用紧张的时候，先记录日志，直到系统资源不紧张时再进行持久化操作。
+
+具体来说，当有一条记录需要更新的时候，InnoDB 引擎就会先把记录写到`redo log`里面，并更新内存，这个时候更新就算完成了。接下来，InnoDB 引擎会在适当的时候，将这个操作记录更新到磁盘里面，而这个更新往往是在系统比较空闲的时候做
+
+:question: 但是如果系统一直处于忙碌的状态，redo log 中的内容就会不断的增长，这时候应该怎么办？
+{% alert warning no-icon %}
+
+InnoDB 的 redo log 是固定大小的，比如可以配置为一组 4 个文件，每个文件的大小是 1GB，总共就可以记录4GB的操作。首先从头开始写，写到末尾就又回到开头循环写，如下面这个图所示
+
+{% endalert %}
+
+![](https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-redo-log.webp)
+
+:sparkles: `Write pos`是当前记录的位置，会一边写一边后移，一旦写到 3 号文件末尾，下一次就回到 0 号文件开头继续写。`checkpoint`是一个备份点，表示之前的内容已经持久化到物理磁盘中，并且它也是循环往后推移的
+
+write pos 和 checkpoint 之间的内容是空白的，表示可以继续记录新操作的条目；如果 write pos 追上 checkpoint，表示 redo log 日志记满了，这时候不能再执行新的更新，需要停下来先持久化一些记录，把checkpoint 推进一部分。
+
+{% alert info no-icon %}
+
+有了redo log，InnoDB 就可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为**crash-safe**
+
+{% endalert %}
+
+## 归档日志(`binlog`)
+
+MySQL 整体就分为两块：一块是 Server 层，它主要做的是 MySQL 功能层面的事情；还有一块是引擎层，负责存储相关的具体事宜。上面描述的 redo log 是 InnoDB 引擎特有的日志，而 Server 层也有自己的日志，称为 binlong
+
+:question: 为什么会有两份日志？
+{% alert success no-icon %}
+
+因为最开始 MySQL 里并没有 InnoDB 引擎。MySQL 自带的引擎是 MyISAM，但是 MyISAM 没有 crash-safe 的能力，binlog 日志只能用于归档。而 InnoDB 是另一个公司以插件形式引入 MySQL 的，既然只依靠 binlog 是没有 crash-safe 能力的，所以 InnoDB 使用另外一套日志系统——也就是 redo log 来实现 crash-safe 能力
+
+{% endalert %}
+
+:vs: 这两种日志有以下两种不同
+{% alert success no-icon %}
+
+- redo log 是 InnoDB 引擎特有的；binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用
+- redo log 是物理日志，记录的是「 在某个数据页上做了什么修改 」；binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如「 给ID=2这一行的c字段加1 」
+- redo log是循环写的，空间固定会用完；binlog是可以追加写入的。「 追加写 」是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志
+
+{% endalert %}
+
+binlog 记录日志有两种模式，statement 格式以及 row 格式
+
+- Statement 格式，记录的日志是执行器执行的每一条 sql 语句
+- row 格式会记录行的内容，包括两条语句，分别是更新前和更新后的内容（通常采用的是这种模式）
+
+## update 内部流程
+
+```sql
+mysql> update T set c=c+1 where ID=2;
+```
+
+:boat: 有了对这两个日志的概念性理解，再来看执行器和 InnoDB 引擎在执行这个简单的 Update 语句的内部流程
+{% alert success no-icon %}
+
+1. 执行器先找引擎取 ID=2 这一行。ID是主键，引擎直接用树搜索找到这一行。如果 ID=2 这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回
+2. 执行器拿到引擎给的行数据，把这个值加上1，假如原来是N，现在就是N+1，得到新的一行数据，再调用引擎接口写入这行新数据
+3. 引擎将这行新数据更新到内存中，同时将这个更新操作记录到redo log里面，此时redo log处于prepare状态。然后告知执行器执行完成了，随时可以提交事务
+4. 执行器生成这个操作的binlog，并把binlog写入磁盘
+5. 执行器调用引擎的提交事务接口，引擎把刚刚写入的redo log改成提交（commit）状态，更新完成
+
+{% endalert %}
+
+下图给出了 update 语句的执行流程图，浅色框表示是在 InnoDB 内部执行的，深色框表示是在执行器中执行的
+
+![](https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-uodate-flow.webp)
+
+最后事务提交的过程可能有点「绕」，将 redo log 的写入拆成了 两个步骤：`prepare`和`commit`，这就是「 两阶段提交 」
+
+## 两阶段提交
+
+
+:question: 如何让数据库进行回滚，例如：让数据库恢复到半个月内任意一秒到状态？
+{% alert success no-icon %}
+
+binlog 会记录所有的逻辑操作，并且是采用「 追加写 」的形式。如果 DBA 承诺半个月内可以恢复，那么备份系统中一定会保存最近半个月的所有 binlog，同时系统会定期做整库备份。这里的「 定期 」取决于系统的重要性，可以是一天一备，也可以是一周一备
+
+{% endalert %}
+
+当需要恢复到指定的某一秒时，比如某天下午两点发现中午十二点有一次误删表，需要找回数据，那你可以这么做：
+
+- 首先，找到最近的一次全量备份，如果你运气好，可能就是昨天晚上的一个备份，从这个备份恢复到临时库；
+- 然后，从备份的时间点开始，将备份的binlog依次取出来，**重放**到中午误删表之前的那个时刻
+
+此时，临时库就跟误删之前到线上库一样了，就可以把表数据从临时库取出来，按需要恢复到线上库中
+
+:question: 为什么日志需要两阶段提交？
+{% alert success no-icon %}
+
+使用两阶段提交这是为了让两份日志之间的逻辑一致。由于 redo log 和 bin log 是两个独立的逻辑，如果不用两阶段提交，要么是先写完 redo log 再写 binlog，或者反过来的顺序，接下来看看这两种方式会有什么问题
+
+{% endalert %}
+
+仍然用前面的 update 语句来做例子。假设当前ID=2的行，字段c的值是0，再假设执行 update 语句过程中在写完第一个日志后，第二个日志还没有写完期间发生了crash，会出现什么情况呢？
+
+1. **先写redo log后写binlog**。假设在redo log写完，binlog还没有写完的时候，MySQL进程异常重启。由于我们前面说过的，redo log写完之后，系统即使崩溃，仍然能够把数据恢复回来，所以恢复后这一行c的值是1。但是由于binlog没写完就crash了，这时候binlog里面就没有记录这个语句。因此，之后备份日志的时候，存起来的binlog里面就没有这条语句。然后你会发现，如果需要用这个binlog来恢复临时库的话，由于这个语句的binlog丢失，这个临时库就会少了这一次更新，恢复出来的这一行c的值就是0，与原库的值不同
+2. **先写binlog后写redo log**。如果在 binlog 写完之后 crash，由于 redo log 还没写，崩溃恢复以后这个事务无效，所以这一行 c 的值是0。但是 binlog 里面已经记录了「 把 c 从 0 改成 1 」这个日志。所以，在之后用 binlog 来恢复的时候就多了一个事务出来，恢复出来的这一行c的值就是1，与原库的值不同。
+
+通过上面两个例子就可以说明，如果不使用「 两阶段提交 」，那么数据库的状态就有可能和用它的日志恢复出来的库的状态不一致
+
+
+{% alert info no-icon %}
+
+不只是误删操作后需要用日志来进行恢复数据，当数据库需要扩容时，也就是需要再多搭建一些备库增加系统的读能力的时候，现在常见的做法也是用全量备份加上应用 bin log 来实现的，这个 「 不一致 」就会导致线上出现主从数据库不一致的情况。
+
+{% endalert %}
+
+简而言之，redo log 和 bin log 都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致。
+
+## 总结
+:sparkles: 本文介绍了 MySQL 中最重要的两个日志，即物理日志 redo log 和逻辑日志 bin log
+{% alert success no-icon %}
+
+- redo log用于保证crash-safe能力。innodb_flush_log_at_trx_commit这个参数设置成1的时候，表示每次事务的redo log都直接持久化到磁盘。这个参数我建议你设置成1，这样可以保证MySQL异常重启之后数据不丢失
+- sync_binlog这个参数设置成1的时候，表示每次事务的binlog都持久化到磁盘。这个参数我也建议你设置成1，这样可以保证MySQL异常重启之后binlog不丢失
+
+{% endalert %}
+
+## 附录
+
+[详细分析MySQL事务日志(redo log和undo log)——骏马金龙](https://www.cnblogs.com/f-ck-need-u/p/9010872.html)
+[吴师兄学编程](https://www.cxyxiaowu.com/10740.html)
+[简书——程序员知识圈](https://www.jianshu.com/p/cf827567012f)
+[【图文详解】MySQL系列之redo log、undo log和binlog详解](https://cloud.tencent.com/developer/article/1801920)
