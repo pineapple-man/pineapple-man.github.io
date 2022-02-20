@@ -115,7 +115,22 @@ MyBatis 的逆向工程使用起来非常方便，仅需要两步（**配置依�
 :sparkles:随后使用`Maven`中的插件，即可生成对应的Mapper和Model文件
 
 :notebook:总结：MyBatis 逆向工程生成的Mapper仅仅是单表DAO操作
+## 出现额外的 *WithBLOBs.java 文件
+进行逆向工程时，会出现 *WithBLOBs 继承了 BaseResultMap，不仅有了BaseResultMap中的属性，同时也有了自己的 paramData 属性。出现这样的情况是因为`param_data`列指定的 jdbcType 是 longvarchar 类型，这个 jdbcType 属性是 JDBC 需要用到的，MyBatis 并不会用到。所以为了解决这种问题，需要额外的在逆向表配置文件中加入下列定义：
+```xml
+<table tableName="em_positive" domainObjectName="EmployeePositive"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--显示声明转换类型-->
+            <columnOverride column="correction_evaluation" javaType="java.lang.String" jdbcType="TEXT"/>
+            <columnOverride column="enclosure" javaType="java.lang.String" jdbcType="TEXT"/>
+</table>
+```
 
+这样在逆向工程时，自定义配置两列的 jdbcType 就会自动转换成 VARCHAR 类型，也就不会再生成额外的文件了
 ## 附录
 
 [官方文档](http://www.mybatis.org/generator)
