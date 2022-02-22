@@ -125,8 +125,8 @@ MyBatis 的逆向工程使用起来非常方便，仅需要两步（**配置依�
                enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--显示声明转换类型-->
-            <columnOverride column="correction_evaluation" javaType="java.lang.String" jdbcType="TEXT"/>
-            <columnOverride column="enclosure" javaType="java.lang.String" jdbcType="TEXT"/>
+            <columnOverride column="correction_evaluation" javaType="java.lang.String" jdbcType="varchar"/>
+            <columnOverride column="enclosure" javaType="java.lang.String" jdbcType="varchar"/>
 </table>
 ```
 
