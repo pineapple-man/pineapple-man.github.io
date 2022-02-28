@@ -120,3 +120,7 @@ the artificial damage used in this dataset were caused by three different method
 [德国 帕德博恩大学 Bearing DataCenter](https://github.com/hustcxl/Rotating-machine-fault-data-set/blob/master/doc/Paderborn.md)
 [2020-11-03Paderborn大学轴承数据集](https://blog.csdn.net/qq_42237342/article/details/109462267)
 [帕德伯恩大学轴承数据集（PU）介绍](https://blog.csdn.net/m0_47180208/article/details/118268628)
+
+[Data Description and Preprocessing](https://github.com/mohamedr002/AMDA/blob/master/KAt%20Pre-processing/Data%20Description%20and%20Preprocessing.ipynb)
+
+[PADERBORN_Datase](https://github.com/mdzalfirdausi/CNN-for-Paderborn-Bearing-Dataset/blob/main/PADERBORN_Dataset.ipynb)
