@@ -31,6 +31,6 @@
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
     "markdown-it-emoji": "^2.0.0",
-    "twemoji": "^13.1.0"
+    "twemoji": "^14.0.0"
   }
 }
