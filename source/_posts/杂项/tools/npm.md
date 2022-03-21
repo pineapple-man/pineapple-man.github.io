@@ -175,6 +175,15 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org #重新安装 cnp
 ln -s /YOUR/INSTALL/PATH/node-v10.15.1-linux-x64/bin/cnpm /usr/local/bin/cnpm   #将脚本链接到环境变量中
 cnpm -v #测试是否成功
 ```
+### node 版本升级
+
+可以使用模块管理工具 `n` 的命令对 node 进行升级
+
+|命令|含义|
+|:---:|:---:|
+|升级到指定版本|`n VERSION`,如`n 10.0.0`|
+|安装最新的版本|`n latest`|
+|安装最近的稳定版本|`n stable`|
 ## 附录
 
 [C盘清理，移动node 依赖和缓存文件](https://blog.csdn.net/qq_34817440/article/details/104260701)
@@ -182,3 +191,4 @@ cnpm -v #测试是否成功
 [No parser and no filepath given, using 'babel' the parser now but this will throw an error in ...](https://blog.csdn.net/weixin_41888813/article/details/101345744)
 [Module build failed: Error: Node Sass does not yet support your current environment: OS X 64-bit wit](https://blog.csdn.net/liyanhui1001/article/details/84379226)
 [npm 安装 chromedriver 失败的解决办法](https://segmentfault.com/a/1190000008310875)
+[node版本如何升级](https://blog.csdn.net/guzhao593/article/details/81712016)
