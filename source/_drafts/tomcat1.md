@@ -16,7 +16,7 @@ War 和 jar 有什么区别？
 
 Tomcat 整体架构和处理请求流程解析
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/javaWeb/javaweb-tomcat.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/javaWeb/javaweb-tomcat.png)
 
 # 概述
 

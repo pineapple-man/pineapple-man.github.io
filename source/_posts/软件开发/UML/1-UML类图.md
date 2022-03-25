@@ -18,7 +18,7 @@ date: 2022-01-15 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml-类图概述.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml-类图概述.png %}
 
 :question: 为什么非要使用 UML 类图？
 
@@ -46,7 +46,7 @@ date: 2022-01-15 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图元素.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图元素.png %}
 
 ### 类名称
 {% alert success no-icon %}
@@ -55,7 +55,7 @@ date: 2022-01-15 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类名称.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类名称.png %}
 
 ### 类属性
 {% alert success no-icon %}
@@ -139,7 +139,7 @@ date: 2022-01-15 13:09:18
 {% endalert %}
 依赖关系表示了下图这样的关系，一个元素（提供者）的更改会影响其他元素（客户），即，**客户以某种形式依赖于提供者**
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图依赖关系.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图依赖关系.webp %}
 
 ### 泛化（Generalization）关系
 
@@ -151,7 +151,7 @@ date: 2022-01-15 13:09:18
 
 泛化关系表示一种存在于一般元素和特殊元素之间的分级关系，描述了 `is a kind of`（是……的一种）的关系，如汽车是交通工具的一种，在类中一般元素称为超类或父类，特殊元素称为子类。
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图泛化关系.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图泛化关系.webp %}
 
 ### 关联(Association)关系
 {% alert success no-icon %}
@@ -162,13 +162,13 @@ date: 2022-01-15 13:09:18
 如学生和大学的关系，学生在大学里学习，大学又包括了很多学生，所以可以在学生和大学之间建立关联关系。
 
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图关联关系.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图关联关系.webp %}
 
 关联的多重性规定了一个类的多少个实例能与另一个类的单个实例建立关联。关联的多重性有以下几种情况：**一对一关联**、**一对多关联**、**规定数值关联**、**可选关联**和**多对多关联**
 
 关联关系默认不强调方向，表示对象间相互知道，如果特别强调方向，表示 A 知道 B，但 B 不知道 A ，加上方向，表示关联的之间的可见性
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml_association.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml_association.jpg %}
 
 {% alert info no-icon %}
 
@@ -183,11 +183,11 @@ date: 2022-01-15 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图聚合关系.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图聚合关系.png %}
 
 聚合关系用一条带空心菱形箭头的直线表示，如下图表示 A 聚合到 B 上，或者说 B 由 A 组成；
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml_aggregation.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml_aggregation.jpg %}
 
 {% alert info no-icon %}
 
@@ -204,7 +204,7 @@ date: 2022-01-15 13:09:18
 
 组合关系用一条带实心菱形箭头直线表示，如下图表示 A 组成 B，或者 B 由 A 组成；
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml_composition.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml_composition.jpg %}
 
 ### 实现（Realization）关系
 {% alert success no-icon %}
@@ -213,13 +213,13 @@ date: 2022-01-15 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图实现关系.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图实现关系.webp %}
 
 ### 连接关系图形总结
 
 在 UML 类图中主要存在以下几种关系：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/designPattern/uml类图连接关系总结.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图连接关系总结.webp %}
 
 ## 附录
 

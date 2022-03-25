@@ -43,7 +43,7 @@ socket（套接字）是一种抽象层，应用程序通过它来发送和接�
 
 
 一个 TCP/IP 套接字由一个互联网地址，一个端对端协议（TCP 协议或 UDP 协议）以及一个端口号唯一确定，下图描述了一个主机中，应用程序、套接字抽象层、协议、端口号之间的逻辑关系。{% hl_text red %} 一个套接字抽象层可以被多个应用程序引用。{% endhl_text %}
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java/20220109001727.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/20220109001727.png %}
 
 Socket 具有如下特点：
 {% alert success no-icon%}
@@ -54,7 +54,7 @@ Socket 具有如下特点：
 
 
 Java Socket 常见操作
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/Java-io-socket.jpeg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Java-io-socket.jpeg %}
 ## InetAddress类
 InetAddress 类代表了一个网络目标地址，包括主机名和数字类型的地址信息。该类有两个子类：`Inet4Address`和`Inet6Address`
 此类主要进行 IP 地址相关操作，{% hl_text red %} 此类没有可以访问的构造方法{% endhl_text %}

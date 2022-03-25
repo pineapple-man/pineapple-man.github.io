@@ -18,7 +18,7 @@ CWRU 数据集是由凯斯西储大学提供的滚珠轴承测试数据。实验
 
 ## 实验平台
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dataset-cwru.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dataset-cwru.png)
 
 用于获取 CWRU 数据集的轴承实验台装置如图所示，包括一个2马力电动机、一个扭矩传感器/编码器、一个测力计和控制电子器件组成（在图中没有显示），实验轴承带动着电机杆进行旋转。
 扭矩通过测力计和电子控制系统施加到轴上。分别在滚动体（Ball）、内圈（Inner Race）和外圈（Outer Race）上施加缺陷模拟轴承故障，然后将每个故障轴承安装在试验台上，启动电机，加速度传感器开始测量并收集数据。
@@ -67,7 +67,7 @@ CWRU 数据集是由凯斯西储大学提供的滚珠轴承测试数据。实验
 
 其中 DE，FE，BA分别是布置的三个传感器分别测的数据，说明在离故障源不同距离所测得的信号数据是否有效，实测是都能用的。
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dataset-cwru-faultDescription.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dataset-cwru-faultDescription.png)
 
 ## 故障类别
 

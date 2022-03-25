@@ -24,7 +24,7 @@ excerpt: 本文主要介绍故障诊断中使用的一个数据集：KAT
 |  （4）   |       飞轮       |
 |  （5）   |     负载电机     |
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dl-dataset-KAt.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dl-dataset-KAt.png)
 
 相比于使用电机振动数据进行故障分类，使用电机电流信号进行故障诊断的准确率较低，轴承损伤的检测通常是通过使用加速度传感器进行振动分析来监测的。该诊断方法利用机电驱动系统的电机电流信号以及振动信号进行轴承故障诊断，
 

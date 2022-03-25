@@ -114,7 +114,7 @@ redis-server /SOMEWHERE/CONFIG/FILE #使用指定文件作为启动配置文件
 ## Redis 常用数据类型
 Redis 常用数据结构如下图，具体每个类型的特点在下文进行阐述
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292135049.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292135049.png %}
 {% alert info no-icon%}
 上述所属的数据类型表示，Redis 中 value 的类型，因为 Redis 是 key-value 的数据库，key 必然是 String 类型，所以 Value 可以拥有不同的类型
 {%endalert%}
@@ -393,7 +393,7 @@ RDB 是指：在指定的时间间隔内将内存中的数据集快照写入磁�
 
 RDB 的作用如下图所示：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292136744.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292136744.png %}
 
 :+1:RDB 优点如下：
 {% alert info no-icon %}
@@ -698,11 +698,11 @@ EXEC
 
 下图展示了频道 channel1 ， 以及订阅这个频道的三个客户端 —— client2 、 client5 和 client1 之间的关系
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292137605.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292137605.png %}
 
 当有新消息通过 PUBLISH 命令发送给频道 channel1 时， 这个消息就会被发送给订阅它的三个客户端：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292138592.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292138592.png %}
 
 #### 常用命令
 
@@ -719,7 +719,7 @@ EXEC
 
 虽然redis可以实现单机的数据持久化，但无论是RDB也好或者AOF也好，都解决不了单点宕机问题，即一旦单台redis服务器本身出现系统故障、硬件故障等问题后，就会直接造成数据的丢失，因此需要使用另外的技术来解决单点问题
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292139801.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292139801.png %}
 
 ## 主从复制
 
@@ -782,7 +782,7 @@ Redis Slave也要开启持久化并设置和master同样的连接密码，因为
 - 上一个Slave可以是下一个slave的Master，Slave同样可以接收其他 slaves的连接和同步请求，那么该slave作为了链条中下一个的master, 可以有效减轻master的写压力（奴隶的奴隶还是奴隶）
 - 中途变更转向：会清除之前的数据，重新建立拷贝最新的
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292139446.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292139446.png %}
 
 #### 反客为主
 
@@ -804,7 +804,7 @@ master接收到命令，启动后台的存盘进程，同时收集所有接受�
 
 
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112292140980.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112292140980.png %}
 
 ## 哨兵模式（sentinel）
 

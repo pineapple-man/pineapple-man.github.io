@@ -9,7 +9,7 @@ tags: SpringCloud
 keywords: SpringCloud
 excerpt: 作为 Spring 家族中的重量级角色—— Spring Cloud 到底是做什么的？本文是 Spring Cloud 学习的入口
 date: 2021-11-04 22:59:53
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/springcloudAlibaba.jpg
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springcloudAlibaba.jpg
 ---
 <!-- toc -->
 
@@ -23,7 +23,7 @@ Spring Cloud 是分布式微服务架构的一站式解决方案，是多种微�
 
 {% endalert %}
 
-{% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/eeb48f15799b978e45ed980172c9f06e.png %}
+{% image fancybox fig-100 center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/eeb48f15799b978e45ed980172c9f06e.png %}
 
 
 Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems. 
@@ -44,11 +44,11 @@ Spring Cloud provides tools for developers to quickly build some of the common p
 
 ## Spring Cloud 涉及的维度
 
-{% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/SpringCloud.png %}
+{% image fancybox fig-100 center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/SpringCloud.png %}
 
 ## SpringCloud 组件一览表
 
-{% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/Cloud升级.png %}
+{% image fancybox fig-100 center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Cloud升级.png %}
 
 ## 服务治理
 {% alert success no-icon%}

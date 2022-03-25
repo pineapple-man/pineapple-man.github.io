@@ -27,7 +27,7 @@ excerpt: 本文主要讲解 JDK 中 ArrayList的源码
 
 :notes:Java泛型只是编译器提供的语法糖，所以这里的数组是一个Object数组，以便能够容纳任何类型的对象
 
-![ArrayList_base](https://gitee.com/mingchaohu/blog-image/raw/master/image/ArrayList_base.png)
+![ArrayList_base](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ArrayList_base.png)
 
 :notes:为**追求效率**，<font style="color:red;font-weight:bold">ArrayList没有实现同步(synchronized)</font>，如果需要多个线程并发访问，用户可以手动同步，也可使用Vector替代
 
@@ -173,7 +173,7 @@ public ArrayList(Collection<? extends E> c) {
 
 :notes:由于Java GC自动管理了内存，这里也就不需要考虑源数组释放的问题
 
-![ArrayList_grow](https://gitee.com/mingchaohu/blog-image/raw/master/image/ArrayList_grow.png)
+![ArrayList_grow](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ArrayList_grow.png)
 
 ## `add()`
 
@@ -200,7 +200,7 @@ public void add(int index, E element) {
 }
 ```
 
-![ArrayList_add](https://gitee.com/mingchaohu/blog-image/raw/master/image/ArrayList_add.png)
+![ArrayList_add](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ArrayList_add.png)
 
 `add(int index, E e)`需要先对元素进行移动，然后完成插入操作，也就意味着该方法有着线性的时间复杂度
 

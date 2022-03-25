@@ -2,7 +2,7 @@
 title: mysql 版本升级
 toc: true
 clearReading: true
-thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql.jpg'
+thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql.jpg'
 thumbnailImagePosition: right
 metaAlignment: left
 categories: 数据库
@@ -20,13 +20,13 @@ date: 2022-01-10 13:09:18
 
 打开`windows`服务列表，找到现有的`MySQL`服务，对齐进行关闭
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-关闭服务.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-关闭服务.png %}
 
 ## 卸载原有服务
 
 管理员身份打开cmd窗口，进入到mysql目录下面，将mysql服务移除
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-卸载原有服务.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-卸载原有服务.png %}
 
 ## 准备好mysql5.7压缩包
 
@@ -38,7 +38,7 @@ date: 2022-01-10 13:09:18
 
 将之前mysql的my.ini文件拷贝至mysql5.7下，将mysql.ini文件配置做以下修改
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-mysqliniconfig.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-mysqliniconfig.png %}
 
 {% alert info no-icon %}
 
@@ -50,7 +50,7 @@ date: 2022-01-10 13:09:18
 
 执行 mysqld --install mysql5.7  ，将mysql5.7的服务添加到win的服务队列中
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-addservice.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-addservice.png %}
 
 ## 执行安装
 
@@ -62,7 +62,7 @@ date: 2022-01-10 13:09:18
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-install.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-install.png %}
 
 ## 修改初始密码
 
@@ -90,7 +90,7 @@ flush privileges;
 
 在服务列表中找到`MySQL`进行启动
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql-startservice.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql-startservice.png %}
 
 ## 升级mysql
 

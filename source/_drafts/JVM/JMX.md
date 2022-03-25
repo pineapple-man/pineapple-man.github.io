@@ -24,7 +24,7 @@ JMX ( Java Management Extensions )即 Java 管理扩展，是 Java 生态中一�
 ## JMX 架构
 为了标准化管理和监控，Java平台使用JMX作为管理和监控的标准接口，任何程序，只要按JMX规范访问这个接口，就可以获取所有管理与监控信息。实际上，常用的运维监控如Zabbix、Nagios等工具对JVM本身的监控都是通过JMX获取的信息，因为JMX是一个标准接口，不但可以用于管理JVM，还可以管理应用程序自身。下图是JMX的架构：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/jmx.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/jmx.png %}
 
 ## 资源管理
 JMX把所有被管理的资源都称为MBean（Managed Bean），这些MBean全部由MBeanServer管理，如果要访问MBean，可以通过MBeanServer对外提供的访问接口，例如通过RMI或HTTP访问。

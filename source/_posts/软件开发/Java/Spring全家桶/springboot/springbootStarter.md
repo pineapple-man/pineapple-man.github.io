@@ -32,7 +32,7 @@ Spring Boot之所以能够帮我们简化项目的搭建和开发过程，主要
 ## 起步依赖
 起步依赖**其实就是将具备某种功能的坐标打包到一起**，可以简化依赖导入的过程。例如，我们导入spring-boot-starter-web这个starter，则和web开发相关的jar包都一起导入到项目中了。如下图所示：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/springboot/springboot-starter起步依赖.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-starter起步依赖.png %}
 
 ## 自动配置
 自动配置，就是无须手动配置 xml，自动配置并管理 bean，那么 Spring Boot 是如何完成自动配置的尼？
@@ -61,11 +61,11 @@ Spring Boot之所以能够帮我们简化项目的搭建和开发过程，主要
 </dependency>
 ```
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/springboot/springboot-mybatisStarter.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybatisStarter.png)
 
 其中在mybatis-spring-boot-autoconfigure这个jar包中有如下一个**MybatisAutoConfiguration**自动配置类
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/springboot/springboot-mybaits-autoconfiguration.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybaits-autoconfiguration.png)
 
 打开这个类，关键代码如下：
 
@@ -265,7 +265,7 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 
 例如，`Mybatis-spring-boot-starter`中就有此文件，如下图：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/springboot/springboot-mybatisstarter-spring-factories.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybatisstarter-spring-factories.png)
 
 其中的内容如下：
 ```

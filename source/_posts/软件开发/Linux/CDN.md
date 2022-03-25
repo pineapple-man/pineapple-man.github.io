@@ -22,7 +22,7 @@ thumbnailImage:
 `CDN（内容分发网络）`是 `Content Delivery Network`，建立并覆盖在承载网之上、由分布在不同区域的边缘节点服务器群组成的分布式网络，替代传统以 `WEB Server` 为中心的数据传输模式
 {% endalert %}
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/arch.gif %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/arch.gif %}
 
 
 :thinking:CDN有什么用？
@@ -95,38 +95,38 @@ CDN 加速厂商一般都会提供一站式服务，业务不仅限于 CDN，还
 
 站点或应用中含有大量资源，为了能够加速资源分发，建议将站点内容进行**动静分离**，动态文件可以结合云服务器 ECS 自身做到加速，静态资源（如各类型图片、html、css、js文件等）建议结合对象存储OSS 存储海量静态资源，可以有效加速内容加载速度，轻松搞定网站图片、短视频等内容分发
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631413.jpeg %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631413.jpeg %}
 
 
 ### 视音频点播（大文件下载）分发加速
 
 CDN 支持各类文件的下载、分发，支持在线点播加速业务，如mp4、flv视频文件或者平均单个文件大小在20M以上，主要的业务场景是视音频点播、大文件下载（如安装包下载）等。搭配对象存储OSS使用，可提升回源速度，节约近2/3回源带宽成本
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631414.jpeg %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631414.jpeg %}
 
 ### 视频直播加速
 
 结合弹性伸缩服务，及时调整服务器带宽，应对突发访问流量；结合媒体转码服务，享受高速稳定的并行转码，且任务规模无缝扩展
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631415.jpeg%}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631415.jpeg%}
 
 ### 移动应用加速
 
 利用 CDN 能够保证：移动 APP 更快速的做到资源（图片、页面、短视频等内容）的分发
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631416.jpeg %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631416.jpeg %}
 
 ## CDN 和通信
 
 互联网服务提供商采用CDN，是**以存储换时延**，花钱购置CDN服务器或云计算服务，以此换取更好的用户体验；通信运营商也追捧CDN，但它们的目的，是**以存储换带宽**，通过将服务“**下沉**”，减轻上层骨干网络的流量压力，避免硬件扩容，降低网络建设成本
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/640.webp %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/640.webp %}
 
 :sparkles:CDN 这种思想和移动边缘计算有异曲同工之妙。CDN 可以算是边缘计算的一种特殊形式，CDN主要是存储能力和少部分计算能力的下沉，功能较为有限。真正的MEC边缘计算，能力更强大，功能更全面，更加偏向算力下沉，而非内容下沉
 
 ## CDN 工作过程
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631407.jpeg %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631407.jpeg %}
 
 :sailboat:用户通过浏览器等方式访问网站的过程如下图所示：
 
@@ -140,7 +140,7 @@ CDN 支持各类文件的下载、分发，支持在线点播加速业务，如m
 7. 服务器将用户请求内容传送给浏览器
 {%endalert%}
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631408.jpeg %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631408.jpeg %}
 
 在网站和用户之间加入 CDN 以后，用户不会有任何与原来不同的感觉。最简单的 CDN 网络只需要有一个 DNS 服务器和几台缓存服务器就可以运行了。一个典型的 CDN 用户访问**调度流程**如图所示：
 
@@ -163,7 +163,7 @@ CDN 支持各类文件的下载、分发，支持在线点播加速业务，如m
 
 使用CDN后的**http请求处理流程**如下图，其中左边为**DNS解析过程**，右边为**内容访问过程**：
 
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631409.jpeg%}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631409.jpeg%}
 
 
 ## CDN 功能架构
@@ -180,7 +180,7 @@ CDN 公司在整个互联网上部署数以百计的CDN服务器，这些服务�
 {%endalert%}
 
 从**功能**上划分，典型的 CDN 系统架构由**分发服务系统**、**负载均衡系统**和**运营管理系统**三大部分组成，如图所示：
-{% image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631410.jpeg%}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631410.jpeg%}
 
 
 ### 分发服务系统
@@ -239,7 +239,7 @@ CDN 公司在整个互联网上部署数以百计的CDN服务器，这些服务�
 
 下图是典型的CDN系统三级部署示意图：
 
-{%image fancybox  fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631411.jpeg %}
+{%image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631411.jpeg %}
 
 
 节点是 CDN 系统中最基本的部署单元，一个CDN系统由大量的、地理位置上分散的 POP（point-of-presence）节点组成，为用户提供就近的内容访问服务。CDN 节点网络主要包含 CDN 骨干点 和 POP 点。
@@ -254,7 +254,7 @@ CDN 公司在整个互联网上部署数以百计的CDN服务器，这些服务�
 ## Cache 设备和本地负载均衡设备
 
 :sparkles:在一个节点中，Cache设备和本地负载均衡设备的连接方式有两种：**旁路方式**、**穿越方式**
-{%image fancybox  fig-100  centerhttps://gitee.com/mingchaohu/blog-image/raw/master/image/1460000010631412.jpeg%}
+{%image fancybox  fig-100  centerhttps://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1460000010631412.jpeg%}
 
 
 ### 旁路方式

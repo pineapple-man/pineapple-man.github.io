@@ -8,7 +8,7 @@ categories: Web
 tags: HTTP
 keywords: HTTP
 excerpt: 本文主要讲解 HTTP 中的 SSL 和 TLS 知识
-thumbnailImage: "https://gitee.com/mingchaohu/blog-image/raw/master/image/http权威指南.jpg"
+thumbnailImage: "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/http权威指南.jpg"
 ---
 
 所有连接到互联网的设备都有一个共同点，它们依赖安全套接字层（secure socket layer，SSL） 和传输层安全（transport layer security，TLS）协议保护传输的信息

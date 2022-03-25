@@ -28,7 +28,7 @@ Spring 具有如下特性：
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112301657650.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112301657650.png %}
 
 :notes: Spring 有两个核心部分:`IOC`和`AOP`
 {% alert success no-icon %}
@@ -72,7 +72,7 @@ AoP 称之为面向切面（方面）编程，目的是：在不通过修改源�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/202112301657855.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112301657855.png %}
 
 {% post_link Java/Spring全家桶/Spring/AOP "详细了解 Spring 中的AoP"%}
 

@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 00:16:06
-thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/mybatis.jpg'
+thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mybatis.jpg'
 categories: 中间件
 tags: 
     - MyBatis
@@ -23,7 +23,7 @@ excerpt: 本文是MyBatis逆向工程的学习笔记
 
 如果没有逆向工程，正常的开发流程应该采取如下步骤：
 
-![正常开发流程](https://gitee.com/mingchaohu/blog-image/raw/master/image/20211024002032.png)
+![正常开发流程](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/20211024002032.png)
 
 :notes:但是如果使用了MyBatis逆向工程后，仅需要简单的配置，就可以自动生成繁琐且没有技术含量的`Dao、Mapper`等文件
 

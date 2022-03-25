@@ -55,7 +55,7 @@ RestTemplate 具体的继承体系如下：
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/RestTemplate.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/RestTemplate.png %}
 
 ## 构建 `RestTemplate`
 

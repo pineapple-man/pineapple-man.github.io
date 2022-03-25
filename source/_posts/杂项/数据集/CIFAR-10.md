@@ -14,7 +14,7 @@ excerpt: 本文主要介绍 cifar-10 数据集
 <!-- toc -->
 ## 概述
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dl-dataset-cifar-10.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dl-dataset-cifar-10.png)
 
 
 
@@ -40,7 +40,7 @@ CIFAR-10是一个更接近普适物体的彩色图像数据集。CIFAR-10 是由
 
 下载并解压数据集后，是如下形式：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dl-dataset-cifar-datafile.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dl-dataset-cifar-datafile.png)
 
 |      文件名       |                           文件用途                           |
 | :---------------: | :----------------------------------------------------------: |

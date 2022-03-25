@@ -22,7 +22,7 @@ MNIST数据集是美国国家标准与技术研究院收集整理的大型手写
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dl-dataset-mnist.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dl-dataset-mnist.png %}
 
 :books: 这是一个公开数据集，可以通过访问[官网](http://yann.lecun.com/exdb/mnist/)进行下载
 
@@ -30,7 +30,7 @@ MNIST数据集是美国国家标准与技术研究院收集整理的大型手写
 
 官网中存在四个链接文件，各个文件具体含义如下：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/dl/dataset/dl-dataset-mnist-datafile.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/dl/dataset/dl-dataset-mnist-datafile.png)
 
 |           文件名           |          含义           |
 | :------------------------: | :---------------------: |

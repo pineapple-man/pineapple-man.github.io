@@ -2,7 +2,7 @@
 title: MySQL 总览
 toc: true
 clearReading: true
-thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/mysql/mysql.jpg'
+thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql.jpg'
 thumbnailImagePosition: right
 metaAlignment: center
 categories: 数据库

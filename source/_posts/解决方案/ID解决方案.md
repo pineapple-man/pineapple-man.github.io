@@ -54,7 +54,7 @@ thumbnailImage:
 
 :sparkles:常见的存在以下九种分布式ID生成方式：
 
-{% image fancybox fig-100  center  https://gitee.com/mingchaohu/blog-image/raw/master/image/分布式ID.jpg%}
+{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/分布式ID.jpg%}
 
 ### UUID
 UUID(Universally Unique Identifier)的标准型式包含32个16进制数字，以连字号分为五段，形式为`8-4-4-4-12`的36个字符，示例：`550e8400-e29b-41d4-a716-446655440000`，到目前为止业界一共有5种方式生成UUID，详情见IETF发布的UUID规范[A Universally Unique IDentifier (UUID) URN Namespace](https://www.ietf.org/rfc/rfc4122.txt)
@@ -100,7 +100,7 @@ insert into SEQUENCE_ID(value)  VALUES ('values');
 :persevere:强依赖DB，当DB异常时整个系统不可用，属于致命问题。配置主从复制可以尽可能的增加可用性，但是数据一致性在特殊情况下难以保证。主从切换时的不一致可能会导致重复发号;ID发号性能瓶颈限制在单台MySQL的读写性能
 {%endalert%}
 :notebook:当我们需要一个ID的时候，向表中插入一条记录返回主键ID，但这种方式有一个比较致命的缺点，访问量激增时MySQL本身就是系统的瓶颈，用它来实现分布式服务风险比较大，不推荐！
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/8a4de8e8.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/8a4de8e8.png %}
 ### 基于数据库集群模式
 单点数据库方式不可取，对上边的方式做一些高可用优化，换成主从模式集群。害怕一个主节点挂掉没法用，那就做双主模式集群，也就是两个Mysql实例都能单独的生产自增ID。那这样还会有个问题，两个MySQL实例的自增ID都从1开始，会生成重复的ID，可以使用如下方式解决：
 ```sql
@@ -114,7 +114,7 @@ auto-increment-offset = 2
 ```
 假设我们要部署N台机器，步长需设置为N，每台的初始值依次为0,1,2…N-1那么整个架构就变成了如下图所示：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/6d2c9ec8.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/6d2c9ec8.png %}
 
 :question:如果集群后的性能还是扛不住高并发咋办？
 {% alert success no-icon%}
@@ -191,7 +191,7 @@ OK
 {%endalert%}
 
 ### 雪花算法
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/snowflake.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/snowflake.png %}
 雪花算法（Snowflake）是twitter公司内部分布式项目采用的ID生成算法，最终生成的是占8个字节Long类型的ID
 {% alert success no-icon%}
 Snowflake ID组成结构：`正数位`（占1比特）+ `时间戳`（占41比特）+ `机器ID`（占5比特）+ `数据中心`（占5比特）+ `自增值`（占12比特），总共64比特组成的一个Long类型
@@ -229,7 +229,7 @@ CREATE TABLE `leaf_alloc` (
 ```
 
 然后在项目中开启`号段模式`，配置对应的数据库信息，并关闭`snowflake`模式，字段模式大致架构如下：
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/5e4ff128.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/5e4ff128.png %}
 
 #### snowflake模式
 

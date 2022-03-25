@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 thumbnailImage:
-categories: Jav
+categories: Java
 tags: Java IO
 keywords: 如何让一个程序能够通过配置文件进行灵活启动
 excerpt: 本文主要介绍如何在 Java 中读取配置文件

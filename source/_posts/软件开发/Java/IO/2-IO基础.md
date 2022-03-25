@@ -16,7 +16,7 @@ thumbnailImage:
 
 <span style="color:blue;font-weight:bold">输出流会自动创建文件，输入流读取之前文件必须存在</span>
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/IOClass.svg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/IOClass.svg %}
 
 ## 概述
 
@@ -155,7 +155,7 @@ public static void main(String[] args){
 
 ### `InputStream` 类型
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/java/java-inputstream.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/java-inputstream.png)
 
 `InputStream`的作用是用来表示哪些从不同数据源产生输入的类，这些数据源包括：
 

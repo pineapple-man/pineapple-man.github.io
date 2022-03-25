@@ -33,7 +33,7 @@ excerpt: 想要知道什么是Tomcat?这事还要从Java Web 聊起
 
 :notes:请求和响应是成对出现的， 有请求就有响应
 
-![tomca1](https://gitee.com/mingchaohu/blog-image/raw/master/image/请求与响应关系.png)
+![tomca1](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/请求与响应关系.png)
 
 :smiley:现在你可以将 Tomcat 简单的理解为 JavaWeb 的服务器，用于管理我们写的 JavaWeb 代码，并根据用户的请求，做出特定的响应
 
@@ -41,7 +41,7 @@ excerpt: 想要知道什么是Tomcat?这事还要从Java Web 聊起
 
 web 资源按**实现的技术和呈现的效果**的不同， 又分为静态资源和动态资源两种、如此处理也会方便项目的前后端分离
 
-![tomcat2](https://gitee.com/mingchaohu/blog-image/raw/master/image/Web资源分类.png)
+![tomcat2](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Web资源分类.png)
 
 ## 常用的 Web 服务器
 

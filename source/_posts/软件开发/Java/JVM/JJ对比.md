@@ -12,7 +12,7 @@ keywords:
   - JRE
 excerpt: JDK和JRE 在平时学习 Java 的时候都听说过，但是一直不清不楚，所以本文主要理清楚两者之间的区别
 date: 2021-10-28 23:45:23
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/JDK.png
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/JDK.png
 ---
 <!-- toc -->
 
@@ -29,7 +29,7 @@ JRE 表示 Java运行时环境，**保证 Java 代码能够运行的最低要求
 {% endalert %}
 
 两者之间关系如下图所示：
-![jj](https://gitee.com/mingchaohu/blog-image/raw/master/image/JDK.png)
+![jj](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/JDK.png)
 
 :notes:JDK（Java Development Kit）是一个提供Java程序开发和执行（运行）环境的工具包（或包），主要进行两件事
 
@@ -40,7 +40,7 @@ JRE 表示 Java运行时环境，**保证 Java 代码能够运行的最低要求
 
 下图是整个Jvav 语言的体系结构：
 
-{% image fancybox fig-100 center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210328003808395.png %}
+{% image fancybox fig-100 center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210328003808395.png %}
 
 ## 附录
 

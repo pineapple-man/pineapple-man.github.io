@@ -8,7 +8,7 @@ categories: Web
 tags: HTTP
 keywords: HTTP
 excerpt: 本文主要讲解 HTTP 中的安全问题
-thumbnailImage: "https://gitee.com/mingchaohu/blog-image/raw/master/image/http权威指南.jpg"
+thumbnailImage: "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/http权威指南.jpg"
 ---
 本文主要介绍一种更复杂、更安全的技术，通过数字密码保护 HTTP 事务免受窃听和篡改的侵害
 
@@ -47,11 +47,11 @@ HTTPS 方案的 URL 以 `https://`，而不是 `http://` 开头，据此就可�
 
 使用 HTTPS 时，所有的 HTTP 请求和响应数据在发送到网络之前，都要进行加密。 HTTPS 在 HTTP 下面提供了一个传输级的密码安全层—可以使用 SSL，也可以使用其后继者——传输层安全（Transport Layer Security，TLS）。由于 SSL 和 TLS 非常类似，所以我们不太严格地用术语 SSL 来表示 SSL 和 TLS
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/http协议栈位置.jpg)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/http协议栈位置.jpg)
 
 大部分困难的编码及解码工作都是在 SSL 库中完成的，所以 Web 客户端和服务器 在使用安全 HTTP 时无需过多地修改其协议处理逻辑。在大多数情况下，只需要用SSL 的输入 / 输出调用取代 TCP 的调用，再增加其他几个调用来配置和管理安全信 息就行了
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/Http与Https.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Http与Https.png)
 HTTPS 是最常见的 HTTP 安全版本。它得到了很广泛的应用，所有主要的商业浏览器和服务器上都提供 HTTPS。HTTPS 将 HTTP 协议与一组强大的对称、非对称和基于证书的加密技术结合在一起，使得 HTTPS 不仅很安全，而且很灵活，很容易在处于无序状态的、分散的全球互联网上进行管理。
 
 HTTPS 加速了因特网应用程序的成长，已经成为基于 Web 的电子商务快速成长的主要推动力。在广域网中对分布式 Web 应用程序的安全管理方面，HTTPS 也是非常重要的。

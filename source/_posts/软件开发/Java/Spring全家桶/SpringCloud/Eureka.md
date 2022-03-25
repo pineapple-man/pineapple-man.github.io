@@ -23,7 +23,7 @@ thumbnailImage:
 在单体应用程序中，服务通过语言级别的方法或过程调用相互调用；在传统的分布式系统部署中，服务在固定的、众所周知的位置（主机和端口）运行，因此可以使用 HTTP/REST 或某种 RPC 机制轻松地相互调用，然而，现代基于微服务的应用程序通常在虚拟化或容器化环境中运行，其中服务的实例数量及其位置动态变化。因此，必须实现一种机制，**使服务客户端能够向一组动态变化的临时服务实例发出请求**，最终称这种机制为：服务发现
 {%endalert%}
 
-{% image fancybox fig-100 center   https://gitee.com/mingchaohu/blog-image/raw/master/image/discovery-problem.jpg %}
+{% image fancybox fig-100 center   https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/discovery-problem.jpg %}
 
 根据发出请求方不同，将服务发现划分为两种模式：[客户端服务发现模式](http://microservices.io/patterns/client-side-discovery.html)和[服务端服务发现模式](http://microservices.io/patterns/server-side-discovery.html)两种
 
@@ -35,10 +35,10 @@ thumbnailImage:
 在客户端需要向服务发出请求时，客户端**首先通过询问服务注册中心来获取服务实例的位置**（服务注册中心知道所有服务实例的位置），随后根据服务注册中心的响应进行服务的访问，下图显示了此模式的结构
 {%endalert%}
 
-{% image fancybox fig-100  center  https://gitee.com/mingchaohu/blog-image/raw/master/image/client-side-discovery.jpg %}
+{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/client-side-discovery.jpg %}
 
 :sparkles:RPC远程调用框架核心设计思想在于**注册中心**，使用注册中心管理每个服务与服务之间的一个依赖关系(服务治理概念)，目前常用的注册中心架构如下图：
-{% image fancybox fig-100  center  https://gitee.com/mingchaohu/blog-image/raw/master/image/3956561052b9dc3909f16f1ff26d01bb.png %}
+{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/3956561052b9dc3909f16f1ff26d01bb.png %}
 
 :question:什么是服务注册中心？
 {% alert success no-icon%}
@@ -54,7 +54,7 @@ thumbnailImage:
 当向服务发出请求时，客户端通过运行在众所周知的位置的负载均衡器（`Router`）发出请求，路由器查询可能内置于负载均衡器中的服务注册表，并将请求转发给可用的服务实例，下图显示了此模式的结构
 {%endalert%}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/server-side-discovery.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/server-side-discovery.jpg %}
 
 
 :vs:服务器端服务与客户端服务发现的异同
@@ -208,7 +208,7 @@ public class CompanyApplication {
 ```
 使用`@EnableEurekaClient`注解后，当前应用会同时变成 Eureka 服务端(它会注册自身)和 Eureka 客户端(可以查询当前服务列表)，与此相关的配置都在以`eureka.instance.*`开头的参数下，下图是启动 Eureka 后，访问当前系统内已注册的服务（由于存在网络分区所以默认开启的自我保护模式）
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211109170317330.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20211109170317330.png)
 
 画面中的那一段英文，表示的就是当前 Eureka 开启了自我保护模式，具体的自我保护机制在后面会有一小节内容进行介绍
 >EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.
@@ -225,7 +225,7 @@ public class CompanyApplication {
 
 完成 Eureka 集群的实现非常简单，就是通过将两个 Eureka 服务做到：**互相注册，互相守望**即可做到 Eureka 集群的高可用
 
-{% image fancybox fig-100  center  https://gitee.com/mingchaohu/blog-image/raw/master/image/14570c4b7c4dd8653be6211da2675e45.png %}
+{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/14570c4b7c4dd8653be6211da2675e45.png %}
 
 :sailboat:使用步骤
 {% alert success no-icon%}

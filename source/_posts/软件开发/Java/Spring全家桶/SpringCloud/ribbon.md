@@ -65,7 +65,7 @@ Spring Cloud Ribbon 是基于 Netflix Ribbon 实现的一套客户端负载均�
 
 ## Ribbon 的负载均衡
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/springcloud/spirngcloud-ribbon-requestflow.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springcloud/spirngcloud-ribbon-requestflow.png)
 
 :boat: Ribbon在工作时分成两步：
 
@@ -98,7 +98,7 @@ Ribbon 中的每一种负载均衡规则都对应着一个类，各个算法具�
 | AvailabilityFilteringRule |            先过滤掉故障实例，再选择并发较小的实例            |
 |     ZoneAvoidanceRule     | 默认规则,复合判断server所在区域的性能和server的可用性选择服务器 |
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/springcloud/springcloud-ribbon-iruler.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springcloud/springcloud-ribbon-iruler.png)
 
  如果想要自定义实现某个算法，只需要实现`IRule` 接口中的部分方法即可
 

@@ -19,7 +19,7 @@ Spring 项目使用 Gradle 构建，因此想要能够正常构建 Spring 项目
 
 Spring 是一个整合框架，包含有非常多的组件，详细的组件架构图如下：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/spring核心架构.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/spring核心架构.jpg %}
 
 {% alert success no-icon %}
 
@@ -44,7 +44,7 @@ Interface for a resource descriptor that abstract from the actual type of underl
 Spring 将我们的配置文件等抽象为 `Resources`，随后就可以在 Sprig 系统中可以使用 `Resources` 类进行众多操作。Spring 中 Resources 的继承体系如下：
 
 {% endalert %}
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/Resource.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/Resource.png %}
 
 ### `ResourceLoader`
 {% blockquote "Spring 源码中对 ResourceLoader 的注释"  %}
@@ -76,7 +76,7 @@ public interface ResourceLoader {
 
 
 ResouceLoader 的继承体系如下，可以看到最初常用的 `ClassPathXmlApplicationContext` 就属于一种特殊的实现方式：
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/ResourceLoader.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/ResourceLoader.png %}
 
 ### `BeanFactory`
 
@@ -86,9 +86,9 @@ Note that it is generally better to rely on Dependency Injection ("push" configu
 
 
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/BeanFactory.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/BeanFactory.png)
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/spring/BeanFactoryAll.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/spring/BeanFactoryAll.png)
 
 
 

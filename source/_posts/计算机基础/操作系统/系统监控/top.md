@@ -38,13 +38,13 @@ top -hv|-bcHiOSs -d secs -n max -u|U user -p pid -o fld -w [cols]
 
 想要监控系统信息首先一点就是要能够看懂`top`命令提供给我们的信息，输入`top`命令后展示的信息类似于下图：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/20211025111656.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/20211025111656.png)
 
 top展示的信息分为两个部分，第一部分是**系统综合数据统计**，第二部分是**详细进程列表**
 
 ### 第一部分
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211025112754142.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20211025112754142.png)
 
 #### 系统任务队列信息展示
 
@@ -164,14 +164,14 @@ PID  USER PR NI VIRT   RES    SHR   S  %CPU %MEM  TIME+    COMMAND
 
 进入top视图的时候，按`1`将详细展示出每颗CPU的占用情况，展示效果如下：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211025115840582.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20211025115840582.png)
 
 
 ### 自定义进程展示信息
 
 通过 f 键可以选择显示的内容。按 f 键之后会显示列的列表，按 a-z 即可显示或隐藏对应的列，最后按回车键确定
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211025120159880.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20211025120159880.png)
 
 ### 其他交互命令
 

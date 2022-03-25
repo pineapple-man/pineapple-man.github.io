@@ -25,7 +25,7 @@ SSH（Secure SHell）协议是**应用层基础上的安全网络协议**。它�
 
 SSH 口令登陆的时空原理图如下：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/ssh原理时空图.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ssh原理时空图.png %}
 
 使用 SSH 进行登陆时，主要分为以下几步：
 {% alert success no-icon%}

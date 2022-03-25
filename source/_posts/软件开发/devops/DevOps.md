@@ -14,7 +14,7 @@ thumbnailImage:
 <!-- toc -->
 
 ## DevOps 概述
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426001926727.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426001926727.png %}
 
 {% alert success no-icon %}
 
@@ -24,7 +24,7 @@ DevOps 是Development和Operations的组合，也就是开发和运维的简写�
 
 目前常用的 DevOps 四大平台:代码托管(gitlab/svn)、项目管理(jira)、运维平台(腾讯蓝鲸/开源平台)、持续交付 ( Jenkins/gitlab)
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426001133524.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426001133524.png %}
 
 {% alert warning no-icon %}
 
@@ -64,8 +64,8 @@ DevOps 技术团队进行软件开发流程
 
 {% endalert %}
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426001322249.png)
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426001325079.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426001322249.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426001325079.png)
 
 
 ### 持续集成（CI-Continuous Integration）
@@ -75,7 +75,7 @@ CI（Continuous integration），持续集成是指多名开发者在开发不�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426002705952.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426002705952.png %}
 
 
 ### 持续部署（CD-Continuous Deployment）
@@ -88,15 +88,15 @@ CD（continuous deployment）是基于某种工具或平台实现代码自动化
 ### 持续交付（CD-Continuous Delivery）
 持续交付是在持续部署的基础之上，将产品交付到线上环境，因此持续交付是产品价值的一种交付，是产品价值的一种盈利的实现
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426003003240.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426003003240.png %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426002737559.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426002737559.png %}
 ### CI/CD 总结
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426003408743.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426003408743.png %}
 
 使用 Jenkins 进行软件部署的流程如下，分别需要经过测试环境、预发布环境和生产环境。其中，测试环境比较单一，数据量比较简单；预发布环境：正规的代码流程，还有正规的测试人员进行测试，数据和生产环境几乎一致
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210426003509185.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210426003509185.png %}
 
 ### 常见的部署方式
 
@@ -154,7 +154,7 @@ DevOps 就是希望越来越多的软件产品能够做到自动化的部署，�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/devops/devops-金丝雀发布.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/devops/devops-金丝雀发布.webp %}
 
 金丝雀发布对用户体验影响较小，再金丝雀发布过程中，只有少量用户会受到影响，发布安全能够得到保障；但是由于金丝雀的机器数量比较少，有一些问题并不能有效的暴露出来
 
@@ -174,7 +174,7 @@ DevOps 就是希望越来越多的软件产品能够做到自动化的部署，�
 
 结合特性开关等技术，灰度发布可以实现更复杂灵活的发布策略
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/devops/devops-滚动发布.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/devops/devops-滚动发布.webp %}
 
 {% alert warning no-icon %}
 
@@ -204,7 +204,7 @@ DevOps 就是希望越来越多的软件产品能够做到自动化的部署，�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/devops/devops-蓝绿发布.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/devops/devops-蓝绿发布.webp %}
 
 :+1: 蓝绿发布优势：
 - 升级切换和回退速度非常快
@@ -227,7 +227,7 @@ A/B 测试和灰度发布非常像，可以从发布的目的上进行区分。A
 {% endalert %}
 举个例子，某功能有两个实现版本 A 和 B，通过细粒度的流量控制，把 50% 的用户总是引导到 A 实现上，把剩下的 50% 用户总是引导到 B 实现上，通过比较 A 实现和 B 实现的转化率，最终选择转化率较高的 A 实现作为功能的最终版本
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/devops/devops-ab测试.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/devops/devops-ab测试.webp %}
 
 :+1: AB测试发布的优势：
 - 快速实验能力
@@ -253,7 +253,7 @@ A/B 测试和灰度发布非常像，可以从发布的目的上进行区分。A
 
 如下图左侧的灰度发布，App1 的所有机器都有一定概率会路由到出现问题的红色 App2 机器上。而右侧的隔离环境发布中，新版本的代码会先发布在全链路隔离环境中，即使发布中出现问题，也只会影响少量用户。
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/devops/devops-流量隔离环境发布.webp %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/devops/devops-流量隔离环境发布.webp %}
 
 :+1: 流量隔离环境发布优势:
 - 能够发现一些复杂的, 涉及到多应用的问题

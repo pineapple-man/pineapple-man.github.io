@@ -31,7 +31,7 @@ thumbnailImage:
 
 ### 软件工程的工作流程
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/软件工程的工作流程.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/软件工程的工作流程.png %}
 
 上述过程需要**重复多次迭代**，在大型工程中<font style="color:red;font-weight:bold">构建项目是比较复杂的</font>，传统开发项目(没有使用自动化管理工具)存在的问题
 {% alert success no-icon %}
@@ -115,7 +115,7 @@ Mavan 也是一种软件，因此本小节主要记录如何安装 Maven
 
 目前Maven主要维护的版本有：
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210320123556811.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210320123556811.png %}
 :point_right:[点击查看Maven的版本信息](https://maven.apache.org/docs/history.html)
 
 :notes:选择 3.3.9 版本使用官方的源码包进行安装，主要的步骤如下：
@@ -524,7 +524,7 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
  ```
 #### 工程结构
 阿里爸爸推荐的分层架构如下，默认上层依赖下层，箭头关系表示可直接依赖
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-multimodule.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/maven-multimodule.png %}
 |   各层名称   |                             含义                             |
 | :----------: | :----------------------------------------------------------: |
 | 开放 API 层  | 可直接封装 Service 接口暴露成 RPC 接口；通过 Web 封装成 http 接口；网关控制层等 |
@@ -565,9 +565,9 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 ### 创建项目
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902215119534.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902215119534.png %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902215636541.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902215636541.png %}
 
 ### 修改父工程
 
@@ -577,13 +577,13 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902215741035.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902215741035.png %}
 
 ### 创建子模块
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902215915860.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902215915860.png %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902215119534.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902215119534.png %}
 
 {% alert danger no-icon %}
 
@@ -591,7 +591,7 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902220036026.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902220036026.png %}
 
 {% alert warning no-icon %}
 
@@ -599,7 +599,7 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902220412189.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902220412189.png %}
 
 ### 父工程pom
 
@@ -625,7 +625,7 @@ pom 是最简单的打包类型，不像jar和war，它生成的构件只有它�
 
 ### 子模块pom
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902230507544.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902230507544.png %}
 
 ```xml
     <parent>
@@ -677,7 +677,7 @@ pom 是最简单的打包类型，不像jar和war，它生成的构件只有它�
 
 在 `File -> Settings -> Build, Execution, Deployment -> Compiler -> Java Compiler `查看
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902231341998.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902231341998.png %}
 
 ## Maven 依赖版本管理
 Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 idea 中进行依赖管理
@@ -695,7 +695,7 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
 </dependencies>
 ```
 子模块的依赖如下：
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210902233256349.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902233256349.png %}
 
 ### 父工程管理依赖版本号
 {% alert success no-icon %}
@@ -737,9 +737,9 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210903000526903.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210903000526903.png %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210903000531850.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210903000531850.png %}
 
 :notes: Maven 会沿着父子层次向上走，直到找到一个拥有 dependencyManagement 组件的项目，然后在其中查找，如果找到则返回申明的依赖，没有继续往上找
 
@@ -747,7 +747,7 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
 
 由于父工程管理依赖的版本号，那么子模块要想继承依赖，只能通过声明式来添加依赖，实际上，子模块中的依赖是继承父工程依赖的版本号；如果子模块已定义依赖版本号，那么以子模块定义的版本号为准
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210903000601237.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210903000601237.png %}
 
 ### `dependencies`与`dependencyManagement`的区别
 

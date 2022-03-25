@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: bottom
 metaAlignment: center
 date: 2021-10-30 19:02:27
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/1200px-YAML_Logo.svg.png
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1200px-YAML_Logo.svg.png
 categories: 通用技能
 tags: 必备小技能
 keywords: yaml

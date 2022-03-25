@@ -12,7 +12,7 @@ excerpt: Java 类库的设计者通过创建大量大类解决不同方式 I/O �
 ---
 <!-- toc -->
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-overview.jpg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-overview.jpg %}
 ## 概述
 
 {% alert success no-icon%}
@@ -26,7 +26,7 @@ Java 的 I/O 大概可以分成以下几类:
 - 新 I/O 操作: NIO
   {%endalert%}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-catagory.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-catagory.png %}
 
 :question:Java IO 能用来干什么？
 {% alert success no-icon %}
@@ -35,7 +35,7 @@ Java 对数据的操作是通过流的方式进行的，I/O 用来处理设备�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-stream.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-stream.png %}
 
 :notes: 输入、输出的参照物是**存储数据的介质**，把**对象读入到介质中**定义为输入，对应的，**从介质中向外读数据**就是输出
 
@@ -60,13 +60,13 @@ Java 对数据的操作是通过流的方式进行的，I/O 用来处理设备�
 {% endalert %}
 
 常用的各种子类如下图：
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-stream-category.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-stream-category.png %}
 
 ### 字符流
 
 字符流与字节流不同，主要操作字符类型数据，主要操作类是 `Reader`、`Writer`的各种子类；特点是：**使用缓冲区缓冲字符**，不关闭流就不会输出任何内容
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-character-category.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-character-category.png)
 
 ### 字节流和字符流的区别
 
@@ -101,7 +101,7 @@ Java 对数据的操作是通过流的方式进行的，I/O 用来处理设备�
 
 :sparkles: Java 使用双字节编码 UTF-16be，这不是指 Java 只支持这一种编码方式，而是说 char 这种类型使用 UTF-16be 进行编码。char 类型占 16 位，也就是两个字节，Java 使用这种双字节编码是为了让一个中文或者一个英文都能使用一个 char 来存储，Java 中的 IO 形式如下：
 
-![](https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-transformer.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-transformer.png)
 
 :notes: Java I/O 流的特点是：每个基类的实现类都是**以父类名作为类名的后缀**进行命名的
 
@@ -109,7 +109,7 @@ Java 对数据的操作是通过流的方式进行的，I/O 用来处理设备�
 
 从数据来源或者操作对象角度看，IO 类可以分为：
 
-![img](https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-operator-category.png)
+![img](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-operator-category.png)
 
 ## Java I/O 演进之路
 
@@ -142,7 +142,7 @@ Java 共支持 3 种网络编程的/IO 模型：**BIO、NIO、AIO**，在实际�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-bio-overview.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-bio-overview.png %}
 
 #### Java NIO
 {% alert success no-icon %}
@@ -151,7 +151,7 @@ Java 共支持 3 种网络编程的/IO 模型：**BIO、NIO、AIO**，在实际�
 
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/java-io-nio-overview.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-nio-overview.png %}
 
 #### Java AIO
 

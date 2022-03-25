@@ -19,7 +19,7 @@ excerpt: 之前一直对CPU相关的术语有些纠缠不清楚，本文将这�
 
 ### 物理 CPU 数（Physical CPU）
 
-![中央处理器](https://gitee.com/mingchaohu/blog-image/raw/master/image/1200px-Intel_Core_I7-920_Boxed_-_14.JPG)
+![中央处理器](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1200px-Intel_Core_I7-920_Boxed_-_14.JPG)
 
 :sparkles:Physical CPU指的是：**主板上实际插入的 CPU 硬件个数**
 
@@ -33,7 +33,7 @@ excerpt: 之前一直对CPU相关的术语有些纠缠不清楚，本文将这�
 
 > 一个双核心 cpu 就是操作系统同一时刻能够运行两个进程/线程的物理设备，下图是多核心 CPU 的示意图
 
-![CPU muliti croe ](https://gitee.com/mingchaohu/blog-image/raw/master/image/v2-e898e919d0061b49ac2fe8ac0ad190ec_720w.jpg)
+![CPU muliti croe ](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/v2-e898e919d0061b49ac2fe8ac0ad190ec_720w.jpg)
 
 ### 同时多线程技术（simultaneous multithreading）和超线程技术（hyper–threading/HT）
 
@@ -72,7 +72,7 @@ lscpu
 
 #### Windows 系统
 
-![Windows系统查看CPU信息](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20211017124212223.png)
+![Windows系统查看CPU信息](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20211017124212223.png)
 
 ## CPU 的并发
 

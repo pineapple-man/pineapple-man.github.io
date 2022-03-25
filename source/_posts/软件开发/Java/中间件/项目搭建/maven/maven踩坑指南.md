@@ -42,15 +42,15 @@ excerpt: 本文主要记录使用 Maven 的过程中遇到的问题
 增加`maven importing`的 JVM 参数`-Xms1024m -Xmx2048m`，具体的配置如下：
 {% endalert %}
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-config-parameters.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/maven-config-parameters.png %}
 
 ## Github 下载多模块项目，构建失败
 一个合理的 git 仓库提交后的内容是不应该存在idea种`*.iml`文件的，但是这样如果是多模块项目，拉到本地；相对于正常的模块项目，模块并不会自动识别，此时需要手动配置成多模块项目
 :one: 导入模块
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-import.png %}
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/mave-module-import.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/maven-import.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/mave-module-import.png %}
 :two: 从外部模型导入模块
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/maven/maven-from-outside-import.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/maven-from-outside-import.png %}
 <!-- 通过以上两步即完成了多模块项目的搭建，之后会自动生成`iml`文件 -->
 ## 附录
 [^1]: https://blog.csdn.net/pange1991/article/details/48596869

@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 21:35:19
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/cookie.jpg
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/cookie.jpg
 categories: 
   - Java
 tags: 

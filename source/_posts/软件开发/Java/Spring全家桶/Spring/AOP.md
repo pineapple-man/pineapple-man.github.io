@@ -25,7 +25,7 @@ AoP 的​底层原理——**动态代理**
 
 创建接口实现类代理对象，增强类的方法
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210608131656646.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210608131656646.png %}
 #### 创建测试接口类
 
 ```java
@@ -98,7 +98,7 @@ public class JDKProxy {
 
 创建子类的代理对象，增强类的方法
 
-{% image fancybox fig-100  center https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210608131659303.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210608131659303.png %}
 
 ## AoP 术语
 

@@ -36,7 +36,7 @@ Spring 提供 IoC 容器实现两种方式（两个接口）：
 | ClassPathXmlApplicationContext  | 读取类路径下的 XML 格式的配置文件 |
 | FileSystemXmlApplicationContext |  文件系统中的 XML 格式的配置文件  |
 
-![ApplicationContext继承体系](https://gitee.com/mingchaohu/blog-image/raw/master/image/image-20210607182210091.png)
+![ApplicationContext继承体系](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210607182210091.png)
 ### ConfigurableApplicationContext
 
 :sparkles:`ConfigurableApplicationContext`类
@@ -119,7 +119,7 @@ public class UserTest {
 
 对于大项目通常使用注解方式，XML 方式使得项目复杂并且难以管理，但是便于学习
 
-![XML方式注入属性](https://gitee.com/mingchaohu/blog-image/raw/master/image/XML方式注入属性.png)
+![XML方式注入属性](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/XML方式注入属性.png)
 
 ### set 方法注入
 

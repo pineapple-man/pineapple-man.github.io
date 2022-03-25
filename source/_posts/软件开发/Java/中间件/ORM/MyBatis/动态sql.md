@@ -2,7 +2,7 @@
 title: MyBatis 动态Sql
 toc: true
 clearReading: true
-thumbnailImage: 'https://gitee.com/mingchaohu/blog-image/raw/master/image/mybatis.jpg'
+thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mybatis.jpg'
 thumbnailImagePosition: right
 metaAlignment: center
 categories: 中间件

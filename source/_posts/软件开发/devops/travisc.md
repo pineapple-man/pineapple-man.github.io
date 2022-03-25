@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: bottom
 metaAlignment: center
 date: 2021-10-30 20:06:42
-thumbnailImage: https://gitee.com/mingchaohu/blog-image/raw/master/image/bg2017121901.png
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/bg2017121901.png
 categories: 其他
 tags: DevOps
 keywords: travis

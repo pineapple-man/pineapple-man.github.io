@@ -18,7 +18,7 @@ thumbnailImage:
 
 REST ( REpresentational State Transfer )**(资源)表现层状态转化**,是目前流行的一种互联网**软件架构**风格，具有以下特点：
 
-{% image fancybox fig-100  center  "https://gitee.com/mingchaohu/blog-image/raw/master/image/Rest 特点.png" %}
+{% image fancybox fig-100  center  "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Rest 特点.png" %}
 
 
 ### 资源（Resource）

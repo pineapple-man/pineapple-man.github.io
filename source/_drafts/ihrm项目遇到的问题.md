@@ -47,3 +47,4 @@ https://blog.csdn.net/andwey/article/details/106053195
 
 
 https://blog.csdn.net/jyxswt/article/details/80601787
+[idea jdk8编译报错 Error:java: 无效的标记: --add-exports](https://blog.csdn.net/tower888/article/details/106151193)

@@ -18,7 +18,7 @@ excerpt: 本文主要说明操作系统中存在的上下文切换
 
 上下文切换（有时也称为进程切换或任务切换）主要是将**CPU的使用权**从一个进程/线程切换到另一个进程/线程
 
-![Context Switch](https://gitee.com/mingchaohu/blog-image/raw/master/image/context-switch.png)
+![Context Switch](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/context-switch.png)
 
 进程（有时也被称为**任务**）是正在执行的程序的一种抽象，在Linux系统中，线程是轻量级进程，它们可以相互之间并行运行，并且相互之间共享相同的地址空间以及共享它们父进程的一切资源（是由父进程创建的子线程）
 
