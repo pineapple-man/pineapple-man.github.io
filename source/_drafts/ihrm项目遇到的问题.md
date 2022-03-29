@@ -48,3 +48,8 @@ https://blog.csdn.net/andwey/article/details/106053195
 
 https://blog.csdn.net/jyxswt/article/details/80601787
 [idea jdk8编译报错 Error:java: 无效的标记: --add-exports](https://blog.csdn.net/tower888/article/details/106151193)
+
+[java 定时任务](https://zhuanlan.zhihu.com/p/414296662)
+[5分钟搞懂如何在Spring Boot中Schedule Tasks](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485563&idx=1&sn=7419341f04036a10b141b74624a3f8c9&chksm=cea247b0f9d5cea6440759e6d49b4e77d06f4c99470243a10c1463834e873ca90266413fbc92&token=2133161636&lang=zh_CN#rd)
+[Redis进阶实践之十四 Redis-cli命令行工具使用详解](https://www.cnblogs.com/EikiXu/p/9428855.html)
+[C网络编程socket之connect函数](https://blog.csdn.net/coolingcoding/article/details/6900255)
