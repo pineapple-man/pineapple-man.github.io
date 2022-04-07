@@ -140,3 +140,4 @@ HTTP 通过新的名为 CONNECT 的扩展方法来发送明文形式的端点信
 
 到目标服务器的连接。如果成功，就向客户端发送一条 200 Connection Established 响应。 HTTP/1.0 200 Connection established Proxy-agent: Netscape-Proxy/1.1
 
+## HTTPS 连接建立过程

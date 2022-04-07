@@ -1,5 +1,5 @@
 ---
-title: 深入分析 enum (1)
+title: 深入分析 Java 枚举
 toc: true
 clearReading: true
 thumbnailImagePosition: right

@@ -17,3 +17,4 @@ thumbnailImage:
 
 ## 附录
 [MVCC详解](https://www.cnblogs.com/xuwc/p/13873611.html)
+[谈谈对MySQL的MVCC的理解](https://developer.aliyun.com/article/783787?spm=a2c6h.13262185.0.0.5d39374dE8nuIh)
