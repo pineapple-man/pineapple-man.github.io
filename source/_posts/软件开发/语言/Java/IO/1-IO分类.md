@@ -113,9 +113,9 @@ Java 对数据的操作是通过流的方式进行的，I/O 用来处理设备�
 
 ## Java I/O 演进之路
 
-上述的介绍只能说是对 Java IO 有了一个全貌的话，下面要介绍的内容将是 Java IO 系统中的核心也是一个语言的难点所在，Java 中的 IO 模型。
+上述的介绍只能说是对 Java IO API 有了一个全貌的了解，下面要介绍的内容将是 Java IO 系统中的核心也是一个语言的难点所在，Java 中的 IO 模型。
 
-:notes:注意上下文，特别强调这里表述的是<font style="color:red;font-weight:bold">Java IO</font>,而不是 Unix IO 或其他的 IO 形式。其实，Java 的 IO 模型本质上还是<font style="color:red;font-weight:bold">利用操作系统提供的接口来实现</font>,所以想要了解 Java Io 模型之前最好先了解 Linux 底层 IO 模型
+:notes: 注意上下文，特别强调这里表述的是<font style="color:red;font-weight:bold">Java IO</font>,而不是 Unix IO 或其他的 IO 形式。其实，Java 的 IO 模型本质上还是<font style="color:red;font-weight:bold">利用操作系统提供的接口来实现</font>,所以想要了解 Java Io 模型之前最好先了解 Linux 底层 IO 模型
 
 ### I/O 模型基础
 
@@ -136,6 +136,9 @@ Java 共支持 3 种网络编程的/IO 模型：**BIO、NIO、AIO**，在实际�
 {% endalert %}
 
 #### Java BIO
+
+在JDK 1.4 之前，基于Java的所有Socket通信都采用同步阻塞模式(BIO)，这种`请求一应答`的通信模型简化了上层的应用开发，但是在性能和可靠性方面却存在着巨大的瓶颈。当并发量增大，响应时间延迟增大之后，采用Java BIO开发的服务端只有通过硬件的不断扩容来满足高并发和低延迟，它极大的增加了企业的成本，随着集群规模的不断膨胀，系统的可维护性也面临巨大的挑战
+
 {% alert success no-icon %}
 
 同步阻塞(传统阻塞型)模型，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销 
@@ -143,6 +146,49 @@ Java 共支持 3 种网络编程的/IO 模型：**BIO、NIO、AIO**，在实际�
 {% endalert %}
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java-io-bio-overview.png %}
+
+经典的网络服务设计如上图所示，对每个请求都会产生一个新的线程来进行处理，这种设计的缺点就是：线程创建本身也是系统资源的一次比较耗时的开销，如果并发请求达到一定数量，响应将会变慢，甚至有可能因为系统资源不足而造成系统的崩溃。
+
+传统的 BIO 代码类似如下：
+```java
+public class BlokingIoServer implements Runnable{
+
+    @Override
+    public void run() {
+        try {
+            //将服务绑定到指定端口
+            ServerSocket ss = new ServerSocket(8888);
+            while (!Thread.interrupted()){
+                //对 accept()方法的调 用将被阻塞，直到一个连接建立
+                final Socket clientSocket = ss.accept();
+
+                //为每个请求创建一个线程来处理
+                new Thread(new Handler(clientSocket)).start();
+            }
+            // or, single-threaded, or a thread pool
+        } catch (IOException ex) { /* ... */ }
+    }
+    static class Handler implements Runnable {
+        final Socket socket;
+        Handler(Socket s){
+            socket = s;
+        }
+        @Override
+        public void run() {
+            try {
+                byte[] input = new byte[1024];
+                socket.getInputStream().read(input);
+                byte[] output = process(input);
+                socket.getOutputStream().write(output);
+            } catch (IOException ex) { /* ... */ }
+        }
+        private byte[] process(byte[] cmd){
+            //do something
+            return null;
+        }
+    }
+}
+```
 
 #### Java NIO
 {% alert success no-icon %}
