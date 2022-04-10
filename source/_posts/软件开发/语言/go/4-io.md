@@ -1,5 +1,5 @@
 ---
-title: go.mod 是干什么的
+title: go io
 toc: true
 clearReading: true
 thumbnailImagePosition: right
@@ -7,7 +7,7 @@ metaAlignment: center
 categories: Go
 tags: GO
 keywords: Go
-excerpt: 本文是 Go 中的 go.mod 文件的作用
+excerpt: 本文是 Go 中的 go io 文件的作用
 date: 2022-03-29 23:28:40
 thumbnailImage:
 ---
