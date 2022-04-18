@@ -85,25 +85,25 @@ public class MybatisAutoConfiguration {
 }
 ```
 
-**@Configuration**和**@Bean**这两个注解一起使用就可以创建一个基于java代码的配置类，可以用来替代传统的xml配置文件，两个注解具体的含义如下：
+**@Configuration**和 **@Bean** 这两个注解一起使用就可以创建一个基于java代码的配置类，可以用来替代传统的xml配置文件，两个注解具体的含义如下：
 
 |       注解       |                  含义                   |
 | :--------------: | :-------------------------------------: |
 | `@Configuration` |   在类上标注，表明当前类是一个配置类    |
 |     `@Bean`      | 表明需要向 Spring IoC 容器中注入的 Bean |
 
-所以上面的**MybatisAutoConfiguration**这个类，自动帮我们生成了SqlSessionFactory和SqlSessionTemplate这些Mybatis的重要实例并交给spring容器管理，从而完成bean的自动注册
+所以上面的**MybatisAutoConfiguration**这个类，自动帮我们生成了 `SqlSessionFactory` 和 `SqlSessionTemplate` 这些 Mybatis 的重要实例并交给 spring 容器管理，从而完成bean的自动注册
 
 ### 自动配置条件依赖
 
-从**MybatisAutoConfiguration**这个类中使用的注解可以看出，要完成自动配置是有依赖条件的
+从`MybatisAutoConfiguration`这个类中使用的注解可以看出，要完成自动配置是有依赖条件的
 
 ```java
 @ConditionalOnClass({SqlSessionFactory.class, SqlSessionFactoryBean.class})
 @ConditionalOnBean({DataSource.class})
 ```
 
-所以要完成Mybatis的自动配置，需要在类路径中存在`SqlSessionFactory.class`、`SqlSessionFactoryBean.class`这两个类，同时需要存在DataSource这个bean且这个bean完成自动注册
+所以要完成Mybatis的自动配置，需要在类路径中存在`SqlSessionFactory`、`SqlSessionFactoryBean`这两个类，同时需要存在DataSource这个bean且这个bean完成自动注册
 
 Spring boot 中常见的条件依赖注解有：
 
@@ -120,7 +120,11 @@ Spring boot 中常见的条件依赖注解有：
 
 ### Bean 参数获取
 
-:question: 要完成mybatis的自动配置，需要我们在配置文件中提供数据源相关的配置参数，例如数据库驱动、连接url、数据库用户名、密码等。那么spring boot是如何读取 yml 或者 properites 配置文件的的属性来创建数据源对象的？
+{% alert success no-icon %}
+
+要完成mybatis的自动配置，需要我们在配置文件中提供数据源相关的配置参数，例如数据库驱动、连接url、数据库用户名、密码等。那么spring boot是如何读取 yml 或者 properites 配置文件的的属性来创建数据源对象的？
+
+{% endalert %}
 
 在我们导入mybatis-spring-boot-starter这个jar包后会传递过来一个spring-boot-autoconfigure包，在这个包中有一个自动配置类**DataSourceAutoConfiguration**，如下所示：
 
@@ -143,7 +147,11 @@ public class DataSourceProperties implements BeanClassLoaderAware, EnvironmentAw
 
 上面这个类上加入了**ConfigurationProperties**注解，这个注解的作用就是把 yml 或者 properties 配置文件中的配置参数信息封装到**ConfigurationProperties**注解标注的bean(即**DataSourceProperties**)的相应属性上。
 
+{% alert info no-icon %}
+
 `@EnableConfigurationProperties`注解的作用是使`@ConfigurationProperties`注解生效，并且将`@ConfigurationProperties`标注的 Bean 注入到 `@EnablelConfigurationProperties`类中。
+
+{% endalert %}
 
 如下例所示，最终 `DataSourceProperties` 类将注入到 `DataSourceAutoConfiguration`中使用，随后 Spring 将根据`DataSourceAutoConfiguration`类中的配置，自动注入新的 Bean
 
@@ -157,8 +165,11 @@ public DataSourceInitializer dataSourceInitializer(DataSourceProperties properti
 
 ### Bean 的发现
 
+{% alert success no-icon %}
 
-:question: spring boot默认扫描启动类所在的包下的主类与子类的所有组件，但并没有包括依赖包中的类，那么依赖包中的bean是如何被发现和加载的？
+spring boot默认扫描启动类所在的包下的主类与子类的所有组件，但并没有包括依赖包中的类，那么依赖包中的bean是如何被发现和加载的？
+
+{% endalert %}
 {% alert info no-icon %}
 
 一般 Spring boot 应用程序的启动类都有 `@SpringBootApplication` 注解，这个注解的源码如下：
