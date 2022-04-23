@@ -30,7 +30,7 @@
     "hexo-wordcount": "^6.0.1",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
-    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-emoji": "^2.0.2",
     "twemoji": "^14.0.1"
   }
 }
