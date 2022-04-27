@@ -31,3 +31,6 @@ fmt.Println(string(angleBytes))
 
 ## 附录
 [Go语言修改字符串](https://www.cnblogs.com/niuben/p/12523396.html)
+[Go语言字符串常见操作的使用汇总](https://www.jb51.net/article/245112.htm)
+[Go语言几种字符串的拼接方式比较](https://segmentfault.com/a/1190000040275250)
+[go语言怎么将string转int类型](https://www.php.cn/be/go/472227.html)

@@ -17,3 +17,4 @@ thumbnailImage:
 
 ## 附录
 [深入Go Module之go.mod文件解析](https://colobu.com/2021/06/28/dive-into-go-module-1/)
+[Using Go Modules](https://go.dev/blog/using-go-modules)
