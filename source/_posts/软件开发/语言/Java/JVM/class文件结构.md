@@ -1168,5 +1168,5 @@ methods：指向常量池索引集合，它完整描述了每个方法的签名�
 
 [类文件结构](https://doocs.github.io/jvm/07-class-structure.html)
 [深入理解JVM之Java字节码（.class）文件详解](https://blog.csdn.net/weelyy/article/details/78969412)
-
 [官方文档](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html)
+[JVM Class详解之一](https://developer.aliyun.com/article/7241?spm=a2c6h.13262185.0.0.46833694r5uY9M)
