@@ -175,6 +175,79 @@ initpkg    initpkg_demo.go
 
 执行 go build 命令的计算机如果拥有多个逻辑CPU核心，那么编译代码包的顺序可能会存在一些不确定性。但是，它一定会满足这样的约束条件：「 依赖代码包 -> 当前代码包 -> 触发代码包 」
 
+### `buildmode`
+
+在 go build 和 go install 命令中，我们可以指定 -buildmode 参数来让编译器构建出特定的对象文件。通过命令 go help buildmode，可以看到其支持的选项：
+```bash
+-buildmode=archive
+-buildmode=c-archive
+-buildmode=c-shared
+-buildmode=default
+-buildmode=shared
+-buildmode=exe
+-buildmode=pie
+-buildmode=plugin
+```
+#### plugin
+
+> build the listed main packages,plus all packages that they import,into a Go plugin.Package not named main are ignored
+
+它将 package main 编译为一个 go 插件，并可在运行时动态加载
+```golang
+package main
+
+import "fmt"
+
+type greeting string
+
+func (g greeting) Greet() {
+	fmt.Println("hello world")
+}
+
+var Greeter greeting
+```
+随后将其编译成为一个 go 插件
+```bash
+go build -buildmode=plugin -o greeter.so greeter.go
+```
+最终再使用 golang 官方的 plugin 库来载入这个插件
+```golang
+package main
+
+import (
+	"fmt"
+	"os"
+	"plugin"
+)
+
+type Greeter interface {
+	Greet()
+}
+
+func main() {
+  //载入插件
+	plug, err := plugin.Open("./greeter.so")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+  //在插件中寻找对应的方法
+	symGreeter, err := plug.Lookup("Greeter")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	var greeter Greeter
+	greeter, ok := symGreeter.(Greeter)
+	if !ok {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	greeter.Greet()
+}
+```
+
 ## `go install`
 {% alert info no-icon %}
 
