@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 categories: 数据库
-tags: Database
+tags: MySQL
 keywords: 数据库
 excerpt: 前几天进行阿里笔试的时候遇到一个题，刚好没接触过，在这里记录一下
 date: 2022-04-01 15:51:21

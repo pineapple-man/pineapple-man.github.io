@@ -6,10 +6,10 @@ thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/
 thumbnailImagePosition: right
 metaAlignment: center
 categories: 数据库
-tags: Database
+tags: MySQL
 keywords: mysql
 excerpt: 本文是 MySQL 总览篇章，沉溺于单个知识点而忘记总揽全局，是我常犯的一个问题，所以希望通过本文的总结，对 MYSQL 数据库有一个全局的掌握
-date: 2022-01-27 15:11:46
+date: 2022-01-25 15:11:46
 ---
 <!-- toc -->
 > 最近尚硅谷康师傅出了 MySQL 的视频，虽然很久之前就学过了 MySQL 但是总感觉没有章法，不成体系，所以希望通过本文结合康师傅的视频，整理出一套 MySQL 比较完备的资料。

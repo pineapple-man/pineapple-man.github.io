@@ -6,7 +6,7 @@ thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/
 thumbnailImagePosition: right
 metaAlignment: left
 categories: 数据库
-tags: Database
+tags: MySQL
 keywords: mysql
 excerpt: 使用了一段时间的 MySQL 5.5，但是新的项目需要使用 MySQL 5.7 所以就将 Win10 平台上的 MySQL5.5 进行升级
 date: 2022-01-10 13:09:18
