@@ -16,3 +16,7 @@ thumbnailImage:
 
 ## 附录
 [Remote Procedure Call (RPC)](https://www.techtarget.com/searchapparchitecture/definition/Remote-Procedure-Call-RPC)
+
+[那些年，我们追过的RPC](https://zhuanlan.zhihu.com/p/29028054)
+
+[RMI, RPC, CORBA区别](https://blog.csdn.net/AbnerChai/article/details/7662145?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.vipsorttest&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.vipsorttest)
