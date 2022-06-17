@@ -7,3 +7,6 @@ public/
 .deploy*/
 .vscode/settings.json
 .gitignore
+yarn.lock
+package-lock.json
+_config.yml
