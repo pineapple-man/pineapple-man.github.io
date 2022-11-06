@@ -11,10 +11,12 @@ excerpt: 本文是 Go 的快速入门篇章
 date: 2022-03-29 15:28:40
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 ## 概述
-如果已经拥有编程经验，如何**快速高效**的完全掌握Golang?
+
+如果已经拥有编程经验，如何**快速高效**的完全掌握 Golang?
 
 :thinking:什么叫做完全掌握？
 
@@ -47,11 +49,11 @@ thumbnailImage:
 
 [官方文档](https://go-zh.org/doc/)有很多还是很值得推荐学习的:
 
-- [实效Go编程](https://go-zh.org/doc/effective_go.html)
+- [实效 Go 编程](https://go-zh.org/doc/effective_go.html)
 - [常见问题解答](https://go-zh.org/doc/faq)
 
-
 ## 附录
+
 [1](https://www.cnblogs.com/code-craftsman/p/12515802.html)
 [2](https://books.studygolang.com/gobyexample/)
 [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang)

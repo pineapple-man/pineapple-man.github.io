@@ -11,6 +11,7 @@ tags: 杂七杂八
 keywords: MNIST
 excerpt: 本文主要介绍最经典的一个数据集—— MNIST
 ---
+
 <!-- toc -->
 
 ## 概述
@@ -18,7 +19,7 @@ excerpt: 本文主要介绍最经典的一个数据集—— MNIST
 :question: MNIST 数据集是什么
 {% alert success no-icon %}
 
-MNIST数据集是美国国家标准与技术研究院收集整理的大型手写数字数据库,包含 60,000 个示例的训练集以及 10,000 个示例的测试集
+MNIST 数据集是美国国家标准与技术研究院收集整理的大型手写数字数据库,包含 60,000 个示例的训练集以及 10,000 个示例的测试集
 
 {% endalert %}
 
@@ -42,6 +43,7 @@ MNIST数据集是美国国家标准与技术研究院收集整理的大型手写
 ## 数据集格式转换
 
 考虑到数据集的大小，图片最终都是压缩存储的。因此，如果想要获取真正的图片数据，还需要一些读取操作。具体的操作步骤如下：
+
 ### 读取数据集
 
 下面的函数就能够将官网下载下来的数据进行读取：
@@ -60,7 +62,7 @@ def load_mnist(path, kind="train"):
     return images, labels
 ```
 
-### 保存数据集为csv文件
+### 保存数据集为 csv 文件
 
 下面的代码主要进行持久化工作，能够将读取到文件持久化保存到本地
 
@@ -72,7 +74,7 @@ def saveFile(images, labels, test_images, test_label):
     np.savetxt("../test_labels.csv", test_label, fmt="%i", delimiter=',')
 ```
 
-### 从csv文件中导入
+### 从 csv 文件中导入
 
 一旦将图片数据持久化到本地之后，后续就不再需要进行解压重新读取数据的操作了，只需要读取当时持久化保存的文件即可，具体的代码如下：
 
@@ -91,10 +93,9 @@ y_test = np.genfromtxt('test_labels.csv',
 
 ## 总结
 
-:sparkles: 如今，即使是简单的模型也能达到 95% 以上的分类准确率，因此不适合区分强模型和弱模型，所以 MNIST 更像是⼀个健全检查，而不是⼀个基准。  
+:sparkles: 如今，即使是简单的模型也能达到 95% 以上的分类准确率，因此不适合区分强模型和弱模型，所以 MNIST 更像是⼀个健全检查，而不是⼀个基准。
 
 ## 附录
 
-[MNIST数据集](https://zhuanlan.zhihu.com/p/36592188)
-[详解MNIST数据集](https://blog.csdn.net/simple_the_best/article/details/75267863)
-
+[MNIST 数据集](https://zhuanlan.zhihu.com/p/36592188)
+[详解 MNIST 数据集](https://blog.csdn.net/simple_the_best/article/details/75267863)

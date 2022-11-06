@@ -11,6 +11,7 @@ excerpt: Spring 是一个轻量级的框架，但是总感觉学习的知识比�
 date: 2022-01-08 17:48:26
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 ## Spring 概述
@@ -33,7 +34,7 @@ Spring 具有如下特性：
 :notes: Spring 有两个核心部分:`IOC`和`AOP`
 {% alert success no-icon %}
 
-- IOC：控制反转，将创建对象过程交给Spring进行增加
+- IOC：控制反转，将创建对象过程交给 Spring 进行增加
 - AoP：面向切面编程，能够在不修改源代码的情况下进行功能增加「开闭原则」
 
 {% endalert %}
@@ -51,7 +52,7 @@ Spring 5 框架的指导原则：
 
 ## IoC
 
-IoC( Inversion of Control ,控制反转)，是面向对象编程中的一种设计原则，可以用来降低代码之间的耦合度，IoC 中最常见的方式有两种：依赖注入（DI）和依赖查找（DL），如果不理解什么是 IoC 可以{% post_link "Java/Spring全家桶/Spring/IOC-DI" "点击这里"%}详细了解设计模式中的 IoC 的原理
+IoC( Inversion of Control ,控制反转)，是面向对象编程中的一种设计原则，可以用来降低代码之间的耦合度，IoC 中最常见的方式有两种：依赖注入（DI）和依赖查找（DL），如果不理解什么是 IoC 可以详细了解设计模式中的 IoC 的原理
 
 :thinking: IoC 到底做了什么？
 {% alert success no-icon %}
@@ -61,7 +62,7 @@ IoC( Inversion of Control ,控制反转)，是面向对象编程中的一种设�
 
 {% endalert %}
 
-在 Spring 中通过三种方式能够实现 IoC：XML 解析、工厂模式和反射，可以通过{% post_link Java/Spring全家桶/Spring/SpringIoC "点击这里" %}详细了解 Spring 中的 IoC 使用方式
+在 Spring 中通过三种方式能够实现 IoC：XML 解析、工厂模式和反射，可以了解 Spring 中的 IoC 使用方式
 
 ## Aop
 
@@ -73,9 +74,6 @@ AoP 称之为面向切面（方面）编程，目的是：在不通过修改源�
 {% endalert %}
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/202112301657855.png %}
-
-{% post_link Java/Spring全家桶/Spring/AOP "详细了解 Spring 中的AoP"%}
-
 
 ## 事务管理
 
@@ -90,16 +88,16 @@ Webflux 是 Spring 5 增加的新模块，用于 Web 开发，功能和 SpringMV
 Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作，又是一套 JDBC 操作的模板，（可以跳过不深入学习）后续对数据库的操作有更高的 ORM 框架
 
 ## Spring 注解驱动开发
+
 {% alert info no-icon %}
 
 配置文件开发方式，方便新手入门学习并了解`Spring`中的相关定义，但是编写方式十分繁琐，不容易维护，错误难以排查，以及对项目配置文件的维护增加了项目的复杂度，所以在 SpringBoot 和 SpringCloud 兴起之后，{% hl_text red %} Spring 的注解驱动开发就用的非常多了{% endhl_text %}!。学习 Spring 中常用的注解能够提高开发效率
 
 {% endalert %}
 
-
 ## 附录
 
-[视频链接]:https://www.bilibili.com/video/BV1gW411W7wy
-[官方中文文档]:https://lfvepclr.gitbooks.io/spring-framework-5-doc-cn/content/
-[官方英文文档]:https://docs.spring.io/spring-framework/docs/current/reference/html/index.html
-[官方文档]:https://docs.spring.io/spring-framework/docs/current/reference/html/index.html
+[视频链接]: https://www.bilibili.com/video/BV1gW411W7wy
+[官方中文文档]: https://lfvepclr.gitbooks.io/spring-framework-5-doc-cn/content/
+[官方英文文档]: https://docs.spring.io/spring-framework/docs/current/reference/html/index.html
+[官方文档]: https://docs.spring.io/spring-framework/docs/current/reference/html/index.html

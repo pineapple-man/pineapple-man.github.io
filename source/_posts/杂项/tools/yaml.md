@@ -11,23 +11,24 @@ tags: 必备小技能
 keywords: yaml
 excerpt: 本文主要讲解yaml的语法以及规范
 ---
+
 <!-- toc -->
+
 ![]()
 
 ## 1. 简介
 
 Yaml 是一个可读性高的用来表达资料序列的格式，非常适合用来做<font style="color:red;font-weight:bold">以数据为中心</font>的配置文件
 
-:sparkles:Yaml  格式的特点
+:sparkles:Yaml 格式的特点
 
-
-1. YAML的可读性好
-2. YAML和脚本语言的交互性好
-3. YAML使用实现语言的数据类型
-4. YAML有一个一致的信息模型
-5. YAML易于实现
-6. YAML可以基于流来处理
-7. YAML表达能力强，扩展性好
+1. YAML 的可读性好
+2. YAML 和脚本语言的交互性好
+3. YAML 使用实现语言的数据类型
+4. YAML 有一个一致的信息模型
+5. YAML 易于实现
+6. YAML 可以基于流来处理
+7. YAML 表达能力强，扩展性好
 
 ## 2. 语法
 
@@ -93,6 +94,6 @@ list:
 ```
 
 ## 附录
+
 [菜鸟教程](https://www.runoob.com/w3cnote/yaml-intro.html)
 [wikipedia](https://en.wikipedia.org/wiki/YAML)
-

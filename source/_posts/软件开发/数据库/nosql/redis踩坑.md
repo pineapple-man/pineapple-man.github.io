@@ -11,7 +11,9 @@ tags: Redis
 keywords: Redis 踩坑
 excerpt: 本文主要记录平时使用 Redis 时遇到的所有问题
 ---
+
 <!-- toc -->
+
 ## 安装错误
 
 ```c
@@ -110,10 +112,9 @@ make[1]: Leaving directory `/opt/redis-6.0.6/src'
 make: *** [all] Error 2
 ```
 
-
 ### 原因
 
-自从`Redis 6.0`之后，编译 redis 需要支持 C11 特性，C11 特性在4.9中被引入，Centos7 默认gcc版本为 4.8.5，所以需要升级 gcc 版本
+自从`Redis 6.0`之后，编译 redis 需要支持 C11 特性，C11 特性在 4.9 中被引入，Centos7 默认 gcc 版本为 4.8.5，所以需要升级 gcc 版本
 
 ### 解决方法
 
@@ -128,16 +129,15 @@ scl enable devtoolset-9 bash
 {% alert success no-icon %}
 
 slave 从头开始复制，会将 master 所有的内容都拷贝到 slaver 中
-{% endalert %} 
+{% endalert %}
 
-
-从机是否可以写？set可否？
+从机是否可以写？set 可否？
 
 {% alert success no-icon%}
-从机不可写，不可set，主机可写
+从机不可写，不可 set，主机可写
 {%endalert%}
 
-主机shutdown后情况如何？从机是上位还是原地待命
+主机 shutdown 后情况如何？从机是上位还是原地待命
 {% alert success no-icon%}
 从机还是原地待命（咸鱼翻身，还是咸鱼）
 {%endalert%}
@@ -147,13 +147,11 @@ slave 从头开始复制，会将 master 所有的内容都拷贝到 slaver 中
 能
 {% endalert %}
 
-其中一台从机down后情况如何？依照原有它能跟上大部队吗？
+其中一台从机 down 后情况如何？依照原有它能跟上大部队吗？
 {% alert success no-icon %}
-不能跟上，每次与master断开之后，都需要重新连接，除非配置进 redis.conf 文件（具体位置：redis.conf搜寻`##### REPLICATION ####`）
+不能跟上，每次与 master 断开之后，都需要重新连接，除非配置进 redis.conf 文件（具体位置：redis.conf 搜寻`##### REPLICATION ####`）
 {% endalert %}
-
 
 ## 附录
 
 [解决安装错误](https://blog.csdn.net/u011552171/article/details/108189641)
-

@@ -11,13 +11,10 @@ tags: Web
 keywords: jackson
 excerpt: 本文主要讲解 Spring 中的序列化工具——Jackson
 ---
+
 <!-- toc -->
 
 ## 概述
-
-
-
-
 
 ## 常见问题
 
@@ -33,6 +30,6 @@ https://www.cnblogs.com/bolingcavalry/p/14360209.html
 
 https://blog.csdn.net/weixin_44130081/article/details/89678450
 
-[jackson序列化错误](https://cloud.tencent.com/developer/article/1668655)
+[jackson 序列化错误](https://cloud.tencent.com/developer/article/1668655)
 
 https://blog.csdn.net/yu870646595/article/details/78523402

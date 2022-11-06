@@ -11,10 +11,12 @@ tags: DevOps
 keywords: travis
 excerpt: 由于一直使用travis CI 进行博客的自动化部署，在这里记录一下travis的基本使用方式
 ---
+
 <!-- toc -->
+
 ## 概述
 
-编写代码只是软件开发的一小部分，更多的时间往往花在构建（build）和测试（test），这也是CI/CD在最近不断追求的事情
+编写代码只是软件开发的一小部分，更多的时间往往花在构建（build）和测试（test），这也是 CI/CD 在最近不断追求的事情
 
 ## 持续集成
 
@@ -56,6 +58,7 @@ install:
 ```
 install: true
 ```
+
 ### script 字段
 
 `script`字段用来指定构建或测试脚本，与`install`字段相同，如果有多个采用`yml`数组格式进行书写
@@ -65,6 +68,7 @@ script:
   - hexo clean # 解决缓存文件未更新问题
   - hexo generate # generate static files
 ```
+
 :notes:`script`与`install`不一样，如果`command1`失败，`command2`会继续执行。但是，整个构建阶段的状态是失败，如果`command2`只有在`command1`成功后才能执行，就要写成下面这样
 
 ```yml
@@ -79,7 +83,7 @@ script: command1 && command2
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
     branch: main
@@ -87,7 +91,7 @@ deploy:
 
 ### 钩子方法
 
-Travis 为`install`和`script`两个阶段提供了7个钩子，能够更加精确的规定每个阶段的构建行为
+Travis 为`install`和`script`两个阶段提供了 7 个钩子，能够更加精确的规定每个阶段的构建行为
 
 |      钩子      |         阶段          |
 | :------------: | :-------------------: |
@@ -117,13 +121,13 @@ after_script
 
 Travis 每次运行，可能会返回四种状态
 
-|   状态   |                             含义                             |
-| :------: | :----------------------------------------------------------: |
-|  passed  |              运行成功，所有步骤的退出码都是`0`               |
-| canceled |                         用户取消执行                         |
+|   状态   |                                   含义                                   |
+| :------: | :----------------------------------------------------------------------: |
+|  passed  |                    运行成功，所有步骤的退出码都是`0`                     |
+| canceled |                               用户取消执行                               |
 | errored  | `before_install`、`install`、`before_script`有非零退出码，运行会立即停止 |
-|  failed  |              `script`有非零状态码 ，会继续运行               |
+|  failed  |                    `script`有非零状态码 ，会继续运行                     |
 
 ## 附录
 
-[持续集成服务Travis CI 教程——阮一峰](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
+[持续集成服务 Travis CI 教程——阮一峰](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)

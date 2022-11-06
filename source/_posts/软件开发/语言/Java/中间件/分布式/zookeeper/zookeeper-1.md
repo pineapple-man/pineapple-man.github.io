@@ -1,16 +1,16 @@
 ---
 title: ZooKeeper（一）环境配置
 date: 2021-10-19 19:53:14
-tags: [分布式组件,ZooKeeper]
-toc:  true
+tags: [分布式组件, ZooKeeper]
+toc: true
 metaAlignment: center
 categories: 中间件
 excerpt: ZooKeeper作为常用的分布式组件，本文主要记录ZooKeeper的环境配置（单机和集群）
 ---
+
 <!-- toc -->
 
-
-ZooKeeper单机安装分为两种方式：**压缩包安装**和**Docker安装**本文都会介绍；另一方面，ZK 集群同样有不同的配置方式，本文主要记录如何通过 Docker 创建 ZooKeeper 集群
+ZooKeeper 单机安装分为两种方式：**压缩包安装**和**Docker 安装**本文都会介绍；另一方面，ZK 集群同样有不同的配置方式，本文主要记录如何通过 Docker 创建 ZooKeeper 集群
 
 :dart:本文将以`zk-3.5.7`版本为基础，介绍不同方式的安装步骤
 
@@ -18,7 +18,7 @@ ZooKeeper单机安装分为两种方式：**压缩包安装**和**Docker安装**
 
 ### 资源准备
 
-:book:前往[官网](https://zookeeper.apache.org/  )进行下载
+:book:前往[官网](https://zookeeper.apache.org/)进行下载
 
 ![image-20211012000505154](/assets/images/zookeeper/image-20211012000505154.png)
 
@@ -28,11 +28,11 @@ ZooKeeper单机安装分为两种方式：**压缩包安装**和**Docker安装**
 
 ### 安装
 
-:notes:由于`ZooKeeper`是由Java编写的，所以**需要基础的 Java 环境**
+:notes:由于`ZooKeeper`是由 Java 编写的，所以**需要基础的 Java 环境**
 
 ```bash
 # 在下载 ZooKeeper 文件的目录下解压文件
-tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz 
+tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz
 # 进入到解压目录
 cd apache-zookeeper-3.5.7-bin
 # ZooKeeper 简单配置，配置文件名必须为zoo.cfg，否则启动将出错
@@ -60,7 +60,7 @@ dataDir=/root/zk/zkDataDir	#这里更改为一个持久化目录
 clientPort=2181
 ```
 
-:notes:必须修改`dataDir`配置，因为这是持久化数据保存的目录，不能为`/tmp`（`/tmp`目录会被Linux系统定时清理）；如果配置的目录不存在，zookeeper会自动创建
+:notes:必须修改`dataDir`配置，因为这是持久化数据保存的目录，不能为`/tmp`（`/tmp`目录会被 Linux 系统定时清理）；如果配置的目录不存在，zookeeper 会自动创建
 
 ### 简单的操作
 
@@ -100,7 +100,7 @@ docker run --privileged --network host -v /data/zookeeper_data/data:/data -v /da
 
 :notes:血的教训，一定**要先关闭防火墙**，否则总是出现稀奇古怪的问题
 
-| 主机名 |     IP地址      |
+| 主机名 |     IP 地址     |
 | :----: | :-------------: |
 | Master | 192.168.117.128 |
 | node1  | 192.168.117.129 |
@@ -119,11 +119,11 @@ touch myid
 
 集群中不同主机，对应的机器编号是不同的，分配的机器编号如下
 
-|  主机  | zk服务器编号 |
-| :----: | :----------: |
-| master |      0       |
-| node1  |      1       |
-| node2  |      2       |
+|  主机  | zk 服务器编号 |
+| :----: | :-----------: |
+| master |       0       |
+| node1  |       1       |
+| node2  |       2       |
 
 ```bash
 # 修改每个主机的 zk 服务器编号文件，例如 master 主机的编号修改过程如下
@@ -161,7 +161,7 @@ server.2=192.168.117.130:2888:3888
 
 - C：标识服务器 Follower 与集群中的 Leader 服务器交换信息的端口
 
-- D：标识再选举通信端口，如果Leader 服务器挂了，这个端口就是用来执行选举时服务器相互通信的端口，通过这个端口进行重新选举leader
+- D：标识再选举通信端口，如果 Leader 服务器挂了，这个端口就是用来执行选举时服务器相互通信的端口，通过这个端口进行重新选举 leader
 
 ### 启动容器
 
@@ -170,7 +170,9 @@ docker run -d --rm --privileged --network host -v /data/zookeeper_data/data:/dat
 ```
 
 ### 查看 zk 集群状态
-完成以上步骤，现在检查zk集群是否真的搭建完成
+
+完成以上步骤，现在检查 zk 集群是否真的搭建完成
+
 ```bash
 # 即可进入 zk 容器中
 docker exec -it zk /bin/bash

@@ -11,7 +11,9 @@ tags: Redis
 keywords: Jedis
 excerpt: 本文主要记录 Jedis 的常见用法
 ---
+
 <!-- toc -->
+
 ## 概述
 
 {% alert success no-icon %}
@@ -21,6 +23,7 @@ jedis 是 java redis 的简写，目的是通过 java 程序进行 redis 相关�
 {% endalert %}
 
 如果想要使用此中间件，只需要向项目中引入以下依赖即可
+
 ```xml
 <dependency>
 	<groupId>redis.clients</groupId>
@@ -30,7 +33,9 @@ jedis 是 java redis 的简写，目的是通过 java 程序进行 redis 相关�
 ```
 
 ## 联通测试
+
 引入依赖之后，仅需要通过如下步骤即可测试 Redis 的联通性，查看项目是否使用 Jedis 成功
+
 ```java
 public class TestRedis {
    public static void main(String[] args) {
@@ -42,6 +47,7 @@ public class TestRedis {
    }
 }
 ```
+
 ## Jedis 主从复制
 
 ```java
@@ -68,10 +74,10 @@ public class TestMS {
 class JedisPollUtils {
     //懒汉式单例模式创建连接池
    private static volatile JedisPool jedisPool = null;
-   
+
    private JedisPollUtils() {
    }
-   
+
    public static JedisPool getJedisPoolInstance() {
       if (jedisPool == null) {
          synchronized (JedisPollUtils.class) {
@@ -87,7 +93,7 @@ class JedisPollUtils {
       }
       return jedisPool;
    }
-   
+
    public static void release(Jedis jedis) {
       if (null != jedis) {
           //回收连接，会将当前连接分配给另一个线程
@@ -99,15 +105,14 @@ class JedisPollUtils {
 
 ## 连接池常用参数
 
-|       参数       |                             含义                             |
-| :--------------: | :----------------------------------------------------------: |
-|   **MaxTotal**   | 控制一个pool可分配多少个jedis实例，通过pool.getResource()来获取；如果赋值为-1，则表示不限制； |
-|   **maxIdle**    |     控制一个pool最多有多少个状态为idle(空闲)的jedis实例      |
-|   **maxWait**    | 表示当borrow一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛JedisConnectionException |
-| **testOnBorrow** | 获得一个jedis实例的时候是否检查连接可用性（ping()）；如果为true，则得到的jedis实例均是可用的 |
-| **testOnReturn** |  return 一个jedis实例给pool时，是否检查连接可用性（ping()）  |
+|       参数       |                                                 含义                                                 |
+| :--------------: | :--------------------------------------------------------------------------------------------------: |
+|   **MaxTotal**   |  控制一个 pool 可分配多少个 jedis 实例，通过 pool.getResource()来获取；如果赋值为-1，则表示不限制；  |
+|   **maxIdle**    |                       控制一个 pool 最多有多少个状态为 idle(空闲)的 jedis 实例                       |
+|   **maxWait**    | 表示当 borrow 一个 jedis 实例时，最大的等待时间，如果超过等待时间，则直接抛 JedisConnectionException |
+| **testOnBorrow** |  获得一个 jedis 实例的时候是否检查连接可用性（ping()）；如果为 true，则得到的 jedis 实例均是可用的   |
+| **testOnReturn** |                    return 一个 jedis 实例给 pool 时，是否检查连接可用性（ping()）                    |
 
 ## 附录
 
-[JedisAPI整理](https://blog.csdn.net/fanbaodan/article/details/89047909)
-
+[JedisAPI 整理](https://blog.csdn.net/fanbaodan/article/details/89047909)

@@ -7,11 +7,12 @@ date: 2021-10-23 12:01:47
 categories: Java
 tags: Spring
 keywords:
-    - Spring
-    - IoC
-    - 控制反转
+  - Spring
+  - IoC
+  - 控制反转
 excerpt: 本文主要介绍 IoC 思想，以及为什么需要 IoC
 ---
+
 <!-- toc -->
 
 ## 紧耦合
@@ -52,7 +53,7 @@ public class Test {
 
 ### 分析
 
-Monitor 类的 command方法中使用 new 关键字创建了一个 Student 类的对象，**这种代码的耦合度就很高，维护起来的成本就很高**
+Monitor 类的 command 方法中使用 new 关键字创建了一个 Student 类的对象，**这种代码的耦合度就很高，维护起来的成本就很高**
 
 如果，某一天，学校体贴学生，让专门的清洁工来打扫卫生，此时班长需要更改其内部的代码，于是 Monitor 类就不得不重构，于是代码变成了这样：
 
@@ -89,7 +90,7 @@ public class Student implements CleanAble {
 
     @Override
     public void clean() {
-        System.out.println("我是学生，我在打扫卫生");        
+        System.out.println("我是学生，我在打扫卫生");
     }
 
     public boolean canClean() {
@@ -102,7 +103,7 @@ public class Worker implements CleanAble {
 
     @Override
     public void clean() {
-        System.out.println("我是清洁工，我在扫地");        
+        System.out.println("我是清洁工，我在扫地");
     }
 }
 //劳动委员类代码修改如下
@@ -131,9 +132,9 @@ public class Monitor {
 :thinking:谁的控制被反转了？
 
 - 在紧耦合的情况下，班长需要自己通过 new 关键字创建依赖的对象
-- 通过IoC之后，班长制行为被发转给了劳动委员，劳动委员代替班长指派人员去扫地，班长知道劳动委员会安排人去扫地就可以了
+- 通过 IoC 之后，班长制行为被发转给了劳动委员，劳动委员代替班长指派人员去扫地，班长知道劳动委员会安排人去扫地就可以了
 
-:notes:通过IoC，可以将原本的主控制类的繁琐判断操作转化为简单的使用操作
+:notes:通过 IoC，可以将原本的主控制类的繁琐判断操作转化为简单的使用操作
 
 ## 依赖注入
 
@@ -169,7 +170,7 @@ public class Monitor {
 
 如果对象有任何更改，则依赖注入会对其进行调查，不会影响到使用这些对象的类。这样，如果将来对象发生变化，依赖注入负责为类提供正确的对象，使用依赖的类并不会发生任何的变化
 
-### IoC的背后——依赖注入
+### IoC 的背后——依赖注入
 
 一个类不应静态配置其依赖项（类应该依赖于抽象，而不是依赖于具体），而应由其他一些类从外部进行配置
 

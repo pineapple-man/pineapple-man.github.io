@@ -11,10 +11,8 @@ excerpt: 本文主要讲解如何使用 JJWT 进行 JWT
 date: 2021-11-27 12:08:32
 thumbnailImage:
 ---
+
 <!-- toc -->
-
-
->在学习 JJWT 之前，推荐你先了解 JWT 相关知识，在本站中也摘录有 JWT 相关知识，如果需要学习，请访问{% post_link 解决方案/认证解决方案 这里%}
 
 JWT 的声明一般被用来在客户端和服务端间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑信息
 
@@ -22,6 +20,7 @@ JWT 的声明一般被用来在客户端和服务端间传递被认证的用户�
 
 JJWT 旨在成为最易使用和理解的库，用于在 JVM 和 Android 上创建和验证 JSON Web 令牌，`JWT`本身是支持加密签名的，在使用签名的`JWT`时，需要注意一下两点：
 {% alert success no-icon%}
+
 - 保证 JWT 是由认识的人创建的（JWT 是真实的）
 - 保证在创建 JWT 之后没有操纵或改变 JWT（保持其完整性）
 
@@ -94,7 +93,7 @@ try {
 }
 ```
 
-## JWS 
+## JWS
 
 JWS 就是已经签名的 JWT，下面展示了如何手动实现 JWS
 
@@ -127,7 +126,7 @@ String jws = concatenated + '.' + Base64.getEncoder().encode( signature )
 
 ```java
 String jws = Jwts.builder() 	// (1)
-    .setSubject("pineapple-man")      	// (2) 
+    .setSubject("pineapple-man")      	// (2)
     .signWith(key)          	// (3)
     .compact();             	// (4)
 
@@ -158,15 +157,15 @@ String jws = Jwts.builder()
 
 `Claims`是`JWT`的正文部分，包含`JWT`创建者希望向`JWT`收件人提供的信息，常见的 API 如下
 
-|       API       |                             含义                             |
-| :-------------: | :----------------------------------------------------------: |
-|   `setIssuer`   | sets the [`iss` (Issuer) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.1) |
-|  `setSubject`   | sets the [`sub` (Subject) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.2) |
-|  `setAudience`  | sets the [`aud` (Audience) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.3) |
+|       API       |                                            含义                                             |
+| :-------------: | :-----------------------------------------------------------------------------------------: |
+|   `setIssuer`   |     sets the [`iss` (Issuer) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.1)      |
+|  `setSubject`   |     sets the [`sub` (Subject) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.2)     |
+|  `setAudience`  |    sets the [`aud` (Audience) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.3)     |
 | `setExpiration` | sets the [`exp` (Expiration Time) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.4) |
-| `setNotBefore`  | sets the [`nbf` (Not Before) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.5) |
-|  `setIssuedAt`  | sets the [`iat` (Issued At) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.6) |
-|     `setId`     | sets the [`jti` (JWT ID) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.7) |
+| `setNotBefore`  |   sets the [`nbf` (Not Before) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.5)    |
+|  `setIssuedAt`  |    sets the [`iat` (Issued At) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.6)    |
+|     `setId`     |     sets the [`jti` (JWT ID) Claim](https://tools.ietf.org/html/rfc7519#section-4.1.7)      |
 
 ```java
 String jws = Jwts.builder()
@@ -174,14 +173,14 @@ String jws = Jwts.builder()
     .setSubject("Bob")
     .setAudience("you")
     .setExpiration(expiration) 	//a java.util.Date
-    .setNotBefore(notBefore) 	//a java.util.Date 
+    .setNotBefore(notBefore) 	//a java.util.Date
     .setIssuedAt(new Date()) 	// for example, now
     .setId(UUID.randomUUID()) 	//just an example id
-    
+
     /// ... etc ...
 ```
 
-当然也可以自定义 Claims，如果需要设置一个或多个与上面显示的标准setter方法声明不匹配的自定义声明，可以根据需要多次调用`JwtBuilde.claim` 声明：
+当然也可以自定义 Claims，如果需要设置一个或多个与上面显示的标准 setter 方法声明不匹配的自定义声明，可以根据需要多次调用`JwtBuilde.claim` 声明：
 
 ```java
 String jws = Jwts.builder()
@@ -204,7 +203,7 @@ String jws = Jwts.builder()
    .compact();
 ```
 
-使用`signWith`时，`JJWT`还会自动使用相关的算法标识符设置所需的`alg`头。类似地，如果使用长度为4096位的`RSA PrivateKey`调用`signWith`，`JJWT`将使用`RS512`算法并自动将`alg`头设置为`RS512`
+使用`signWith`时，`JJWT`还会自动使用相关的算法标识符设置所需的`alg`头。类似地，如果使用长度为 4096 位的`RSA PrivateKey`调用`signWith`，`JJWT`将使用`RS512`算法并自动将`alg`头设置为`RS512`
 {% alert info no-icon%}
 
 :notes:不能用`PublicKeys`签署`JWT`，因为这总是不安全的。 `JJWT`将拒绝任何指定的`PublicKey`的方式签名，并抛出异常：`InvalidKeyException`
@@ -227,7 +226,7 @@ try {
     .setSigningKey(key)         	// (2)
     .parseClaimsJws(jwsString); 	// (3)
     // we can safely trust the JWT
-catch (JwtException ex) {       	
+catch (JwtException ex) {
     // we cannot use the JWT as intended by its creator
 }
 
@@ -251,7 +250,7 @@ Jwts.parser()
   .parseClaimsJws(jwsString);
 ```
 
-:question:如果应用程序不止使用一个SecretKey或KeyPair会怎么样？ 如果可以使用不同的SecretKeys或公钥/私钥或两者的组合创建JWS，该怎么办？
+:question:如果应用程序不止使用一个 SecretKey 或 KeyPair 会怎么样？ 如果可以使用不同的 SecretKeys 或公钥/私钥或两者的组合创建 JWS，该怎么办？
 {% alert success no-icon%}
 
 在这些情况下，无法使用单个键调用`JwtParser`的`setSigningKey`方法。相反，需要使用`SigningKeyResolver`方法指定解析 JWS 方法
@@ -336,6 +335,7 @@ try {
     // the 'myfield' field was missing or did not have a 'myRequiredValue' value
 }
 ```
+
 ### 压缩
 
 如果`JWT`的`Claim`域可以足够大，包含许多`key/value`对；或者单个值非常冗长，可以通过**压缩来减小创建的`JWS`的大小**
@@ -347,7 +347,7 @@ try {
 
 #### 默认压缩
 
-如果要压缩`JWT`，可以使用`JwtBuilde`r的`compressWith(CompressionAlgorithm)`方法。 例如：
+如果要压缩`JWT`，可以使用`JwtBuilde`r 的`compressWith(CompressionAlgorithm)`方法。 例如：
 
 ```java
 Jwts.builder()
@@ -372,14 +372,14 @@ Jwts.parser()
 
 ```java
 public class MyCompressionCodecResolver implements CompressionCodecResolver {
-        
+
     @Override
     public CompressionCodec resolveCompressionCodec(Header header) throws CompressionException {
-        
+
         String alg = header.getCompressionAlgorithm();
-            
-        CompressionCodec codec = getCompressionCodec(alg); //implement 
-            
+
+        CompressionCodec codec = getCompressionCodec(alg); //implement
+
         return codec;
     }
 }
@@ -388,4 +388,3 @@ public class MyCompressionCodecResolver implements CompressionCodecResolver {
 ## 附录
 
 [Java Web Token 之 JJWT 使用](https://blog.csdn.net/weixin_41540822/article/details/88781964)
-

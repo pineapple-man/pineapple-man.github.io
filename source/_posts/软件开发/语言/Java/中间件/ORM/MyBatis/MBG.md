@@ -5,33 +5,35 @@ clearReading: true
 thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 00:16:06
-thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mybatis.jpg'
+thumbnailImage: "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mybatis.jpg"
 categories: 中间件
-tags: 
-    - MyBatis
+tags:
+  - MyBatis
 keywords:
-    - MyBatis 逆向工程
+  - MyBatis 逆向工程
 excerpt: 本文是MyBatis逆向工程的学习笔记
 ---
+
 <!-- toc -->
+
 ## 概述
 
 :question:什么是逆向工程？
 
-- 根据数据表table，逆向分析数据表，自动生成`JavaBean`,`Dao Interface(mapper)`和`dao.xml`的一种技术
-- MyBatis Generator（简称MBG），是一个专门为`MyBatis`框架使用者定制的代码生成器，能够快速的根据数据库逆向生成需要书写的Java代码
+- 根据数据表 table，逆向分析数据表，自动生成`JavaBean`,`Dao Interface(mapper)`和`dao.xml`的一种技术
+- MyBatis Generator（简称 MBG），是一个专门为`MyBatis`框架使用者定制的代码生成器，能够快速的根据数据库逆向生成需要书写的 Java 代码
 
 如果没有逆向工程，正常的开发流程应该采取如下步骤：
 
 ![正常开发流程](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/20211024002032.png)
 
-:notes:但是如果使用了MyBatis逆向工程后，仅需要简单的配置，就可以自动生成繁琐且没有技术含量的`Dao、Mapper`等文件
+:notes:但是如果使用了 MyBatis 逆向工程后，仅需要简单的配置，就可以自动生成繁琐且没有技术含量的`Dao、Mapper`等文件
 
-:sparkles:MBG特点
+:sparkles:MBG 特点
 
-- 可以快速的根据数据库表生成对应的映射文件，接口以及bean类
-- 支持基本的增删改查以及QBC风格的条件查询
-- 表连接、存储过程等复杂SQL的定义需要手工编写
+- 可以快速的根据数据库表生成对应的映射文件，接口以及 bean 类
+- 支持基本的增删改查以及 QBC 风格的条件查询
+- 表连接、存储过程等复杂 SQL 的定义需要手工编写
 
 ## MBG 使用
 
@@ -112,11 +114,14 @@ MyBatis 的逆向工程使用起来非常方便，仅需要两步（**配置依�
 </generatorConfiguration>
 ```
 
-:sparkles:随后使用`Maven`中的插件，即可生成对应的Mapper和Model文件
+:sparkles:随后使用`Maven`中的插件，即可生成对应的 Mapper 和 Model 文件
 
-:notebook:总结：MyBatis 逆向工程生成的Mapper仅仅是单表DAO操作
-## 出现额外的 *WithBLOBs.java 文件
-进行逆向工程时，会出现 *WithBLOBs 继承了 BaseResultMap，不仅有了BaseResultMap中的属性，同时也有了自己的 paramData 属性。出现这样的情况是因为`param_data`列指定的 jdbcType 是 longvarchar 类型，这个 jdbcType 属性是 JDBC 需要用到的，MyBatis 并不会用到。所以为了解决这种问题，需要额外的在逆向表配置文件中加入下列定义：
+:notebook:总结：MyBatis 逆向工程生成的 Mapper 仅仅是单表 DAO 操作
+
+## 出现额外的 \*WithBLOBs.java 文件
+
+进行逆向工程时，会出现 \*WithBLOBs 继承了 BaseResultMap，不仅有了 BaseResultMap 中的属性，同时也有了自己的 paramData 属性。出现这样的情况是因为`param_data`列指定的 jdbcType 是 longvarchar 类型，这个 jdbcType 属性是 JDBC 需要用到的，MyBatis 并不会用到。所以为了解决这种问题，需要额外的在逆向表配置文件中加入下列定义：
+
 ```xml
 <table tableName="em_positive" domainObjectName="EmployeePositive"
                enableCountByExample="false"
@@ -131,8 +136,9 @@ MyBatis 的逆向工程使用起来非常方便，仅需要两步（**配置依�
 ```
 
 这样在逆向工程时，自定义配置两列的 jdbcType 就会自动转换成 VARCHAR 类型，也就不会再生成额外的文件了
+
 ## 附录
 
 [官方文档](http://www.mybatis.org/generator)
-[IDEA中利用MyBatis Generator逆向工程](https://www.yisu.com/zixun/207459.html)
-[MyBatis逆向工程笔记——CSDN](https://blog.csdn.net/eson_15/article/details/51694684)
+[IDEA 中利用 MyBatis Generator 逆向工程](https://www.yisu.com/zixun/207459.html)
+[MyBatis 逆向工程笔记——CSDN](https://blog.csdn.net/eson_15/article/details/51694684)

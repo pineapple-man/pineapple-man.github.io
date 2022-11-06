@@ -11,11 +11,13 @@ excerpt: 本文主要记录在 Spring 中的 RestTemplate 的使用方式
 date: 2022-01-12 12:31:21
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 Spring RestTemplate 可以用来构建 Spring REST 客户端，访问其他服务提供的 REST API
 
 ## 概述
+
 {% blockquote "spring docs"  "Spring doc"%}
 
 Spring 文档建议使用非阻塞、反应式的 `WebClient` 对象而不再是 `RestTemplate`，因为 `WebClient` 为同步、异步和流场景提供了有效支持，并且 `RestTemplate` 将在未来版本中弃用
@@ -34,7 +36,7 @@ spring 框架提供的 RestTemplate 类可用于在应用中调用 rest 服务�
 
 {%endalert%}
 
-在 Spring 应用程序中访问第三方 REST 服务与使用 Spring RestTemplate 类有关。RestTemplate 类的设计原则与许多其他Spring 模板类(例如：JdbcTemplate、JmsTemplate)相同，为执行复杂任务提供了一种具有默认行为的简化方法「模板设计模式」
+在 Spring 应用程序中访问第三方 REST 服务与使用 Spring RestTemplate 类有关。RestTemplate 类的设计原则与许多其他 Spring 模板类(例如：JdbcTemplate、JmsTemplate)相同，为执行复杂任务提供了一种具有默认行为的简化方法「模板设计模式」
 
 RestTemplate 默认依赖 JDK 提供 http 连接的能力 `HttpURLConnection`，如果有需要的话也可以通过 `setRequestFactory` 方法替换为例如 `Apache HttpComponents`、`Netty`或 `OkHttp` 等其它 HTTP library
 
@@ -60,7 +62,9 @@ RestTemplate 具体的继承体系如下：
 ## 构建 `RestTemplate`
 
 想要使用`RestTemplate`需要在 Spring IoC 容器中创建`RestTemplate`，这里给出了几种创建方式
+
 ### 使用 `RestTemplateBuilder`
+
 {% codeblock "基于 RestTemplateBuilder 的配置" lang:java %}
 @Bean
 public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -69,9 +73,12 @@ public RestTemplate restTemplate(RestTemplateBuilder builder) {
             .setConnectTimeout(Duration.ofMillis(3000))
             .setReadTimeout(Duration.ofMillis(3000))
             .build();
+
 }
 {% endcodeblock %}
+
 ### 使用 `SimpleClientHttpRequestFactory`
+
 {% codeblock "基于 SimpleClientHttpRequestFactory 的配置" lang:java %}
 @Bean
 public RestTemplate restTemplate() {
@@ -80,33 +87,38 @@ public RestTemplate restTemplate() {
     factory.setConnectTimeout(3000);
     factory.setReadTimeout(3000);
     return new RestTemplate(factory);
+
 }
 {% endcodeblock %}
+
 ### 使用 Apache `HTTPClient`（推荐）
+
 {% codeblock "基于 Apache HttpClient 的配置" lang:java %}
 @Autowired
 CloseableHttpClient httpClient;
 
-@Value("${api.host.baseurl}") //配置在 application.yaml中
+@Value("${api.host.baseurl}") //配置在 application.yaml 中
 private String apiHost;
 
 @Bean
 public RestTemplate restTemplate() {
-    RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
-    restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(apiHost));
-    return restTemplate;
+RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
+restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(apiHost));
+return restTemplate;
 }
 
 @Bean
 @ConditionalOnMissingBean
 public HttpComponentsClientHttpRequestFactory clientHttpRequestFactory() {
-    HttpComponentsClientHttpRequestFactory clientHttpRequestFactory 
-                        = new HttpComponentsClientHttpRequestFactory();
-    clientHttpRequestFactory.setHttpClient(httpClient);
-    return clientHttpRequestFactory;
+HttpComponentsClientHttpRequestFactory clientHttpRequestFactory
+= new HttpComponentsClientHttpRequestFactory();
+clientHttpRequestFactory.setHttpClient(httpClient);
+return clientHttpRequestFactory;
 }
 {% endcodeblock %}
-## RestTemplate  常用操作
+
+## RestTemplate 常用操作
+
 ```java
 // get 请求
 public <T> T getForObject();
@@ -123,7 +135,7 @@ public <T> ResponseEntity<T> postForEntity();
 // put 请求
 public void put();
 
-// patch 
+// patch
 public <T> T patchForObject
 
 // delete
@@ -135,17 +147,19 @@ public Set<HttpMethod> optionsForAllow
 // exchange
 public <T> ResponseEntity<T> exchange()
 ```
+
 上面提供的几个接口，基本是 Http 提供的几种访问方式的对应，如果想查看更加全面的 API 文档，可以访问[官方 API 网址](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
 
 ### RestTemplate – GET 请求
+
 执行 `GET` 操作的可用方法有
 
-|                           API 方法                           |                             含义                             |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                 getForObject(url, classType)                 | 通过对 URL 执行 GET 来检索表示。响应（如果有）给定类型并返回 |
-|               getForEntity(url, responseType)                |     通过对 URL 执行 GET 来检索作为*ResponseEntity*的表示     |
-|    exchange(url, httpMethod, requestEntity, responseType)    |   执行指定`RequestEntity`并将响应作为*ResponseEntity*返回    |
-| execute(url, httpMethod, requestCallback, responseExtractor) | 使用HTTPMethod访问给定的URI模板，设置相应的请求回调RequestCallback，并且使用ResponseExtractor检查响应信息 |
+|                           API 方法                           |                                                       含义                                                       |
+| :----------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
+|                 getForObject(url, classType)                 |                           通过对 URL 执行 GET 来检索表示。响应（如果有）给定类型并返回                           |
+|               getForEntity(url, responseType)                |                               通过对 URL 执行 GET 来检索作为*ResponseEntity*的表示                               |
+|    exchange(url, httpMethod, requestEntity, responseType)    |                             执行指定`RequestEntity`并将响应作为*ResponseEntity*返回                              |
+| execute(url, httpMethod, requestCallback, responseExtractor) | 使用 HTTPMethod 访问给定的 URI 模板，设置相应的请求回调 RequestCallback，并且使用 ResponseExtractor 检查响应信息 |
 
 :question:可以使用的有两种方式 `getForObject` 和 `getForEntity`，那么这两种有什么区别？
 {% alert warning no-icon %}
@@ -157,7 +171,9 @@ public <T> ResponseEntity<T> exchange()
 {% endalert %}
 
 #### getForObject 方式
+
 具体方法调用原型如下：
+
 ```java
 public <T> T getForObject(String url, Class<T> responseType, Object... uriVariables) throws RestClientException ;
 
@@ -165,7 +181,9 @@ public <T> T getForObject(String url, Class<T> responseType, Map<String, ?> uriV
 
 public <T> T getForObject(URI url, Class<T> responseType) throws RestClientException;
 ```
+
 测试代码：
+
 ```java
 public class RestTestmplateTest {
     private RestTemplate restTemplate;
@@ -233,10 +251,10 @@ public class RestTestmplateTest {
 
 {% endalert %}
 
-
-####  `getForEntity` 方式
+#### `getForEntity` 方式
 
 具体方法调用原型如下：
+
 ```java
 public <T> ResponseEntity<T> getForEntity(String url, Class<T> responseType, Object... uriVariables) throws RestClientException ;
 public <T> ResponseEntity<T> getForEntity(String url, Class<T> responseType, Map<String, ?> uriVariables) throws RestClientException;
@@ -292,7 +310,7 @@ public void testPost() {
 上面分别给出了三种方法的调用方式，其中 post 传参区分为两种：**uri 参数**和**表单参数**
 {% alert success no-icon %}
 
-- uri参数和 get 请求中一样，填充 uri 中模板坑位
+- uri 参数和 get 请求中一样，填充 uri 中模板坑位
 - 表单参数，由 `MultiValueMap` 封装，同样是 key-value 结构
 
 {% endalert %}
@@ -315,7 +333,7 @@ public URI postForLocation(URI url, @Nullable Object request) throws RestClientE
 :question:什么样的 REST 接口适合用这种 API 访问？
 {% alert warning no-icon %}
 
-一般登录or注册都是post请求，而这些操作完成之后呢？大部分都是跳转到别的页面去了，这种场景下，就可以使用 `postForLocation` 了，提交数据，并获取返回的URI，一个测试如下
+一般登录 or 注册都是 post 请求，而这些操作完成之后呢？大部分都是跳转到别的页面去了，这种场景下，就可以使用 `postForLocation` 了，提交数据，并获取返回的 URI，一个测试如下
 
 {% endalert %}
 
@@ -324,14 +342,15 @@ public URI postForLocation(URI url, @Nullable Object request) throws RestClientE
 下面主要记录使用过程中遇到的问题
 
 ### ` Could not extract response: no suitable HttpMessageConverter found for response type [class Test1] and content type [application/json;charset=UTF-8]`
+
 出现以上问题，是由于 RestTemplate 构造的时候会缺省加载很多消息转换器，这里是由于没有增加序列化依赖，增加序列化字段相关的`setter`方法即可
 
 ## 附录
 
-[RestTemplate用法说明](https://www.jianshu.com/p/2a59bb937d21)
-[Spring之RestTemplate使用小结](https://juejin.cn/post/6844903656165212174)
+[RestTemplate 用法说明](https://www.jianshu.com/p/2a59bb937d21)
+[Spring 之 RestTemplate 使用小结](https://juejin.cn/post/6844903656165212174)
 [Spring RestTemplate](https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/)
-[springMvc官方文档-RESTClient](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#webmvc-client)
-[spring官方文档rest-endpoint](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#rest-client-access)
+[springMvc 官方文档-RESTClient](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#webmvc-client)
+[spring 官方文档 rest-endpoint](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#rest-client-access)
 [掌握 Spring 之 RestTemplate](https://juejin.cn/post/6844903842065154061)
 [rest-client-access](https://docs.spring.io/spring-framework/docs/5.1.6.RELEASE/spring-framework-reference/integration.html#rest-client-access)
