@@ -11,9 +11,12 @@ tags: 杂七杂八
 keywords: fcrackzip
 excerpt: 最近从网上下载的一个压缩包居然需要密码才能解压，但是提供者并没有提供解压密码，所以本文主要介绍如何使用 fcrackzip 工具进行压缩包密码破解
 ---
+
 <!-- toc -->
+
 ## 概述
-fcrackzip是一款专门破解zip类型压缩文件密码的工具，工具小巧方便、破解速度快，能使用字典和指定字符集破解，适用于linux、mac osx 系统
+
+fcrackzip 是一款专门破解 zip 类型压缩文件密码的工具，工具小巧方便、破解速度快，能使用字典和指定字符集破解，适用于 linux、mac osx 系统
 
 ## `fcrackzip` 工具的使用
 
@@ -22,10 +25,13 @@ fcrackzip是一款专门破解zip类型压缩文件密码的工具，工具小�
 ### `fcrackzip` 安装
 
 对于 mac 系统的电脑可以使用如下命令安装 fcrackzip
+
 ```sh
 brew install fcrackzip
 ```
+
 ### `fcrackzip` 命令的使用
+
 ```
 终端输入命令： fcrackzip -h
 显示结果：
@@ -49,6 +55,7 @@ USAGE: fcrackzip
           [-2|--modulo r/m]             only calculcate 1/m of the password
           file...                    the zipfiles to crack
 ```
+
 其中常用的参数如下：
 
 |     常用参数      |                         含义                         |
@@ -60,12 +67,12 @@ USAGE: fcrackzip
 
 其中需要注意的是指定密码使用的字符集，常见的配置为：`-c 'aA1!'`
 
-| 字符集参数 |               含义               |
-| :--------: | :------------------------------: |
-|    `a`     |        表示小写字母[a-z]         |
-|    `A`     |        表示大写字母[A-Z]         |
-|    `1`     |       表示阿拉伯数字[0-9]        |
-|    `!`     | 表示特殊字符[!:$%&/()=?{[]}+*~#] |
+| 字符集参数 |               含义                |
+| :--------: | :-------------------------------: |
+|    `a`     |         表示小写字母[a-z]         |
+|    `A`     |         表示大写字母[A-Z]         |
+|    `1`     |        表示阿拉伯数字[0-9]        |
+|    `!`     | 表示特殊字符[!:$%&/()=?{[]}+\*~#] |
 
 {% alert warning no-icon %}
 
@@ -74,10 +81,11 @@ USAGE: fcrackzip
 ```
 fcrackzip -b -c 'aA1!' -l 1-20 -u encode.zip
 ```
+
 输入命令后静静等待就可以了，最终终端会显示出最终暴力破解出来的密码
 
 {% endalert %}
 
 ## 附录
 
-[mac破解zip压缩文件密码](https://www.jianshu.com/p/7345247d73c0)
+[mac 破解 zip 压缩文件密码](https://www.jianshu.com/p/7345247d73c0)

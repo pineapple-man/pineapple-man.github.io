@@ -6,14 +6,15 @@ thumbnailImagePosition: right
 metaAlignment: center
 date: 2021-10-24 00:38:47
 thumbnailImage: https://www.apache.org/foundation/press/kit/poweredBy/pb-tomcat.jpg
-categories: 
+categories:
   - Java
 tags: Tomcat
 keywords:
-    - Tomcat
-    - JavaWeb
+  - Tomcat
+  - JavaWeb
 excerpt: 想要知道什么是Tomcat?这事还要从Java Web 聊起
 ---
+
 <!-- toc -->
 
 ## JavaWeb
@@ -45,25 +46,25 @@ web 资源按**实现的技术和呈现的效果**的不同， 又分为静态�
 
 ## 常用的 Web 服务器
 
-| Web服务器 |                           主要特点                           |
-| :-------: | :----------------------------------------------------------: |
-|  Tomcat   | 对 **jsp 和 Servlet 的支持**<br />**轻量级**的 javaWeb 容器（服务器） |
-|   Jboss   | 遵从 JavaEE 规范的<br /> 开放源代码<br />纯 Java 的 EJB 服务器 |
-| GlassFish |      强健的商业服务器， 达到产品级质量（**应用很少**）       |
-|   Resin   | 对 servlet 和 JSP 提供了良好的支持<br/>性能也比较优良（**收费， 应用比较多**） |
-| WebLogic  | 是目前**应用最广泛的 Web 服务器**<br />**支持 JavaEE 规范**<br/> **适合大型项目**（**收费， 用的不多， 适合大公司**） |
+| Web 服务器 |                                                       主要特点                                                        |
+| :--------: | :-------------------------------------------------------------------------------------------------------------------: |
+|   Tomcat   |                         对 **jsp 和 Servlet 的支持**<br />**轻量级**的 javaWeb 容器（服务器）                         |
+|   Jboss    |                            遵从 JavaEE 规范的<br /> 开放源代码<br />纯 Java 的 EJB 服务器                             |
+| GlassFish  |                                   强健的商业服务器， 达到产品级质量（**应用很少**）                                   |
+|   Resin    |                    对 servlet 和 JSP 提供了良好的支持<br/>性能也比较优良（**收费， 应用比较多**）                     |
+|  WebLogic  | 是目前**应用最广泛的 Web 服务器**<br />**支持 JavaEE 规范**<br/> **适合大型项目**（**收费， 用的不多， 适合大公司**） |
 
-> :notes:这些服务器均表示**服务器上的Web应用**,并且这些都是 Java 开发人员眼中的服务器
+> :notes:这些服务器均表示**服务器上的 Web 应用**,并且这些都是 Java 开发人员眼中的服务器
 
-## Tomcat服务器和Servlet版本对应关系
+## Tomcat 服务器和 Servlet 版本对应关系
 
-| Tomcat版本 | Servlet/Jsp版本 | JavaEE版本 | 运行环境 |
-| :--------: | --------------- | ---------- | -------- |
-|    4.1     | 2.3/1.2         | 1.3        | JDK 1.3  |
-|    5.0     | 2.4/2.0         | 1.4        | JDK 1.4  |
-|  5.5/6.0   | 2.5/2.1         | 5.0        | JDK 5.0  |
-|    7.0     | 3.0/2.2         | 6.0        | JDK 6.0  |
-|    8.0     | 3.1/2.3         | 7.0        | JDK 7.0  |
+| Tomcat 版本 | Servlet/Jsp 版本 | JavaEE 版本 | 运行环境 |
+| :---------: | ---------------- | ----------- | -------- |
+|     4.1     | 2.3/1.2          | 1.3         | JDK 1.3  |
+|     5.0     | 2.4/2.0          | 1.4         | JDK 1.4  |
+|   5.5/6.0   | 2.5/2.1          | 5.0         | JDK 5.0  |
+|     7.0     | 3.0/2.2          | 6.0         | JDK 6.0  |
+|     8.0     | 3.1/2.3          | 7.0         | JDK 7.0  |
 
 > :notes:Servlet 当前使用情况
 >
@@ -74,32 +75,32 @@ web 资源按**实现的技术和呈现的效果**的不同， 又分为静态�
 
 ## Tomcat 的使用
 
-:notes:Tocat默认绑定端口为8080
+:notes:Tocat 默认绑定端口为 8080
 
 ### 目录介绍
 
-|  目录   |                             作用                             |
-| :-----: | :----------------------------------------------------------: |
-|   bin   |              存放 Tomcat 服务器的**可执行程序**              |
-|  conf   |               存放 Tocmat 服务器的**配置文件**               |
-|   lib   |               存放 Tomcat 服务器的 **jar 包**                |
-|  logs   |          存放 Tomcat 服务器运行时输出的**日志信息**          |
-|  temp   |            存放 Tomcdat 运行时产生的**临时数据**             |
-| webapps |                   存放**部署的 Web 工程**                    |
+|  目录   |                                                 作用                                                 |
+| :-----: | :--------------------------------------------------------------------------------------------------: |
+|   bin   |                                  存放 Tomcat 服务器的**可执行程序**                                  |
+|  conf   |                                   存放 Tocmat 服务器的**配置文件**                                   |
+|   lib   |                                   存放 Tomcat 服务器的 **jar 包**                                    |
+|  logs   |                              存放 Tomcat 服务器运行时输出的**日志信息**                              |
+|  temp   |                                存放 Tomcdat 运行时产生的**临时数据**                                 |
+| webapps |                                       存放**部署的 Web 工程**                                        |
 |  work   | 是 Tomcat 工作时的目录，**存放 Tomcat 运行时 jsp 翻译为 Servlet 的源码**， 和 **Session 钝化的目录** |
 
 ### Tomcat 操作
 
 #### Tomcat 生命周期管理
 
-:sailboat:启动Tomca的步骤如下
+:sailboat:启动 Tomca 的步骤如下
 
-1. 将路径切换到tomcat的bin目录下
+1. 将路径切换到 tomcat 的 bin 目录下
 2. 使用启动命令启动
 
 ```shell
-catalina run 
-startup.bat  
+catalina run
+startup.bat
 ```
 
 3. 通过浏览器访问`http://localhost:8080`，进行检查，是否启动成功
@@ -116,7 +117,7 @@ shutdown.bat #通过脚本停止Tomcat服务器
 
 1. JAVA_HOME 必须全大写。
 2. JAVA_HOME 中间必须是下划线， 不是减号-
-3. JAVA_HOME 配置的路径只需要配置到 jdk 的安装目录即可。 不需要带上 bin 目录  
+3. JAVA_HOME 配置的路径只需要配置到 jdk 的安装目录即可。 不需要带上 bin 目录
 
 #### 修改默认端口
 
@@ -142,7 +143,7 @@ shutdown.bat #通过脚本停止Tomcat服务器
 
 #### 直接部署
 
-将web工程的目录拷贝到Tomcat的webapp目录下，用户即可访问新增加的应用
+将 web 工程的目录拷贝到 Tomcat 的 webapp 目录下，用户即可访问新增加的应用
 
 ```
 http://ip:port/工程名/目录名/文件名
@@ -150,7 +151,7 @@ http://ip:port/工程名/目录名/文件名
 
 #### 修改配置文件
 
-找到 Tomcat 安装目录下的 conf 目录`\Catalina\localhost\` 下,创建abc.xml如下的配置文件：  
+找到 Tomcat 安装目录下的 conf 目录`\Catalina\localhost\` 下,创建 abc.xml 如下的配置文件：
 
 ```xml
 <Context path="/abc" docBase="E:\book" />
@@ -160,9 +161,9 @@ http://ip:port/工程名/目录名/文件名
 
 - `path` 表示工程的访问路径:/abc
 
-- `docBase` 表示工程目录在哪里​
+- `docBase` 表示工程目录在哪里 ​
 
-:notes:配置文件名称需要和path中的属性名称相同
+:notes:配置文件名称需要和 path 中的属性名称相同
 
 ### Tomcat 默认页面
 
@@ -172,4 +173,4 @@ http://ip:port/工程名/目录名/文件名
 
 在浏览器地址栏中输入：`http://ip:port/工程名/`
 
-- 没有**资源名**， 默认访问 **index.html** 页面  
+- 没有**资源名**， 默认访问 **index.html** 页面

@@ -6,18 +6,20 @@ thumbnailImagePosition: right
 metaAlignment: center
 categories: Java
 tags: Spring
-keywords: '-AOP'
+keywords: "-AOP"
 excerpt: 本文主要讲解Spring中另一重要的概念“AOP”，那么到底什么是AOP？为什么要使用AOP？
 date: 2021-11-25 21:32:57
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 ## AoP 底层原理
 
-AoP 的​底层原理——**动态代理**
+AoP 的 ​ 底层原理——**动态代理**
 
 :sparkles:动态代理分类
+
 - 有接口情况，使用 JDK 动态代理
 - 没有接口情况，使用 CGLIB 动态代理
 
@@ -26,6 +28,7 @@ AoP 的​底层原理——**动态代理**
 创建接口实现类代理对象，增强类的方法
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210608131656646.png %}
+
 #### 创建测试接口类
 
 ```java
@@ -42,7 +45,7 @@ public class UserDaoImpl implements Dao {
       System.out.println(a + b);
       System.out.println("from userdao implementes");
    }
-   
+
    @Override
    public String update(String id) {
       System.out.println(id);
@@ -57,14 +60,14 @@ public class UserDaoImpl implements Dao {
 ```java
 public class UserDaoProxy implements InvocationHandler {
    private Object object;
-   
+
    public UserDaoProxy() {
    }
-   
+
    public UserDaoProxy(Object object) {
       this.object = object;
    }
-   
+
     //增强方法
    @Override
    public Object invoke(Object proxy, @NotNull Method method, Object[] args) throws Throwable {
@@ -331,4 +334,3 @@ public void dynamicProxyBaseAnnotation() {
     </aop:config>
 </beans>
 ```
-

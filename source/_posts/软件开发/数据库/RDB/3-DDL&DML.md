@@ -2,7 +2,7 @@
 title: MySQL(三)DDL、DML
 toc: true
 clearReading: true
-thumbnailImage: 'https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql.jpg'
+thumbnailImage: "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql.jpg"
 thumbnailImagePosition: right
 metaAlignment: center
 categories: 数据库
@@ -11,8 +11,8 @@ keywords: mysql
 excerpt: mysql DQL 数据查询语言，用来查询记录是学习 SQL 的重点之一
 date: 2022-01-30 15:18:46
 ---
-<!-- toc -->
 
+<!-- toc -->
 
 ## 数据类型
 
@@ -20,33 +20,34 @@ date: 2022-01-30 15:18:46
 {% alert success no-icon %}
 
 1. 选取的类型，越准确越好，尽量使用可以正确存储数据的最小数据类型
-2. 类型越简单越好，因为简单数据类型的操作通常需要更少的CPU周期
-3. 尽量避免 NULL ，如果查询中包含可为 NULL 的列，对 MySQ L来说更难优化，这是由于为 NULL 的列增加 、索引统计和值比较都更复杂
+2. 类型越简单越好，因为简单数据类型的操作通常需要更少的 CPU 周期
+3. 尽量避免 NULL ，如果查询中包含可为 NULL 的列，对 MySQ L 来说更难优化，这是由于为 NULL 的列增加 、索引统计和值比较都更复杂
 
 {% endalert %}
 
 数据类型主要分为以下四种：**数值类型**、**字符类型**、**日期类型**和**二进制类型**
+
 ### 数值类型
 
 数值型主要包括三个部分：整型、小数和位类型
 
 #### 整数类型
 
-|     整数类型     | 字节 |                             范围                             |
-| :--------------: | :--: | :----------------------------------------------------------: |
-|   **Tinyint**    |  1   |               有符号：-128~127  无符号：0~255                |
-|   **Smallint**   |  2   |            有符号：-32768~32767  无符号：0~65535             |
-|    Mediumint     |  3   |         有符号：-8388608~8388607  无符号：0~1677215          |
-| **Int**、integer |  4   |    有符号：- 2147483648~2147483647  无符号：0~4294967295     |
-|    **Bigint**    |  8   | 有符号：  -9223372036854775808  ~9223372036854775807 <br /> 无符号：0~  9223372036854775807*2+1 |
+|     整数类型     | 字节 |                                             范围                                              |
+| :--------------: | :--: | :-------------------------------------------------------------------------------------------: |
+|   **Tinyint**    |  1   |                                有符号：-128~127 无符号：0~255                                 |
+|   **Smallint**   |  2   |                             有符号：-32768~32767 无符号：0~65535                              |
+|    Mediumint     |  3   |                          有符号：-8388608~8388607 无符号：0~1677215                           |
+| **Int**、integer |  4   |                     有符号：- 2147483648~2147483647 无符号：0~4294967295                      |
+|    **Bigint**    |  8   | 有符号： -9223372036854775808 ~9223372036854775807 <br /> 无符号：0~ 9223372036854775807\*2+1 |
 
 :notes:整型数据类型相关注意点
 {% alert success no-icon %}
 
 1. 如果不指定整型是无符号还是有符号，则默认是有符号。可以手动田间`UNSIGNED`指定类型位无符号整型
 2. 如果存入的数值超出类型范围，会发生`out of range`错误提示
-3. MySQL支持在类型名称后面的小括号内指定显示宽度，如果数字位数足够或大于，则忽略宽度，如果数字位数不够的空间用字符`0`填满，但要配合`ZEROFILL`使用，不手动指定宽度，使用默认宽度
-4. `AUTO_INCREMENT`属性，该属性只能用于整型，AUTO_INCREMENT 标识列一般从1开始，每行增加1，不用手动插入，但必须定位此列位`PRIMARY_KEY`或`UNIQUE`键
+3. MySQL 支持在类型名称后面的小括号内指定显示宽度，如果数字位数足够或大于，则忽略宽度，如果数字位数不够的空间用字符`0`填满，但要配合`ZEROFILL`使用，不手动指定宽度，使用默认宽度
+4. `AUTO_INCREMENT`属性，该属性只能用于整型，AUTO_INCREMENT 标识列一般从 1 开始，每行增加 1，不用手动插入，但必须定位此列位`PRIMARY_KEY`或`UNIQUE`键
 
 {% endalert %}
 
@@ -69,12 +70,12 @@ CREATE TABLE IF NOT EXISTS myTab(
 
 MySQL 中小数类型共分为两种：**浮点数**和**定点数**
 
-|           浮点数类型           |   字节   |                            范围                             |
-| :----------------------------: | :------: | :---------------------------------------------------------: |
-|           **float**            |  **4**   |              ±1.75494351E-38~±3.402823466E+38               |
-|           **double**           |  **8**   |     ±2.2250738585072014E-308~ ±1.7976931348623157E+308      |
-|         **定点数类型**         | **字节** |                          **范围**                           |
-| **DEC(M,D)**  **DECIMAL(M,D)** | **M+2**  | 最大取值范围与double相同，给定decimal的有效取值范围由M和D定 |
+|          浮点数类型           |   字节   |                                范围                                 |
+| :---------------------------: | :------: | :-----------------------------------------------------------------: |
+|           **float**           |  **4**   |                  ±1.75494351E-38~±3.402823466E+38                   |
+|          **double**           |  **8**   |         ±2.2250738585072014E-308~ ±1.7976931348623157E+308          |
+|        **定点数类型**         | **字节** |                              **范围**                               |
+| **DEC(M,D)** **DECIMAL(M,D)** | **M+2**  | 最大取值范围与 double 相同，给定 decimal 的有效取值范围由 M 和 D 定 |
 
 :notes: 小数类型注意事项
 {% alert info no-icon %}
@@ -100,7 +101,7 @@ CREATE TABLE IF NOT EXISTS myTab(
 :vs: 浮点数和定点数的区别：
 {% alert success no-icon %}
 
-1. <font style="color:red;font-weight:bold">定点数在MySQL内部以字符串形式存放</font>，比浮点数更精确，适合用于表示货币等**精度高的数据**
+1. <font style="color:red;font-weight:bold">定点数在 MySQL 内部以字符串形式存放</font>，比浮点数更精确，适合用于表示货币等**精度高的数据**
 2. 在不指定精度时，浮点数默认会按照实际的精度来显示，而<font style="color:red;font-weight:bold">定点数在不指定精度时，默认为(10,0)</font>
 3. **浮点数**如果数据<font style="color:red;font-weight:bold">越过了精度和标度值</font>，则<font style="color:red;font-weight:bold">自动将四舍五入后的结果插入</font>，系统不会报错；<font style="color:red;font-weight:bold">定点数将会报错</font>
 
@@ -128,27 +129,27 @@ CREATE TABLE IF NOT EXISTS myTab(
 );
 ```
 
-###  字符类型
+### 字符类型
 
-:notes: 用来保存MySQL中较短的字符串
+:notes: 用来保存 MySQL 中较短的字符串
 
 | 字符串类型 | 最多字符数 |      描述及存储需求      |
 | :--------: | :--------: | :----------------------: |
-|  char(M)   |     M      |    M为0~255之间的整数    |
-| varchar(M) |     M      |   M为0~65535之间的整数   |
+|  char(M)   |     M      |  M 为 0~255 之间的整数   |
+| varchar(M) |     M      | M 为 0~65535 之间的整数  |
 |    text    |    :x:     | 字符串类型，存储较长文本 |
 
 :vs: `char` 与 `varchar` 类型对比
 {% alert success no-icon %}
 
 1. 存储的列长度
-	- CHAR：创建表时声明列的长度且长度固定
-	- VARCHAR：创建时声明列的最大长度
+   - CHAR：创建表时声明列的长度且长度固定
+   - VARCHAR：创建时声明列的最大长度
 2. 数据检索时
-	- CHAR：删除了尾部的空格
-	- VARCHAR：保留了这些空格
+   - CHAR：删除了尾部的空格
+   - VARCHAR：保留了这些空格
 3. 效率对比
-   - CHAR长度固定，效率高于VARCHAR
+   - CHAR 长度固定，效率高于 VARCHAR
 
 {% endalert %}
 
@@ -162,14 +163,14 @@ CREATE TABLE IF NOT EXISTS myTab(
 
 对于字符串类型，常用的就是 `char` 以及 `varchar` ；为了使用的完整性，下面介绍不经常使用的字符类型
 
-|   类型    |                             含义                             |
-| :-------: | :----------------------------------------------------------: |
-|  BINARY   |             类似于CHAR,不同的是它包含二进制字符              |
-| VARBINARY |         类似于VARCHAR,不同的是它包含可变二进制字符串         |
-|   Enum    | 枚举类型，要求插入的值必须属于列表中指定的值之一，如果列表成员为1~255，则需要1个字节存储，如果列表成员为255~65535，则需要2个字节存储；最多存储 65535 个成员 |
-|    SET    | 和Enum类型类似，里面可以保存0~64个成员。和 Enum 类型最大的区别是：SET 类型一次可以选取多个成员，而Enum只能选一个 |
+|   类型    |                                                                               含义                                                                                |
+| :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  BINARY   |                                                               类似于 CHAR,不同的是它包含二进制字符                                                                |
+| VARBINARY |                                                           类似于 VARCHAR,不同的是它包含可变二进制字符串                                                           |
+|   Enum    | 枚举类型，要求插入的值必须属于列表中指定的值之一，如果列表成员为 1~255，则需要 1 个字节存储，如果列表成员为 255~65535，则需要 2 个字节存储；最多存储 65535 个成员 |
+|    SET    |                      和 Enum 类型类似，里面可以保存 0~64 个成员。和 Enum 类型最大的区别是：SET 类型一次可以选取多个成员，而 Enum 只能选一个                       |
 
-binary和varbinary也可以用于存储字符型，不同的是，binary(M)和varbinary(M):M代表的是最多字节数
+binary 和 varbinary 也可以用于存储字符型，不同的是，binary(M)和 varbinary(M):M 代表的是最多字节数
 
 :sparkles: Enum 类型特点：
 {% alert success no-icon %}
@@ -183,25 +184,25 @@ binary和varbinary也可以用于存储字符型，不同的是，binary(M)和va
 
 {% endalert %}
 
-SET类型根据成员个数不同，存储所占的字节也不同
+SET 类型根据成员个数不同，存储所占的字节也不同
 
-| 成员数 | 字节数 |
-| :----: | :----: |
-|  1～8  |   1    |
-| 9～16  |   2    |
-| 17～24 |   3    |
-| 25～32 |   4    |
-| 33～64 |   8    |
+|  成员数  | 字节数 |
+| :------: | :----: |
+|  1 ～ 8  |   1    |
+| 9 ～ 16  |   2    |
+| 17 ～ 24 |   3    |
+| 25 ～ 32 |   4    |
+| 33 ～ 64 |   8    |
 
 :notes: 真正 `SET` 类型存储的大小，根据版本不同可能有所不同
 
-###  日期类型
+### 日期类型
 
 |    日期和时间类型    | 字节 |       最小值        |       最大值        |
 | :------------------: | :--: | :-----------------: | :-----------------: |
 |   DATE(yyyy-MM-dd)   |  4   |     1000-01-01      |     9999-12-31      |
 | DATETIME(日期+时间)  |  8   | 1000-01-01 00:00:00 | 9999-12-31 23:59:59 |
-| TIMESTAMP(日期+时间) |  4   |   199700101080001   |  2038年的某个时刻   |
+| TIMESTAMP(日期+时间) |  4   |   199700101080001   |  2038 年的某个时刻  |
 |    TIME(hh:mm:ss)    |  3   |     -838:59:59      |      838:59:59      |
 |         YEAR         |  1   |        1901         |        2155         |
 
@@ -211,28 +212,30 @@ SET类型根据成员个数不同，存储所占的字节也不同
 
 1. `TIMESTAMP`支持的时间范围较小；`DATETIME`支持的时间范围非常大，但使用的字节多
 2. `TIMESTAMP`和实际时区有关，更能反映实际的日期，而`DATETIME`则只能反映出插入时的当地时区
-3. `TIMESTAMP`的属性受MySQL版本和SQLMode的影响很大
+3. `TIMESTAMP`的属性受 MySQL 版本和 SQLMode 的影响很大
 
 {% endalert %}
 
-###  二进制类型
+### 二进制类型
 
 二进制类型常用的只有 BLOB 类型，BLOB 类型经常用于存储图片数据
 
-## DDL语言
+## DDL 语言
 
 DDL(Data Define Language)数据定义语言，用于对数据库和表的管理和操作，对应的基本操作如下表：
 
 |               DDL 语句               |                      含义                      |
 | :----------------------------------: | :--------------------------------------------: |
 |           SHOW DATABASES;            |                   查看数据库                   |
-|              USE mysql;              |                使用mysql数据库                 |
+|              USE mysql;              |               使用 mysql 数据库                |
 |       SHOW CREATE TABLE 表名;        |              查看指定表的创建语句              |
-|             SHOW TABLES;             |         展示mysql数据库中的所有数据表          |
+|             SHOW TABLES;             |        展示 mysql 数据库中的所有数据表         |
 | SHOW TABLES FROM information_schema; | 不改变当前所在的数据库，查看相应数据库中的表格 |
 
 按照对数据库操作的主体不同，DDL 语言主要可以分为以下两部分：**创建数据库**、**删除数据库**
+
 ### 数据库定义操作
+
 对于数据库的操作，通常使用的只有两种操作：创建数据以及删除数据库
 
 {% alert warning no-icon %}
@@ -240,24 +243,28 @@ DDL(Data Define Language)数据定义语言，用于对数据库和表的管理�
 创建数据库的语句如下：
 
 {% endalert %}
+
 ```sql
 CREATE DATABASE databaseName；	#多次运行会报错
 CREATE DATABASE [IF NOT EXISTS] databaseName;
 ```
+
 {% alert warning no-icon %}
 
 删除数据库的语句如下：
 
 {% endalert %}
+
 ```sql
 DROP DATABASE databaseName;	#没有进行表检查
 DROP DATABASE IF EXISTS databaseName;
 ```
+
 ### 对数据库中的表进行操作
 
 选择了对应的数据库后，就可以对数据库中存在的表进行操作，对表的操作有以下几种：创建表、删除表和修改表
 
-####  创建表
+#### 创建表
 
 表的创建拥有两种方式：**自定义表结构**以及**使用子查询创建表**
 
@@ -276,8 +283,8 @@ CREATE TABLE [IF NOT EXISTS] 表名(
 
 {% alert success no-icon %}
 
-1. 数据库名不得超过30个字符，变量名限制为29个
-2. 必须只能包含 A–Z, a–z, 0–9, _共63个字符
+1. 数据库名不得超过 30 个字符，变量名限制为 29 个
+2. 必须只能包含 A–Z, a–z, 0–9, \_共 63 个字符
 3. 不能在对象名的字符间留空格
 4. 必须不能和用户定义的其他对象重名
 5. 必须保证你的字段没有和保留字、数据库系统或常用方法冲突
@@ -287,14 +294,14 @@ CREATE TABLE [IF NOT EXISTS] 表名(
 
 {% alert warning no-icon %}
 
-创建stus表,要求具有学生学号、姓名、年龄、性别属性
+创建 stus 表,要求具有学生学号、姓名、年龄、性别属性
 
 ```sql
 CREATE TABLE stus(
 	sid	    CHAR(6),
 	sname	VARCHAR(20),
 	age		INT,
-	gender	VARCHAR(10) 
+	gender	VARCHAR(10)
 );
 ```
 
@@ -323,17 +330,18 @@ DELETE TABLE IF EXISTS 需要创建的表名;
 CREATE TABLE 需要创建的表名;
 ```
 
-####  删除表
+#### 删除表
 
 ```sql
 DROP TABLE [IF EXISTS ] tableName;
 ```
 
-####  修改表
+#### 修改表
 
 对表的修改体现在对表的列进行修改，主要完成以下几点功能：**修改表名**、**增加属性列**、**修改属性列名**、**修改属性列的数据类型**、**修改属性列的完整性约束**、**删除属性列**
 
 修改表的基本语句如下：
+
 ```sql
 ALTER TABLE 表名 ADD|MODIFY|DROP|CHANGE COLUMN 字段名 [字段类型];
 ```
@@ -354,7 +362,8 @@ ALTER TABLE CHANGE COLUMN 旧字段名 新字段名 新字段数据类型 新字
 
 {% alert warning no-icon %}
 
-修改stu表的gender列名为sex
+修改 stu 表的 gender 列名为 sex
+
 ```sql
 ALTER TABLE stu CHANGE COLUMN gender sex CHAR(2);
 ```
@@ -390,7 +399,9 @@ ALTER TABLE stu MODIFY COLUMN gender char(2);
 ```sql
 ALTER TABLE 表名 ADD COLUMN 新字段名 新字段类型 [新字段约束];
 ```
-给stus表添加classname列
+
+给 stus 表添加 classname 列
+
 ```sql
 ALTER TABLE stu ADD COLUMN classname char(10);
 ```
@@ -403,7 +414,7 @@ ALTER TABLE 表名 DROP COLUMN 列名;
 ALTER TABLE stu DROP COLUMN classname;
 ```
 
-## DML语言
+## DML 语言
 
 DML(Data Manipulation Language) 数据操作语言，用来定义数据库记录(数据)
 
@@ -420,8 +431,8 @@ VALUES (值1,值2,...,值n),(值1,值2,...,值n),...,(值1,值2,...,值n)
 {% alert success no-icon %}
 
 1. 字段类型和值类型一致或兼容，而且一一对应(包括类型、约束等匹配)
-2. 可以为空的字段(NULL约束)，可以不用插入值，或用NULL填充
-3. 不可以为空的字段(NOT NULL约束)，必须插入值
+2. 可以为空的字段(NULL 约束)，可以不用插入值，或用 NULL 填充
+3. 不可以为空的字段(NOT NULL 约束)，必须插入值
 4. 字段个数和值的个数必须是一致
 5. 字段可以省略，但默认所有字段，并且顺序和表中的存储顺序一致
 6. 数值型的值，不用单引号；非数值型的值，必须使用单引号
@@ -441,6 +452,7 @@ insert into stu values
 INSERT INTO stu (sname,sex) VALUES
 ("c",'m');
 ```
+
 {% alert info no-icon %}
 
 :notes: 所有字符串数据必须使用单引号
@@ -451,7 +463,7 @@ INSERT INTO stu (sname,sex) VALUES
 
 修改表中数据分为：修改单表数据和修改多表数据
 
-####  修改单表数据
+#### 修改单表数据
 
 ```sql
 UPDATE 表名 SET 字段=新值,字段=新值
@@ -462,7 +474,7 @@ UPDATE 表名 SET 字段=新值,字段=新值
 
 ```sql
 #此操作将修改所有记录
-update stu set sid='123456',sname="张三",age=18,sex='m';	
+update stu set sid='123456',sname="张三",age=18,sex='m';
 
 #修改满足特定条件的行
 update stu set sid='123456',sname="李四",age=18,sex='f' where sid is null;
@@ -470,9 +482,10 @@ update stu set sid='123456',sname="李四",age=18,sex='f' where sid is null;
 
 {% endalert %}
 
-####  修改多表数据
+#### 修改多表数据
 
 修改多表数据类似于多表连接操作 + 更新操作，具体的使用格式如下：
+
 ```sql
 ## SQL 92
 UPDATE 表1 别名1,表2 别名2
@@ -484,6 +497,7 @@ UPDATE 表1 [AS] 别名1 [INNER] JOIN 表2 [AS] 别名2 ON 连接条件
 SET 字段=新值,字段=新值
 WHERE 筛选条件
 ```
+
 {% alert warning no-icon %}
 
 ```sql
@@ -505,7 +519,7 @@ where s1.`sname`='张三';
 
 删除表中数据分为：单表的删除和多表的删除
 
-####  单表的删除
+#### 单表的删除
 
 ```sql
 ## 方式一:使用DELETE语句
@@ -515,6 +529,7 @@ DELETE FROM 表名
 ## 方式二：使用TRUNCATE语句
 TRUNCATE TABLE 表名
 ```
+
 {% alert warning no-icon %}
 
 ```sql
@@ -527,7 +542,7 @@ truncate table stu2;
 
 {% endalert %}
 
-####  多表的删除
+#### 多表的删除
 
 ```sql
 DELETE 别名1,别名2
@@ -543,7 +558,7 @@ WHERE 连接条件 AND 筛选条件
 1. delete 可以添加 WHERE 条件，TRUNCATE 不能添加 WHERE 条件，一次性清除所有数据
 2. TRUNCATE 效率高于 DELETE
 3. 使用 DELETE 删除后，重新插入数据，记录从断点处开始
-   使用 TRUNCATE 删除后，重新插入数据，记录从1开始
+   使用 TRUNCATE 删除后，重新插入数据，记录从 1 开始
 4. TRUNCATE 删除后事务不能回滚，DELETE 删除后可以回滚
 5. delete 删除数据，会返回受影响的行数；TRUNCATE 删除数据，不返回受影响的行数
 
@@ -555,7 +570,7 @@ WHERE 连接条件 AND 筛选条件
 
 {% alert success no-icon %}
 
-为了保证数据的一致性和完整性，SQL规范以约束的方式对表数据进行额外的条件限制。其中完整性约束是为了表的数据的正确性！如果数据不正确，那么一开始就不能添加到表中。简而言之，约束是表级的强制规定
+为了保证数据的一致性和完整性，SQL 规范以约束的方式对表数据进行额外的条件限制。其中完整性约束是为了表的数据的正确性！如果数据不正确，那么一开始就不能添加到表中。简而言之，约束是表级的强制规定
 
 {% endalert %}
 
@@ -574,7 +589,7 @@ WHERE 连接条件 AND 筛选条件
 | PRIMARY KEY |           主键约束(非空且唯一)           |
 | FOREIGN KEY |                 外键约束                 |
 
-:notes:MySQL不支持 check 约束，但可以使用 check 约束，就是任何效果
+:notes:MySQL 不支持 check 约束，但可以使用 check 约束，就是任何效果
 
 根据**约束所要求的列数**，可以将约束类型分为以下两种:单列约束和多列约束
 
@@ -590,7 +605,8 @@ WHERE 连接条件 AND 筛选条件
 | 列级约束 |     只能作用在一个列上，跟在列的定义后面     |
 | 表级约束 | 可以作用在多个列上，不与列一起，而是单独定义 |
 
-### NOT NULL约束
+### NOT NULL 约束
+
 {% alert success no-icon %}
 
 非空约束用于确保当前列的值不为空值，非空约束只能出现在表对象的列上
@@ -601,7 +617,7 @@ WHERE 连接条件 AND 筛选条件
 {% alert success no-icon %}
 
 1. 所有的类型的值都可以是 null，包括 int、float 等数据类型
-2. 空字符串””不等于null，0 也不等于null
+2. 空字符串””不等于 null，0 也不等于 null
 
 {% endalert %}
 
@@ -628,6 +644,7 @@ MODIFY NAME VARCHAR(15) DEFAULT 'abc' NULL;
 ```
 
 ### UNIQUE 约束
+
 {% alert success no-icon %}
 
 唯一约束，允许出现多个空值（ `NULL` ）
@@ -636,7 +653,7 @@ MODIFY NAME VARCHAR(15) DEFAULT 'abc' NULL;
 
 同一个表可以有多个唯一约束，多个列组合的约束。在创建唯一约束的时候，如果不给唯一约束名称，就默认和列名相同。
 
-MySQL会给唯一约束的列上默认创建一个唯一索引
+MySQL 会给唯一约束的列上默认创建一个唯一索引
 
 ```sql
 #创建表时指定唯一键约束
@@ -650,22 +667,23 @@ CREATE TABLE USER(
 
 #添加唯一约束
 #方式一
-ALTER TABLE USER 
+ALTER TABLE USER
 ADD UNIQUE(NAME,PASSWORD);
 #方式二
-ALTER TABLE USER 
+ALTER TABLE USER
 ADD CONSTRAINT uk_name_pwd UNIQUE(NAME,PASSWORD);
 #方式三
-ALTER TABLE USER 
+ALTER TABLE USER
 MODIFY NAME VARCHAR(20) UNIQUE;
 
 ## 删除约束
-ALTER TABLE USER 
+ALTER TABLE USER
 DROP INDEX uk_name_pwd;
 
 ```
 
 ### PRIMARY KEY 约束
+
 {% alert success no-icon %}
 
 主键约束相当于唯一约束+非空约束的组合，主键约束列不允许重复，也不允许出现空值
@@ -705,6 +723,7 @@ ALTER TABLE emp5 MODIFY id INT PRIMARY KEY;
 ```
 
 ### FOREIGN KEY 约束
+
 {% alert success no-icon %}
 
 外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。外键约束只能使用表级模式创建
@@ -713,7 +732,6 @@ ALTER TABLE emp5 MODIFY id INT PRIMARY KEY;
 从表的外键值必须在主表中能找到或者为空。当主表的记录被从表参照时，主表的记录将不允许删除，如果要删除数据，需要先删除从表中依赖该记录的数据，然后才可以删除主表的数据。
 
 :notes: 外键约束的参照列，在主表中引用的只能是主键或唯一键约束的列，同一个表可以有多个外键约束
-
 
 ```sql
 ## 主表
@@ -729,7 +747,7 @@ CREATE TABLE student(
 id INT AUTO_INCREMENT PRIMARY KEY,
 classes_name VARCHAR(20),
 classes_number INT,
-FOREIGN KEY(classes_name,classes_number) 
+FOREIGN KEY(classes_name,classes_number)
 REFERENCES classes(NAME,number)
 );
 
@@ -739,7 +757,7 @@ REFERENCES classes(NAME,number)
 #删除外键约束：
 ALTER TABLE emp DROP FOREIGN KEY emp_dept_id_fk;
 ## 增加外键约束
-ALTER TABLE emp ADD [CONSTRAINT emp_dept_id_fk] 
+ALTER TABLE emp ADD [CONSTRAINT emp_dept_id_fk]
 FOREIGN KEY(dept_id) REFERENCES dept(dept_id);
 
 ```
@@ -750,7 +768,8 @@ ON DELETE SET NULL(级联置空): 当父表中的列被删除时,子表中相应
 
 ```
 
-### CHECK约束
+### CHECK 约束
+
 {% alert success no-icon %}
 
 MySQL 可以使用 check 约束，但 check 约束对数据验证没有任何作用,添加数据时，没有任何错误或警告
@@ -768,6 +787,7 @@ PRIMARY KEY(id)
 ```
 
 ### AUTO_INCREMENT
+
 {% alert success no-icon %}
 
 自增长列要求必须设置在一个键上，比如主键或唯一键。自增长列要求数据类型为数值型，并且一个表至多只能有一个自增长列

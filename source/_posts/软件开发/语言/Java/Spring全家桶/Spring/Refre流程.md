@@ -11,8 +11,8 @@ excerpt: 本文主要记录 spring 中比较重要的 refresh 历程
 date: 2022-03-30 00:00:15
 thumbnailImage:
 ---
-<!-- toc -->
 
+<!-- toc -->
 
 ## 概述
 
@@ -53,10 +53,8 @@ systemProperties - 保存 java 环境键值
 
 systemEnvironment - 保存系统环境键值
 
-自定义 PropertySource - 保存自定义键值，例如来自于 *.properties 文件的键值
+自定义 PropertySource - 保存自定义键值，例如来自于 \*.properties 文件的键值
 
 ## obtainFreshBeanFactory
-
-
 
 ## 引用

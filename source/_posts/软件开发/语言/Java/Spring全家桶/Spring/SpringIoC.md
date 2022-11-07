@@ -6,24 +6,26 @@ clearReading: true
 metaAlignment: center
 categories: Java
 tags: Spring
-keywords: 
-    - Spring IOC
-    - 自动注入
+keywords:
+  - Spring IOC
+  - 自动注入
 excerpt: 本文主要介绍 Spring 中的IoC容器使用方法（XML配置方式以及注解方式）
 ---
+
 <!-- toc -->
+
 ## Spring IoC
 
 Spring 提供 IoC 容器实现两种方式（两个接口）：
 
 - `BeanFactory`
-   IoC 容器基本实现，是 Spring **内部使用接口**
-   不提倡开发人员进行使用
- . 加载配置文件时不会创建对象，获取（使用）对象时才会创建对象
+  IoC 容器基本实现，是 Spring **内部使用接口**
+  不提倡开发人员进行使用
+  . 加载配置文件时不会创建对象，获取（使用）对象时才会创建对象
 - `ApplicationContext`
-   `BeanFactory`的子接口
-   推荐开发人员使用
- . 加载配置文件时，就会将配置文件中的对象进行创建
+  `BeanFactory`的子接口
+  推荐开发人员使用
+  . 加载配置文件时，就会将配置文件中的对象进行创建
 
 :question:为什么读取配置文件时，就创建对象？
 
@@ -37,6 +39,7 @@ Spring 提供 IoC 容器实现两种方式（两个接口）：
 | FileSystemXmlApplicationContext |  文件系统中的 XML 格式的配置文件  |
 
 ![ApplicationContext继承体系](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210607182210091.png)
+
 ### ConfigurableApplicationContext
 
 :sparkles:`ConfigurableApplicationContext`类
@@ -75,7 +78,7 @@ Spring 项目的构建至少需要如下几个包
 public class User {
  private String name;
  private Integer age;
- 
+
  public void add() {
   System.out.println("from User's add method...");
  }
@@ -123,25 +126,25 @@ public class UserTest {
 
 ### set 方法注入
 
- 创建类，定义属性
+创建类，定义属性
 
 ```java
 public class User {
  private String name;
  private Integer age;
- 
+
  public void add() {
   System.out.println("from User's add method...");
  }
- 
+
  public void setName(String name) {
   this.name = name;
  }
- 
+
  public void setAge(Integer age) {
   this.age = age;
  }
- 
+
  @Override
  public String toString() {
   return "User{" +
@@ -152,7 +155,7 @@ public class User {
 }
 ```
 
- 在 Spring 配置文件配置对象创建，配置属性注入
+在 Spring 配置文件配置对象创建，配置属性注入
 
 ```xml
 <bean id="user" class="com.pineapple_man.spring.User">
@@ -168,18 +171,18 @@ public class User {
 
 ### 有参构造进行注入
 
- 创建有参数构造
+创建有参数构造
 
 ```java
 public class User {
  private String name;
  private Integer age;
- 
+
  public User(String name, Integer age) {
   this.name = name;
   this.age = age;
  }
- 
+
  @Override
  public String toString() {
   return "User{" +
@@ -190,7 +193,7 @@ public class User {
 }
 ```
 
- 在 Spring 配置文件中进行配置
+在 Spring 配置文件中进行配置
 
 ```xml
 <bean id="user" class="com.pineapple_man.spring.User">
@@ -201,7 +204,7 @@ public class User {
 
 ### p 名称空间注入
 
- 添加 p 名称空间到配置文件中
+添加 p 名称空间到配置文件中
 
 ```xml
 <?xml version="0" encoding="UTF-?>
@@ -212,7 +215,7 @@ public class User {
 </beans>
 ```
 
- 进行属性注入
+进行属性注入
 
 ```xml
 <bean id="user" class="com.pineapple_man.spring.User" p:age=" p:name="超哥"></bean>
@@ -251,16 +254,16 @@ public class User {
 
 ### 注入外部 bean
 
- 在`Service`类的内部，调用了`dao`类方法
+在`Service`类的内部，调用了`dao`类方法
 
 ```java
 public class UserService {
  UserDao dao = new UserImpl();
- 
+
  public void setDao(UserDao dao) {
   this.dao = dao;
  }
- 
+
  public void update() {
   System.out.println("from service update method.");
   dao.update();
@@ -277,7 +280,7 @@ public class UserImpl implements UserDao {
 }
 ```
 
- 配置文件中进行配置
+配置文件中进行配置
 
 ```xml
 <bean id="userService" class="com.pineapple_man.spring.service.UserService">
@@ -290,21 +293,21 @@ public class UserImpl implements UserDao {
 
 ### 注入内部 bean
 
- 书写对应实体类
+书写对应实体类
 
 ```java
 public class Class {
  private String name;
  private int stuentsNumber;
- 
+
  public void setName(String name) {
   this.name = name;
  }
- 
+
  public void setStuentsNumber(int stuentsNumber) {
   this.stuentsNumber = stuentsNumber;
  }
- 
+
  @Override
  public String toString() {
   return "Class{" +
@@ -326,7 +329,7 @@ public class Student {
  public void setaClass(Class aClass) {
   this.aClass = aClass;
  }
- 
+
  @Override
  public String toString() {
   return "Student{" +
@@ -335,19 +338,19 @@ public class Student {
     ", gender='" + gender + '\'' +
     '}';
  }
- 
+
  public void setName(String name) {
   this.name = name;
  }
- 
+
  public void setAge(Integer age) {
   this.age = age;
  }
- 
+
  public void setGender(String gender) {
   this.gender = gender;
  }
- 
+
  public Student(String name, Integer age, String gender) {
   this.name = name;
   this.age = age;
@@ -356,7 +359,7 @@ public class Student {
 }
 ```
 
- 内部 bean 配置
+内部 bean 配置
 
 ```xml
 <bean id="student" class="com.pineapple_man.spring.bean.Student">
@@ -415,7 +418,7 @@ public class Student {
 
 #### 常见类型注入
 
- 创建包含集合属性的类，拥有数组、`List`、`Map`、`Set`属性
+创建包含集合属性的类，拥有数组、`List`、`Map`、`Set`属性
 
 ```java
 public class Student {
@@ -426,19 +429,19 @@ public class Student {
  private List<String> list;
  private Map<String, String> map;
  private Set<String> set;
- 
+
  public void setSet(Set<String> set) {
   this.set = set;
  }
- 
+
  public void setCourses(String[] courses) {
   this.courses = courses;
  }
- 
+
  public void setList(List<String> list) {
   this.list = list;
  }
- 
+
  public void setMap(Map<String, String> map) {
   this.map = map;
  }
@@ -447,7 +450,7 @@ public class Student {
 }
 ```
 
- 配置文件
+配置文件
 
 ```xml
 <bean id="student" class="com.pineapple_man.spring.bean.Student">
@@ -505,7 +508,7 @@ public class Student {
 ```java
 public class Student {
    private List<User> teachers;
-   
+
    public void setTeachers(List<User> teachers) {
       this.teachers = teachers;
    }
@@ -514,7 +517,7 @@ public class Student {
 
 #### 提取共同代码
 
- 在 Spring 配置文件中引入名称空间`util`
+在 Spring 配置文件中引入名称空间`util`
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -525,7 +528,7 @@ public class Student {
 </beans>
 ```
 
- 使用`utils`标签完成 list 集合公共部分的提取
+使用`utils`标签完成 list 集合公共部分的提取
 
 ```xml
 <bean id="user class="com.pineapple_man.spring.bean.User">
@@ -547,13 +550,13 @@ public class Student {
 
 :sparkles:Spring 有两种类型`bean`：普通`bean`和`FactoryBean`
 
-- 普通bean：配置文件中定义`bean`类型就是返回类型
-- 工厂bean：配置文件定义`bean`类型可以和返回类型不同
+- 普通 bean：配置文件中定义`bean`类型就是返回类型
+- 工厂 bean：配置文件定义`bean`类型可以和返回类型不同
 
 :sailboat:FactoryBean 使用步骤：
 
- 1. 创建工厂bean类，实现`FactoryBean`接口
- 2. 实现接口中的方法，在实现的方法中返回声明的 bean 类型
+1.  创建工厂 bean 类，实现`FactoryBean`接口
+2.  实现接口中的方法，在实现的方法中返回声明的 bean 类型
 
 ```java
 public class MyBean implements FactoryBean<User> {
@@ -562,12 +565,12 @@ public class MyBean implements FactoryBean<User> {
  public User getObject() throws Exception {
   return new User("龙哥", );
  }
- 
+
  @Override
  public java.lang.Class<?> getObjectType() {
   return null;
  }
- 
+
  @Override
  public boolean isSingleton() {
   return FactoryBean.super.isSingleton();
@@ -614,33 +617,30 @@ public void beanTest() {
 
 :sparkles: bean 的生命周期（七个阶段）：
 
- 通过构造器创建`bean`实例（无参数构造）
- 为`bean`的属性注入以及对其他`bean`引用(调用`set()`方法)
-3. 将`bean`实例传递给`bean`后置处理器的方法`postProcessBeforeInitialization`
-4. 调用`bean`的初始化方法（需要进行配置初始化的方法）
-5. 将`bean`实例传递给`bean`后置处理器方法`postProcessAfterInitialization`
- 使用`bean`
- 在容器关闭时，调用`bean`的销毁方法（需要配置销毁方法）
+通过构造器创建`bean`实例（无参数构造）
+为`bean`的属性注入以及对其他`bean`引用(调用`set()`方法) 3. 将`bean`实例传递给`bean`后置处理器的方法`postProcessBeforeInitialization` 4. 调用`bean`的初始化方法（需要进行配置初始化的方法） 5. 将`bean`实例传递给`bean`后置处理器方法`postProcessAfterInitialization`
+使用`bean`
+在容器关闭时，调用`bean`的销毁方法（需要配置销毁方法）
 
 ### Java Bean
 
 ```java
 public class LifeCycle {
    private String step;
-   
+
    public LifeCycle() {
       System.out.println(" 来自于无参构造函数");
    }
-   
+
    public void setStep(String step) {
       System.out.println(" 来自于set方法");
       this.step = step;
    }
-   
+
    public void initMethod() {
       System.out.println(. 来自于initMethod");
    }
-   
+
    public void destoryMethod() {
       System.out.println("5.来自destoryMethod");
    }
@@ -656,7 +656,7 @@ public class PostProcess implements BeanPostProcessor {
   System.out.println("from postProcessBeforeInitialization");
   return BeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
  }
- 
+
  @Override
  public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
   System.out.println("from postProcessAfterInitialization");
@@ -691,10 +691,10 @@ public class PostProcess implements BeanPostProcessor {
 public class AutoInject {
  private User user;
  private User teacher;
- 
+
  public AutoInject() {
  }
- 
+
  @Override
  public String toString() {
   return "AutoInject{" +
@@ -702,11 +702,11 @@ public class AutoInject {
     ", teacher=" + teacher +
     '}';
  }
- 
+
  public void setTeacher(User teacher) {
   this.teacher = teacher;
  }
- 
+
  public void setUser(User user) {
   this.user = user;
  }
@@ -818,10 +818,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 > :notes:Sping 创建对象的四个注解：
 >
-> `@Component`
-> `@Service`
->. `@Controller`
-> 4. `@Repository`
+> `@Component` > `@Service`
+> . `@Controller` 4. `@Repository`
 
 :notes:上面四个注解功能是一样的，都是可以用来创建 bean 实例
 
@@ -869,6 +867,7 @@ public class AopUserService {
 :notes:`@Component(value)`中的`value`属性是可以省略不写的，默认值是：**首字母小写的类名**，如果书写了，value 等价与`<bean>`中的 id 属性
 
 ### 组件扫描详细配置
+
 实现扫描过滤器配置，可以选择在包中，默认扫描那些类，不扫描那些类
 
 ```xml
@@ -889,8 +888,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 :sparkles:扫描过滤器特点
 
- `use-default-filters="false"`：表示不适用默认过滤器，用户自己配置过滤器
- `<context:include-filter type="" expression="">`：设置那些内容进行扫描
+`use-default-filters="false"`：表示不适用默认过滤器，用户自己配置过滤器
+`<context:include-filter type="" expression="">`：设置那些内容进行扫描
 `<context:exclude-filter type="" expression="">`：设置那些内容不进行扫描
 
 ## 注解方式实现属性注入
@@ -919,7 +918,7 @@ public class AopDao {
 public class AopUserService {
  @Autowired
  private AopDao aopDao;
- 
+
  public void method() {
   System.out.println("from AopUserService method");
   aopDao.method();
@@ -937,7 +936,7 @@ public class AopUserService {
  @Autowired
  @Qualifier(value = "aopDao")
  private AopDao aopDao;
- 
+
  public void method() {
   System.out.println("from AopUserService method");
   aopDao.method();
@@ -954,7 +953,7 @@ public class AopUserService {
 public class AopUserService {
  @Resource(name = "aopDao")
  private AopDao aopDao;
- 
+
  public void method() {
   System.out.println("from AopUserService method");
   aopDao.method();
@@ -973,13 +972,13 @@ public class AopUserService {
 ```java
 @Component(value = "aopUserService")
 public class AopUserService {
-    
+
  @Resource(name = "aopDao")
  private AopDao aopDao;
-    
+
  @Value("pineapple-man")
  private String name;
- 
+
  public void method() {
   System.out.println("from AopUserService method");
   aopDao.method();

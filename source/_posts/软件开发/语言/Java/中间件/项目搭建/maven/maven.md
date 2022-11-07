@@ -11,13 +11,15 @@ excerpt: 其实一个复杂的 Java 项目，总是需要很多其他人已经�
 date: 2022-01-08 20:02:45
 thumbnailImage:
 ---
+
 <!-- toc -->
 
-## Maven简介
+## Maven 简介
 
 明白`Maven`的重要性，需要先从<font style="color:red;font-weight:bold">软件工程</font>这件事说起
 
 ### 软件工程
+
 软件工程，顾名思义就是软件的工程，要了解这个词就需要分别了解两个词「软件」和「工程」，其中软件顾名思义就是使用计算机编程语言所生成的应用程序
 
 :question:什么是工程？
@@ -35,25 +37,27 @@ thumbnailImage:
 
 上述过程需要**重复多次迭代**，在大型工程中<font style="color:red;font-weight:bold">构建项目是比较复杂的</font>，传统开发项目(没有使用自动化管理工具)存在的问题
 {% alert success no-icon %}
+
 1. 项目**模块繁杂**，管理不便
 2. **第三方依赖众多**，资源查询不便
 3. 控制各个 jar 包的**版本**，管理不便
 4. 查询 jar 包的依赖，管理不便
-{% endalert %}
-{% alert info no-icon %}
-<font style="color:red;font-weight:bold">Maven 这个自动化构建工具</font>，可以让我们从上面的工作中解脱出来
-{% endalert %}
+   {% endalert %}
+   {% alert info no-icon %}
+   <font style="color:red;font-weight:bold">Maven 这个自动化构建工具</font>，可以让我们从上面的工作中解脱出来
+   {% endalert %}
 
-### Maven概述
+### Maven 概述
 
-:thinking:什么是Maven?​
+:thinking:什么是 Maven?​
 {% alert success no-icon %}
 Maven 是 Apache 软件基金会组织维护的一款**自动化构建工具**,专注服务于<font style="color:red;font-weight:bold"> Java 平台的项目构建和依赖管理</font>
 {% endalert %}
 
-:grey_question:Maven能干什么？
+:grey_question:Maven 能干什么？
 {% alert success no-icon %}
-1. Maven可以管理 jar 文件
+
+1. Maven 可以管理 jar 文件
 2. 自动下载 jar 和它的文档，源代码
 3. 管理 jar 包的依赖
 4. 管理需要的 jar 的版本
@@ -61,28 +65,29 @@ Maven 是 Apache 软件基金会组织维护的一款**自动化构建工具**,�
 6. 帮助测试代码是否正确
 7. 帮助打包文件，形成 jar 文件，或者 war 文件
 8. 帮助部署项目
-{% endalert %}
+   {% endalert %}
 
 构建：是面向过程的(从开始到结尾的多个步骤)，涉及到多个环节的协同工作，构建过程中各个环节执行动作如下：
 {% alert success no-icon %}
+
 1. 清理：删除以前的编译结果，为重新编译做好准备
 2. 编译：将 Java 源程序编译为字节码文件
 3. 测试：针对项目中的关键点进行测试，确保项目在迭代开发过程中关键点的正确性
 4. 报告：在每一次测试后以标准的格式记录和展示测试结果
-5. 打包：将一个包含诸多文件的工程封装为一个压缩文件用于安装或部署。Java工程对应jar包，Web工程对应war包
-6. 安装：在Maven环境下特指将打包的结果——jar包或war包安装到本地仓库中
-7. 部署：将打包的结果部署到远程仓库或将war包部署到服务器上运行
-{% endalert %}
+5. 打包：将一个包含诸多文件的工程封装为一个压缩文件用于安装或部署。Java 工程对应 jar 包，Web 工程对应 war 包
+6. 安装：在 Maven 环境下特指将打包的结果——jar 包或 war 包安装到本地仓库中
+7. 部署：将打包的结果部署到远程仓库或将 war 包部署到服务器上运行
+   {% endalert %}
 
-### Maven核心概念
+### Maven 核心概念
 
 Maven 能够实现自动化构建和它的内部原理分不开，Maven 共有九个核心概念
 {% alert success no-icon %}
 
-1. POM：POM是一个文件，文件名称为`pom.xml`，pom 翻译过来叫做**项目对象模型**。maven 把一个项目当作一个模型使用，控制 maven 构建项目的过程，管理 jar 依赖
+1. POM：POM 是一个文件，文件名称为`pom.xml`，pom 翻译过来叫做**项目对象模型**。maven 把一个项目当作一个模型使用，控制 maven 构建项目的过程，管理 jar 依赖
 2. 约定的目录结构：Maven 项目的目录和文件的位置都是规定的
 3. 坐标：是一个唯一的字符串，用来表示资源的
-4. 依赖管理：管理你的项目可以使用的jar文件
+4. 依赖管理：管理你的项目可以使用的 jar 文件
 5. 仓库管理：资源存放的位置
 6. 生命周期：maven 工具构建项目的过程，就是生命周期
 7. 插件和目标：执行 maven 构建的时候用的工具是插件
@@ -91,32 +96,34 @@ Maven 能够实现自动化构建和它的内部原理分不开，Maven 共有�
 
 {% endalert %}
 
-## 安装 Maven 
+## 安装 Maven
 
 Mavan 也是一种软件，因此本小节主要记录如何安装 Maven
-### Windows下安装
 
-:notes:Maven安装步骤
+### Windows 下安装
+
+:notes:Maven 安装步骤
 {% alert warning no-icon %}
 
-1. 从maven的官网下载maven的安装包`apache-maven-3.3.9-bin.zip`
+1. 从 maven 的官网下载 maven 的安装包`apache-maven-3.3.9-bin.zip`
 2. 解压安装包，<font style="color:red;font-weight:bold">解压到非中文目录</font>
-3. 配置环境变量（指定maven工具安装目录/bin）
-4. 验证是否安装成功,命令行中执行`mvn -v`:notes:(需要配置Java_HOME)，用来指定JDK路径
+3. 配置环境变量（指定 maven 工具安装目录/bin）
+4. 验证是否安装成功,命令行中执行`mvn -v`:notes:(需要配置 Java_HOME)，用来指定 JDK 路径
 
 {% endalert %}
-:sparkles:Maven软件目录结构
+:sparkles:Maven 软件目录结构
+
 1. `bin` ：存放许多执行程序(如：mvn.cmd)
-2. `conf` ：maven工具本身的配置文件settings.xml
+2. `conf` ：maven 工具本身的配置文件 settings.xml
 
-:notes:建议使用3.3.9版本，直接适应用JDK1.8,避免使用最新版 Maven 出现不知道的错误
+:notes:建议使用 3.3.9 版本，直接适应用 JDK1.8,避免使用最新版 Maven 出现不知道的错误
 
-### Linux下安装
+### Linux 下安装
 
-目前Maven主要维护的版本有：
+目前 Maven 主要维护的版本有：
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210320123556811.png %}
-:point_right:[点击查看Maven的版本信息](https://maven.apache.org/docs/history.html)
+:point_right:[点击查看 Maven 的版本信息](https://maven.apache.org/docs/history.html)
 
 :notes:选择 3.3.9 版本使用官方的源码包进行安装，主要的步骤如下：
 :one: 下载并解压
@@ -131,11 +138,13 @@ Mavan 也是一种软件，因此本小节主要记录如何安装 Maven
 {% alert warning no-icon %}
 
 1. 编辑 `/etc/profile`，配置对应的环境变量
+
 ```shell
 // 安装目录
-export MAVEN_HOME=/home/homer/Apache-maven/apache-maven-3.3.9 
+export MAVEN_HOME=/home/homer/Apache-maven/apache-maven-3.3.9
 export PATH=${MAVEN_HOME}/bin:${PATH}
 ```
+
 2. 重新载入`source /etc/profile`
 
 {% endalert %}
@@ -148,6 +157,7 @@ export PATH=${MAVEN_HOME}/bin:${PATH}
 {% endalert %}
 
 :point_right:如果想要更详细的步骤，[点击查看官方安装步骤](https://maven.apache.org/install.html)
+
 ### 配置阿里云环境
 
 国内使用，总是不能友好的访问外网的资源，所以需要配置阿里云地址，具体的方法就是修改`conf/settings.xml`文件中的`mirrors`内容为如下部分
@@ -177,10 +187,9 @@ export PATH=${MAVEN_HOME}/bin:${PATH}
 </mirrors>
 ```
 
-:notes:`settings.xml`文件需要格式化, [xml文件格式化网站](https://c.runoob.com/front-end/710)
+:notes:`settings.xml`文件需要格式化, [xml 文件格式化网站](https://c.runoob.com/front-end/710)
 
-
-## Maven的核心概念
+## Maven 的核心概念
 
 ### Maven 工程目录结构
 
@@ -203,17 +212,15 @@ Hello(根目录，也就是工程名)
 :question:如何设置本机存放资源的目录位置(设置本机仓库):
 {% alert warning no-icon %}
 
-1. 修改maven的配置文件， maven安装目录/conf/settings.xml
-    先备份 settings.xml
-2. 修改 \<localRepository>  指定你的目录（不要使用中文目录）
+1. 修改 maven 的配置文件， maven 安装目录/conf/settings.xml
+   先备份 settings.xml
+2. 修改 \<localRepository> 指定你的目录（不要使用中文目录）
 
 {% endalert %}
 
-
-
 ### 仓库
 
-maven 是如何做到自动帮助用户托管项目，项目依赖的jar包从哪儿获取呢？
+maven 是如何做到自动帮助用户托管项目，项目依赖的 jar 包从哪儿获取呢？
 {% alert success no-icon %}
 
 这一切都是由于存在 maven 仓库的概念,Maven 核心程序仅仅定义了自动化构建项目的生命周期，但具体的构建工作是由特定的构件完成的。而且为了提高构建的效率和构件复用， maven 把所有的构件统一存储在某一个位置，这个位置就叫做**仓库**
@@ -232,8 +239,7 @@ maven 是如何做到自动帮助用户托管项目，项目依赖的jar包从�
 | 仓库的分类 |                 作用                 |
 | :--------: | :----------------------------------: |
 |  本地仓库  | 本地计算机上的文件夹,存放各种 jar 包 |
-|  远程仓库  | 在互联网上，使用网络才能使用的仓库|
-
+|  远程仓库  |  在互联网上，使用网络才能使用的仓库  |
 
 远程仓库分为三种，中央仓库、中央仓库的镜像、私服
 {% alert warning no-icon %}
@@ -251,21 +257,22 @@ maven 仓库的使用不需要人为参与，例如：开发人员需要使用 m
 
 {% endalert %}
 
-在 Maven 构建项目的过程中如果需要某些插件，首先会到 Maven 的本地仓库中查找，如果找到则可以直接使用；如果找不到，它会自动连接外网，到远程中央仓库中查找；如果远程仓库中能找到，则先把所需要的插件下载到本地仓库，然后再使用，并且下次再用到相同的插件也可以直接使用本地仓库的；如果没有外网或者远程仓库中也找不到，则构建失败。  
+在 Maven 构建项目的过程中如果需要某些插件，首先会到 Maven 的本地仓库中查找，如果找到则可以直接使用；如果找不到，它会自动连接外网，到远程中央仓库中查找；如果远程仓库中能找到，则先把所需要的插件下载到本地仓库，然后再使用，并且下次再用到相同的插件也可以直接使用本地仓库的；如果没有外网或者远程仓库中也找不到，则构建失败。
 
 ### POM
 
-POM( Project Object Model ) 即项目对象模型。 Maven 把一个项目的结构和内容抽象成一个模型，在 xml 文件中进行声明，以方便进行构建和描述， pom.xml 是 Maven 的灵魂。所以， maven 环境搭建好之后，所有的学习和操作都是关于 pom.xml 的  
+POM( Project Object Model ) 即项目对象模型。 Maven 把一个项目的结构和内容抽象成一个模型，在 xml 文件中进行声明，以方便进行构建和描述， pom.xml 是 Maven 的灵魂。所以， maven 环境搭建好之后，所有的学习和操作都是关于 pom.xml 的
 
-|    标签名    |                             描述                             |
-| :----------: | :----------------------------------------------------------: |
-| modelVersion |               Maven模型的版本，目前只能是4.0.0               |
+|    标签名    |                                                        描述                                                         |
+| :----------: | :-----------------------------------------------------------------------------------------------------------------: |
+| modelVersion |                                         Maven 模型的版本，目前只能是 4.0.0                                          |
 |   groupId    | 组织 id，一般是公司域名的倒写。 格式可以为： 1. 域名倒写。 例如 com.baidu 2. 域名倒写+项目名。例如 com.baidu.appolo |
-|  artifactId  |    项目的名称,也是模块名称，对应的groupID中项目中的子项目    |
-|   version    | 项目的版本号。如果项目还在开发中，是不稳定版本， 通常在版本后带-SNAPSHOT version 使用三位数字标识，例如 1.1.0 |
-|  packaging   | 项目打包的类型，可以使 jar、 war、 rar、 ear、 pom，默认是 jar |
+|  artifactId  |                              项目的名称,也是模块名称，对应的 groupID 中项目中的子项目                               |
+|   version    |    项目的版本号。如果项目还在开发中，是不稳定版本， 通常在版本后带-SNAPSHOT version 使用三位数字标识，例如 1.1.0    |
+|  packaging   |                           项目打包的类型，可以使 jar、 war、 rar、 ear、 pom，默认是 jar                            |
 
 ### 坐标
+
 {% alert success no-icon %}
 
 :notes: 坐标是一个唯一值， 在互联网中唯一标识一个项目的，具体的坐标也称之为 GAV 坐标，形式如下：
@@ -280,7 +287,7 @@ POM( Project Object Model ) 即项目对象模型。 Maven 把一个项目的结
 
 ### 依赖
 
-dependencies 和 dependency ，相当于是 java 代码中import
+dependencies 和 dependency ，相当于是 java 代码中 import
 
 ```xml
 <dependencies>
@@ -295,31 +302,36 @@ dependencies 和 dependency ，相当于是 java 代码中import
 
 properties：设置属性
 
-build ： maven在进行项目的构建时， 配置信息，例如指定编译java代码使用的jdk的版本等
-
+build ： maven 在进行项目的构建时， 配置信息，例如指定编译 java 代码使用的 jdk 的版本等
 
 ### 继承
+
 {% alert success no-icon %}
 
 在 Maven 中，如果多个模块都需要声明相同的配置，例如： groupId、 version、 有相同的依赖、或者相同的组件配置等， 也有类似 Java 的继承机 制， 用 `parent` 声明要继承的父工程的 pom 配置。
 
 {% endalert %}
+
 ### 聚合
+
 {% alert success no-icon %}
 
 在 Maven 的多模块开发中，为了统一构建整个项目的所有模块，可以提供一个额外的模块，该模块打包方式为 pom，并且在其中使用 modules 聚合的其它模块，这样通过本模块就可以一键自动识别模块间的依赖关系来构建所有模块，叫 Maven 的聚合。
 
 {% endalert %}
+
 ### 生命周期
+
 {% alert success no-icon %}
 
-Maven的生命周期，就是 Maven 构建项目的过程，总共有清理，编译，测试、报告、打包、安装、部署过程这些过程
+Maven 的生命周期，就是 Maven 构建项目的过程，总共有清理，编译，测试、报告、打包、安装、部署过程这些过程
 
 {% endalert %}
 
-:notes:maven的插件： maven命令执行时，真正完成功能的是插件，插件就是一些 jar 文件， 一些类
+:notes:maven 的插件： maven 命令执行时，真正完成功能的是插件，插件就是一些 jar 文件， 一些类
 
 ## Maven 常用命令
+
 {% alert success no-icon %}
 
 Maven 对所有的功能都提供相对应的命令，其中 maven 具有三大核心功能： **管理依赖**、**构建项目**、**管理项目信息**。管理依赖，只需要声明就可以自动到仓库下载；管理项目信息其实就是生成一个站点文档，一个命令就可以解决；因此 Maven 的常用命令和项目构建相关
@@ -328,15 +340,15 @@ Maven 对所有的功能都提供相对应的命令，其中 maven 具有三大�
 
 Maven 提供一个项目构建的模型，把编译、测试、打包、部署等都对应成一个个的生命周期阶段，并对每一个阶段提供相应的命令，程序员只需要掌握一些命令，就可以完成项目的构建过程
 
-|maven 命令|含义|
-| :----------------: | :------------------------------------------------------------: |
-| mvn compile      | 编译主程序(会在当前目录下生成一个 target,里边存放编译主程序之后生成的字节码文件) |
-|mvn clean |清理(会删除原来编译和测试的目录，即 target 目录，但是已经 install 到仓库里的包不会删除)|
-| mvn test-compile | 编译测试程序(会在当前目录下生成一个 target,里边存放编译测试程序之后生成的字节码文件) |
-| mvn test         | 测试(会生成一个目录surefire-reports，保存测试结果)         |
-|mvn package|按照 pom.xml 配置把`src/main`下的文件打包,生成 jar 包或者 war 包，不打包测试目录下的文件|
-|mvn install |安装主程序(会把本工程打包，并且按照本工程的坐标保存到本地仓库中)|
-|mvn deploy |部署主程序(会把本工程打包，按照本工程的坐标保存到本地库中，并且还会保存到私服仓库中。还会自动把项目部署到 web 容器中)。一般不使用|
+|    maven 命令    |                                                               含义                                                                |
+| :--------------: | :-------------------------------------------------------------------------------------------------------------------------------: |
+|   mvn compile    |                         编译主程序(会在当前目录下生成一个 target,里边存放编译主程序之后生成的字节码文件)                          |
+|    mvn clean     |                      清理(会删除原来编译和测试的目录，即 target 目录，但是已经 install 到仓库里的包不会删除)                      |
+| mvn test-compile |                       编译测试程序(会在当前目录下生成一个 target,里边存放编译测试程序之后生成的字节码文件)                        |
+|     mvn test     |                                        测试(会生成一个目录 surefire-reports，保存测试结果)                                        |
+|   mvn package    |                     按照 pom.xml 配置把`src/main`下的文件打包,生成 jar 包或者 war 包，不打包测试目录下的文件                      |
+|   mvn install    |                                 安装主程序(会把本工程打包，并且按照本工程的坐标保存到本地仓库中)                                  |
+|    mvn deploy    | 部署主程序(会把本工程打包，按照本工程的坐标保存到本地库中，并且还会保存到私服仓库中。还会自动把项目部署到 web 容器中)。一般不使用 |
 
 {% alert info no-icon %}
 
@@ -351,14 +363,13 @@ mvn compile 详解
 
 {% endalert %}
 
-
-
 ## Maven 常用设置
+
 了解了常用命令以及一些基础概念之后，某些项目可能有更详细的配置，接下来介绍 Maven 常用的设置
 
 ### scope 设置
 
-scope 表示依赖使用的范围，也就是在maven构建项目的那些阶段中起作用，scope 的值有 compile，test，provided，默认是 `compile`，不同 scope 对项目的影响如下：
+scope 表示依赖使用的范围，也就是在 maven 构建项目的那些阶段中起作用，scope 的值有 compile，test，provided，默认是 `compile`，不同 scope 对项目的影响如下：
 
 |    项目构建过程    | compile | test | provided |
 | :----------------: | :-----: | :--: | :------: |
@@ -383,9 +394,10 @@ scope 表示依赖使用的范围，也就是在maven构建项目的那些阶段
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
-      <scope>provided</scope> 
+      <scope>provided</scope>
     </dependency>
 ```
+
 {% endalert %}
 
 ### Maven 属性设置
@@ -416,9 +428,10 @@ scope 表示依赖使用的范围，也就是在maven构建项目的那些阶段
 {% endalert %}
 
 ### 资源插件设置
+
 {% alert success no-icon %}
 
-`src/main/java` 和 `src/test/java` 这两个目录中的所有 `*.java` 文件会分别在 comile 和 test-comiple 阶段被编译，编译结果分别放到了 `target/classes` 和 `targe/test-classes` 目录中，但是这两个目录中的其他文件都会被忽略掉，如果需要把 src 目录下的文件包放到 `target/classes` 目录，作为输出的 jar 一部分。需要指定资源文件位置，相关配置内容放到`<buid>`标签中  
+`src/main/java` 和 `src/test/java` 这两个目录中的所有 `*.java` 文件会分别在 comile 和 test-comiple 阶段被编译，编译结果分别放到了 `target/classes` 和 `targe/test-classes` 目录中，但是这两个目录中的其他文件都会被忽略掉，如果需要把 src 目录下的文件包放到 `target/classes` 目录，作为输出的 jar 一部分。需要指定资源文件位置，相关配置内容放到`<buid>`标签中
 
 {% endalert %}
 资源插件的配置如下：
@@ -428,7 +441,7 @@ scope 表示依赖使用的范围，也就是在maven构建项目的那些阶段
 <build>
 	<resources>
 		<resource>
-            <!--所在的目录-->	
+            <!--所在的目录-->
 			<directory>src/main/java</directory>
 				<includes>
                 <!--包括目录下的.properties,.xml 文件都会扫描到-->
@@ -447,15 +460,17 @@ scope 表示依赖使用的范围，也就是在maven构建项目的那些阶段
 :notes:常见的问题就是 MyBatis 的 Mapper 文件的配置
 
 ## Maven 在 IDEA 中的应用
-idea 中内置了 maven ，一般不使用内置的，因为用内置修改maven的设置不方便，使用自己安装的maven，需要覆盖idea 中的默认的设置。让 idea 指定 maven 安装位置等信息
+
+idea 中内置了 maven ，一般不使用内置的，因为用内置修改 maven 的设置不方便，使用自己安装的 maven，需要覆盖 idea 中的默认的设置。让 idea 指定 maven 安装位置等信息
 
 :one: 配置当前工程的设置， `file--settings ---Build, Excution,Deployment--Build Tools`
+
 ```
---Maven 
+--Maven
     Maven Home directory: maven的安装目录
     	User Settings File :  就是maven安装目录conf/setting.xml配置文件
     	Local Repository :    本机仓库的目录位置
---Build Tools--Maven--Runner  
+--Build Tools--Maven--Runner
     VM Options : archetypeCatalog=internal
     JRE: 你项目的jdk
 
@@ -498,6 +513,7 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 {% endalert %}
 
 #### 按职责划分
+
 ```
 -- module-test
  --module-test-service
@@ -510,7 +526,8 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 #### 按照功能拆分
 
-在电商系统中如下module
+在电商系统中如下 module
+
 ```
 --module-test
  --module-test-common 公共部分
@@ -521,41 +538,46 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
  --module-test-product 商品
  --module-test-price 价格
  --module-test-account 账号
- ```
+```
+
 #### 工程结构
+
 阿里爸爸推荐的分层架构如下，默认上层依赖下层，箭头关系表示可直接依赖
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/maven/maven-multimodule.png %}
-|   各层名称   |                             含义                             |
+| 各层名称 | 含义 |
 | :----------: | :----------------------------------------------------------: |
-| 开放 API 层  | 可直接封装 Service 接口暴露成 RPC 接口；通过 Web 封装成 http 接口；网关控制层等 |
-|  终端显示层  | 各个端的模板渲染并执行显示的层。 当前主要是 velocity 渲染， JS 渲染， JSP 渲染，移动端展示等。 |
-|    Web 层    | 主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等 |
-|  Service 层  |                   相对具体的业务逻辑服务层                   |
-|  Manager 层  |                        通用业务处理层                        |
-|    DAO 层    | 数据访问层，与底层 MySQL、 Oracle、 Hbase、 OB 等进行数据交互 |
-|  第三方服务  | 包括其它部门 RPC 服务接口，基础平台，其它公司的 HTTP 接口，如淘宝开放平台、支付宝付款服务、高德地图服务等 |
-| 外部数据接口 |   外部（应用）数据存储服务提供的接口，多见于数据迁移场景中   |
+| 开放 API 层 | 可直接封装 Service 接口暴露成 RPC 接口；通过 Web 封装成 http 接口；网关控制层等 |
+| 终端显示层 | 各个端的模板渲染并执行显示的层。 当前主要是 velocity 渲染， JS 渲染， JSP 渲染，移动端展示等。 |
+| Web 层 | 主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等 |
+| Service 层 | 相对具体的业务逻辑服务层 |
+| Manager 层 | 通用业务处理层 |
+| DAO 层 | 数据访问层，与底层 MySQL、 Oracle、 Hbase、 OB 等进行数据交互 |
+| 第三方服务 | 包括其它部门 RPC 服务接口，基础平台，其它公司的 HTTP 接口，如淘宝开放平台、支付宝付款服务、高德地图服务等 |
+| 外部数据接口 | 外部（应用）数据存储服务提供的接口，多见于数据迁移场景中 |
 
 :sparkles:Manager 层有如下特征：
 
 1. 对第三方平台封装的层，预处理返回结果及转化异常信息，适配上层接口
 2. 对 Service 层通用能力的下沉，如缓存方案，中间件通用处理
-3. 与 DAO 层交互，对多个DAO 的组合复用
+3. 与 DAO 层交互，对多个 DAO 的组合复用
+
 #### 分层领域模型规约
-|             模型             |                             含义                             |
-| :--------------------------: | :----------------------------------------------------------: |
-|      DO（ Data Object）      | 此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象  |
-| DTO（ Data Transfer Object） |       数据传输对象， Service 或 Manager 向外传输的对象       |
-|    BO（ Business Object）    |     业务对象， 可以由 Service 层输出的封装业务逻辑的对象     |
+
+|             模型             |                                            含义                                             |
+| :--------------------------: | :-----------------------------------------------------------------------------------------: |
+|      DO（ Data Object）      |                 此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象                 |
+| DTO（ Data Transfer Object） |                      数据传输对象， Service 或 Manager 向外传输的对象                       |
+|    BO（ Business Object）    |                    业务对象， 可以由 Service 层输出的封装业务逻辑的对象                     |
 |            Query             | 数据查询对象，各层接收上层的查询请求。 注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。 |
-|      VO（ View Object）      |      显示层对象，通常是 Web 向模板渲染引擎层传输的对象       |
+|      VO（ View Object）      |                      显示层对象，通常是 Web 向模板渲染引擎层传输的对象                      |
 
 :notes:不要使用不稳定的工具包或者 Utils 类, 不稳定指的是提供方无法做到向下兼容，在编译阶段正常，但在运行时产生异常，因此，尽量使用业界稳定的二方工具包
+
 ## 构建多模块应用
 
 搭建多模块项目，需要使用 maven 的**继承**和**聚合**
 
-:sparkles:Maven中聚合和继承的特点
+:sparkles:Maven 中聚合和继承的特点
 {% alert success no-icon %}
 
 - 聚合负责将多个模块集中在一起进行管理
@@ -601,7 +623,7 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902220412189.png %}
 
-### 父工程pom
+### 父工程 pom
 
 此时父工程的`pom.xml`文件发生了如下变化
 
@@ -614,16 +636,17 @@ archetypeCatalog=internal , maven项目创建时，会联网下载模版文件�
     <module>crowfundint-01-admin-parent</module>
 </modules>
 ```
-:notes:module的值是子模块相对于当前 POM 的路径
+
+:notes:module 的值是子模块相对于当前 POM 的路径
 
 :sparkles:更改打包方式为`pom`的原因
 {% alert info no-icon %}
 
-pom 是最简单的打包类型，不像jar和war，它生成的构件只有它本身，将`packaging`设置为 pom,意味着没有代码需要测试或者编译，也没有资源需要处理,由于使用了聚合，所以打包方式必须为pom，否则无法构建
+pom 是最简单的打包类型，不像 jar 和 war，它生成的构件只有它本身，将`packaging`设置为 pom,意味着没有代码需要测试或者编译，也没有资源需要处理,由于使用了聚合，所以打包方式必须为 pom，否则无法构建
 
 {% endalert %}
 
-### 子模块pom
+### 子模块 pom
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902230507544.png %}
 
@@ -638,7 +661,7 @@ pom 是最简单的打包类型，不像jar和war，它生成的构件只有它�
     <artifactId>crowdfunding-01-admin-parent</artifactId>
 ```
 
-:notes:声明了该模块继承自`com.pineappleman:crowdfunding:1.0-SNAPSHOT`,其实这里面还省略了 `<relativePath></relativePath>` 由于 **relativePath** 默认是 `../pom.xml` 而我们的子项目确实在父项目的下一级目录中，所以是可以不用填写的。**artifactId** 是子模块的组件id，由于继承了父 pom，所以**groupId**、**version** 也可以不写，默认继承自父 pom
+:notes:声明了该模块继承自`com.pineappleman:crowdfunding:1.0-SNAPSHOT`,其实这里面还省略了 `<relativePath></relativePath>` 由于 **relativePath** 默认是 `../pom.xml` 而我们的子项目确实在父项目的下一级目录中，所以是可以不用填写的。**artifactId** 是子模块的组件 id，由于继承了父 pom，所以**groupId**、**version** 也可以不写，默认继承自父 pom
 {% alert info no-icon %}
 
 :sparkles:Maven 首先在当前构建项目的环境中查找父 pom，然后项目所在的文件系统查找，然后是本地存储库，最后是远程 repo
@@ -646,13 +669,14 @@ pom 是最简单的打包类型，不像jar和war，它生成的构件只有它�
 {% endalert %}
 
 ## 设置父工程编译级别
+
 {% alert success no-icon %}
 
 :sparkles:项目中会统一使用 JDK 版本和编译级别，所以项目的编译级别必须统一，那么将编译插件添加到父工程，子模块依然会无条件去继承父工程的插件
 
 {% endalert %}
 
-### 修改父工程pom文件
+### 修改父工程 pom 文件
 
 ```xml
 <build>
@@ -680,7 +704,9 @@ pom 是最简单的打包类型，不像jar和war，它生成的构件只有它�
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902231341998.png %}
 
 ## Maven 依赖版本管理
+
 Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 idea 中进行依赖管理
+
 ### 父工程统一管理依赖
 
 :book:在父工程`<dependencies>`标签中添加三方依赖，子模块会无条件继承父工程所有依赖，例如在父工程的`pom.xml`中加入下面的依赖，最终每一个子模块都会拥有这个依赖
@@ -694,10 +720,12 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
     </dependency>
 </dependencies>
 ```
+
 子模块的依赖如下：
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/image-20210902233256349.png %}
 
 ### 父工程管理依赖版本号
+
 {% alert success no-icon %}
 
 通过以上依赖方式，子模块会无条件继承父工程的所有依赖，导致的问题是：不需要继承的依赖也会被继承，最终将<font style="color:red;font-weight:bold">增加项目最终打包的大小，可能为项目上线埋下隐患</font>
@@ -726,11 +754,12 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
 {% alert success no-icon %}
 
 - 子项目不会继承 dependencyManagement 组件中声明的依赖
-- 但如果子项目想导入某个父pom 中 dependencyManagement 中的依赖，只需要填写 **groupId 和 artifactId** ,不需要填写版本号，maven会自动去父pom 的 dependencyManagement 中找对应的 version，包括scope、exclusions等
+- 但如果子项目想导入某个父 pom 中 dependencyManagement 中的依赖，只需要填写 **groupId 和 artifactId** ,不需要填写版本号，maven 会自动去父 pom 的 dependencyManagement 中找对应的 version，包括 scope、exclusions 等
 
 {% endalert %}
 
 #### 父工程添加 properties 管理版本号
+
 {% alert success no-icon %}
 
 在 properties 标签中，同样可以自定义标签名称来管理依赖的版本号，通常自定义的标签名称由`项目名称-version 构成`，被管理的依赖版本号由`${标签名称}`来代替
@@ -758,16 +787,16 @@ Maven 中另一个重点的就是依赖管理，接下来详细讲解如何在 i
 
 {% alert success no-icon %}
 
-`dependencyManagement` 声明依赖，并不引入依赖，子项目默认不会继承父项目`dependencyManagement`中的依赖。只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承（version，exclusions，scope等继承自父 pom）。子项目如果指定了依赖的具体版本号，会优先使用子项目中指定版本，不会继承父pom中申明的依赖
+`dependencyManagement` 声明依赖，并不引入依赖，子项目默认不会继承父项目`dependencyManagement`中的依赖。只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承（version，exclusions，scope 等继承自父 pom）。子项目如果指定了依赖的具体版本号，会优先使用子项目中指定版本，不会继承父 pom 中申明的依赖
 
 {% endalert %}
 
 ## 附录
 
-[Maven多模块管理](https://juejin.cn/post/6844903970024980488)
+[Maven 多模块管理](https://juejin.cn/post/6844903970024980488)
 [maven 依赖版本管理](https://juejin.cn/post/6844903965444816903)
-[Maven与gradle的对比](https://zhuanlan.zhihu.com/p/21394120)
-[Gradle与Maven的区别](https://blog.csdn.net/Ginny_2017/article/details/105429394)
-[Maven报错：The packaging for this project did not assign a file to the build artifact](https://blog.csdn.net/gao_zhennan/article/details/89713407)
-[Spring Boot Maven Plugin打包异常及三种解决方法：Unable to find main class](https://www.cnblogs.com/thinking-better/p/7827368.html)
+[Maven 与 gradle 的对比](https://zhuanlan.zhihu.com/p/21394120)
+[Gradle 与 Maven 的区别](https://blog.csdn.net/Ginny_2017/article/details/105429394)
+[Maven 报错：The packaging for this project did not assign a file to the build artifact](https://blog.csdn.net/gao_zhennan/article/details/89713407)
+[Spring Boot Maven Plugin 打包异常及三种解决方法：Unable to find main class](https://www.cnblogs.com/thinking-better/p/7827368.html)
 [阿里巴巴开发手册](https://developer.aliyun.com/topic/download?spm=a2c6h.20345107.J_8234604580.4.60dd17dbhrCEq2&id=805)

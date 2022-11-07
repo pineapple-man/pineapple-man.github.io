@@ -12,6 +12,7 @@ excerpt: 大家常说的 Rest 是什么意思？为什么需要使用 Rest？
 date: 2021-11-16 19:10:17
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 ## 概述
@@ -19,7 +20,6 @@ thumbnailImage:
 REST ( REpresentational State Transfer )**(资源)表现层状态转化**,是目前流行的一种互联网**软件架构**风格，具有以下特点：
 
 {% image fancybox fig-100  center  "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/Rest 特点.png" %}
-
 
 ### 资源（Resource）
 
@@ -30,30 +30,34 @@ REST ( REpresentational State Transfer )**(资源)表现层状态转化**,是目
 网络上的一个实体，或网络上的一个具体信息均表示资源。资源可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个在互联网中的具体存在
 {%endalert%}
 
-:notes:通过访问资源的 URI 就可以获取对应的资源，因此 URI 即为每一个资源的独一无二的识别符，{% post_link Web/HTTP/2 "查看 HTTP 资源的详细信息" %}
+:notes:通过访问资源的 URI 就可以获取对应的资源，因此 URI 即为每一个资源的独一无二的识别符。
+
 ### 表现层（Representation）
 
 {% alert success no-icon%}
 将资源具体呈现出来的形式，称为表现层，常见的资源表示形式：txt 格式、HTML 格式、XML 格式、JSON 格式
 
 {%endalert%}
+
 ### 状态转化（State Transfer）
 
 每发出一个请求，就代表了客户端和服务器的一次交互过程，{% hl_text red %}由于 HTTP 协议是一个无状态协议，所以交互过程中的状态最终都保存在服务器端{% endhl_text %}。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生**状态转化(State Transfer)**。而这种转化是建立在资源表现之上，所以称为表现层状态转化
 
 > 使用 HTTP 协议进行举例是因为：HTTP 是目前互联网在应用层交互使用最多的一种协议
+
 ## REST 到底是什么？
 
 前面讲述了 REST 包含的几个概念，那么到底什么是 REST ，其实仍然还不太清楚。在了解 REST 是什么之前，先考虑这样一个问题：**传统方式下，如何进行前后端的资源转化？**
-### 传统方式操作资源 
+
+### 传统方式操作资源
 
 传统操作资源的方式，就是通过 URL 中访问的资源名来了解操作的行为，比如下表：
-| URL |   含义   |
+| URL | 含义 |
 | :---------------: | :------: |
-|        `http://127.0.0.1/item/queryUser.action?id=1`        | 进行查询 |
-|       `http://127.0.0.1/item/saveUser.action`        | 进行新增  |
-|        `http://127.0.0.1/item/updateUser.action`        | 进行更新  |
-|      `http://127.0.0.1/item/deleteUser.action?id=1`       | 进行删除 |
+| `http://127.0.0.1/item/queryUser.action?id=1` | 进行查询 |
+| `http://127.0.0.1/item/saveUser.action` | 进行新增 |
+| `http://127.0.0.1/item/updateUser.action` | 进行更新 |
+| `http://127.0.0.1/item/deleteUser.action?id=1` | 进行删除 |
 
 {% alert info no-icon%}
 
@@ -71,14 +75,12 @@ REST ( REpresentational State Transfer )**(资源)表现层状态转化**,是目
 HTTP 协议中存在 `GET`、 `POST`、 `PUT`、 `PATCH`、 `DELETE` 等众多请求方式，用来表示客户端对服务端进行的操作。 REST 就将这些请求方式利用起来，不同的方式表示对服务端的资源进行不同的操作。其中，GET 用于查询资源，POST 用于创建资源，PUT 用于更新服务端的资源的全部信息，PATCH 用于更新服务端的资源的部分信息，DELETE 用于删除服务端的资源。
 
 {%endalert%}
-| HTTP 协议操作动词 |   含义   |
+| HTTP 协议操作动词 | 含义 |
 | :---------------: | :------: |
-|        GET        | 获取资源 |
-|       POST        | 新建资源 |
-|        PUT        | 更新资源 |
-|      DELETE       | 删除资源 |
-
-
+| GET | 获取资源 |
+| POST | 新建资源 |
+| PUT | 更新资源 |
+| DELETE | 删除资源 |
 
 ### 使用 RESTful 操作资源
 
@@ -111,15 +113,16 @@ JSP 技术可以让我们在页面中嵌入 Java 代码，但是这样的技术�
 ## 如何设计 RESTful 风格的 API
 
 既然 RESTful API 是基于 REST，那么到底应该如何设计 RESTful API 的接口？
+
 ### 使用名词而不是动词
 
 {% alert success no-icon%}
 
-在 RESTful 架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表名对应，一般来说，数据库中的表都是同种记录的**集合（collection）**，所以API中的名词也应该使用复数
+在 RESTful 架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表名对应，一般来说，数据库中的表都是同种记录的**集合（collection）**，所以 API 中的名词也应该使用复数
 
 {%endalert%}
 
-举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样：
+举例来说，有一个 API 提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样：
 {% alert warning no-icon%}
 
 https://api.example.com/v1/zoos
@@ -148,14 +151,15 @@ https://api.example.com/v1/employees
 /settings 而部署 /setting
 
 {%endalert%}
+
 ### 使用子资源表达关系
 
 如果一个资源与另外一个资源有关系，使用子资源：
 
 {% alert success no-icon%}
 
-GET /cars/711/drivers/ 返回 car 711的所有司机
-GET /cars/711/drivers/4 返回 car 711的4号司机
+GET /cars/711/drivers/ 返回 car 711 的所有司机
+GET /cars/711/drivers/4 返回 car 711 的 4 号司机
 
 {%endalert%}
 
@@ -166,7 +170,7 @@ GET /cars/711/drivers/4 返回 car 711的4号司机
 使用唯一的查询参数进行过滤：
 {% alert warning no-icon%}
 
-`GET /cars?color=red` 返回红色的cars
+`GET /cars?color=red` 返回红色的 cars
 
 {%endalert%}
 
@@ -175,22 +179,21 @@ GET /cars/711/drivers/4 返回 car 711的4号司机
 允许针对多个字段排序
 {% alert warning no-icon%}
 
-访问下面的资源将会返回根据生产者降序和模型升序排列的car集合：`GET /cars?sort=-manufactorer,+model`
+访问下面的资源将会返回根据生产者降序和模型升序排列的 car 集合：`GET /cars?sort=-manufactorer,+model`
 {%endalert%}
-
 
 **Field selection**
 
-移动端能够显示其中一些字段，其实不需要一个资源的所有字段，给API消费者一个选择字段的能力，这会降低网络流量，提高API可用性
+移动端能够显示其中一些字段，其实不需要一个资源的所有字段，给 API 消费者一个选择字段的能力，这会降低网络流量，提高 API 可用性
 {% alert warning no-icon%}
 
 比如：`GET /cars?fields=manufacturer,model,id,color`，移动端就会自主的选择相应的字段，这里就选择了`manufacturer`、`model`、`id`和`color`字段
 {%endalert%}
 
-**Paging分页**
+**Paging 分页**
 {% alert warning no-icon%}
 
-使用 limit 和offset.实现分页，缺省limit=20 和offset=0；`GET /cars?offset=10&limit=5`，为了将总数发给客户端，使用订制的HTTP头： X-Total-Count.
+使用 limit 和 offset.实现分页，缺省 limit=20 和 offset=0；`GET /cars?offset=10&limit=5`，为了将总数发给客户端，使用订制的 HTTP 头： X-Total-Count.
 {%endalert%}
 
 ### 版本化 API
@@ -199,11 +202,10 @@ GET /cars/711/drivers/4 返回 car 711的4号司机
 
 ### 允许覆盖 HTTP 方法
 
-一些代理只支持 **POST** 和 **GET** 两种请求方式，为了使这些有限方法支持 RESTful API，使用订制的HTTP头 **X-HTTP-Method-Override** 来覆盖POST 方法，最终根据`X-HTTP-Method-Override`头部信息，进行请求方式的判断
+一些代理只支持 **POST** 和 **GET** 两种请求方式，为了使这些有限方法支持 RESTful API，使用订制的 HTTP 头 **X-HTTP-Method-Override** 来覆盖 POST 方法，最终根据`X-HTTP-Method-Override`头部信息，进行请求方式的判断
 
 ## 附录
 
-[理解本真的REST架构风格](http://kb.cnblogs.com/page/186516/)
+[理解本真的 REST 架构风格](http://kb.cnblogs.com/page/186516/)
 [深入浅出 REST](https://www.infoq.cn/article/rest-introduction/)
-[rest和restful的区别](https://blog.csdn.net/qq_27026603/article/details/82012277)
-
+[rest 和 restful 的区别](https://blog.csdn.net/qq_27026603/article/details/82012277)

@@ -10,11 +10,14 @@ keywords: UML
 excerpt: 本文主要记录 UML 中类图绘制的相关细节
 date: 2022-01-15 13:09:18
 ---
+
 <!-- toc -->
+
 ## 概念
+
 {% alert success no-icon %}
 
-类图（Class Diagrame）是描述类、接口、协作以及它们之间关系的图，用来显示系统中各个类的静态结构，类图包含7个元素：类、接口、协作、依赖关系、泛化关系、实现关系以及关联关系。
+类图（Class Diagrame）是描述类、接口、协作以及它们之间关系的图，用来显示系统中各个类的静态结构，类图包含 7 个元素：类、接口、协作、依赖关系、泛化关系、实现关系以及关联关系。
 
 {% endalert %}
 
@@ -40,15 +43,17 @@ date: 2022-01-15 13:09:18
 :question: UML 类图都有哪些元素构成？
 
 ## UML 类图的组成元素
+
 {% alert success no-icon %}
 
-在类图中，类用矩形来表示，分为3个部分：名称部分（Name）、属性部分（Attribute）和操作部分（Operation，也可称作方法）
+在类图中，类用矩形来表示，分为 3 个部分：名称部分（Name）、属性部分（Attribute）和操作部分（Operation，也可称作方法）
 
 {% endalert %}
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图元素.png %}
 
 ### 类名称
+
 {% alert success no-icon %}
 
 类的名称是一个文本串，分为简单名称和路径名称，简单名（single name）即，单独的名称不含冒号；路径名（path name）即用类所在的包的名称作为前缀
@@ -58,6 +63,7 @@ date: 2022-01-15 13:09:18
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类名称.png %}
 
 ### 类属性
+
 {% alert success no-icon %}
 
 描述类在软件系统中代表的事物所具备的特性，UML 中类属性的语法：`[可见性] 属性名 [：类型] [=初始值] [{属性字符串}]`，如:`- name: string`，其中 `[]` 中的部分是可选的。
@@ -89,6 +95,7 @@ date: 2022-01-15 13:09:18
 - 类属性中的属性字符串是关于属性的其他信息，通常是属性的约束信息，也不常使用
 
 ### 操作
+
 {% alert success no-icon %}
 
 类的操作是对类的对象所能做的事务的抽象，相当于服务的实现。UML 中类操作的语法：`[可见性] 操作名 [ (参数表）] [: 返回类型] [{属性字符串}]`，如`+ search( ): Person`，其中 `[]` 中的部分是可选的。
@@ -97,13 +104,13 @@ date: 2022-01-15 13:09:18
 
 {% alert warning no-icon %}
 
-操作的可见性包括共有（Public）、私有(Private)、受保护（Proteted）和包内公有（Package）4种，与类属性稍有不同，具体的细节如下：
+操作的可见性包括共有（Public）、私有(Private)、受保护（Proteted）和包内公有（Package）4 种，与类属性稍有不同，具体的细节如下：
 
 - 其中公有类型即只要调用对象能访问操作所在的包，就可调用该操作，用 `+` 表示；
 - 私有类型即只有属于同一个类的对象才可以调用，用 `-` 表示；
 - 受保护类型即只有子类的对象才可以调动父类，用 `#` 表示；
 - 包内公有类型即只有在同一个包里的对象才可以调用，用 `~` 表示
-{% endalert %}
+  {% endalert %}
 
 {% alert warning no-icon %}
 
@@ -120,6 +127,7 @@ date: 2022-01-15 13:09:18
 操作的返回值类型也和 Java 中的使用方式相同
 
 ## 接口
+
 {% alert success no-icon %}
 
 接口是指类或组件所提供的、可以完成特定功能的一组操作的集合。接口描述了类或组件的对外的、可见的动作，通常一个类实现一个或多个接口。接口就是为类制定了一种规范，是类与类之间的一种约束和协定
@@ -154,13 +162,13 @@ date: 2022-01-15 13:09:18
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图泛化关系.webp %}
 
 ### 关联(Association)关系
+
 {% alert success no-icon %}
 
 关联关系表示一组具有共同结构特征、行为特征、关系和语义的链接，是一种结构关系，指明一个事物的对象与另一个事物的对象间的关系，通常两者相互依赖
 {% endalert %}
 
 如学生和大学的关系，学生在大学里学习，大学又包括了很多学生，所以可以在学生和大学之间建立关联关系。
-
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml类图关联关系.webp %}
 
@@ -177,6 +185,7 @@ date: 2022-01-15 13:09:18
 {% endalert %}
 
 ### 聚合（Aggregation）关系
+
 {% alert success no-icon %}
 
 是一种特殊形式的关联关系。表示**整体与部分关系的关联**，简单来说，就是关联关系中的一组元素组成了一个更大、更复杂的单元,描述了 `has a` 的关系。如大学和学院，大学是由很多个学院组成的，因此两者之间是聚合关系。
@@ -196,6 +205,7 @@ date: 2022-01-15 13:09:18
 {% endalert %}
 
 ### 组合（composition）关系
+
 {% alert info no-icon %}
 
 组合关系表示整体有部分构成的语义，但组合关系是一种强依赖的特殊聚合关系，**如果整体不存在了，则部分也不存在了**
@@ -207,9 +217,10 @@ date: 2022-01-15 13:09:18
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/designPattern/uml_composition.jpg %}
 
 ### 实现（Realization）关系
+
 {% alert success no-icon %}
 
-表示定义和其实现之间的关系，通常用来将一种模型元素和另一种模型元素连接起来，比如类和接口。 
+表示定义和其实现之间的关系，通常用来将一种模型元素和另一种模型元素连接起来，比如类和接口。
 
 {% endalert %}
 
@@ -224,5 +235,4 @@ date: 2022-01-15 13:09:18
 ## 附录
 
 [人人都是产品经理](http://www.woshipm.com/pd/2593231.html)
-[看懂UML类图和时序图](https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html)
-
+[看懂 UML 类图和时序图](https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html)

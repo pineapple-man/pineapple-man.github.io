@@ -1,18 +1,18 @@
 ---
 title: 进程内存管理(1)
 date: 2021-10-21 23:47:15
-toc:  true
+toc: true
 clearReading: true
 thumbnailImagePosition: bottom
 metaAlignment: center
 categories: 操作系统
 tags: 操作系统
-keywords: 
-    - RSS
-    - VSS
-    - PSS
-    - USS
-    - 进程内存管理
+keywords:
+  - RSS
+  - VSS
+  - PSS
+  - USS
+  - 进程内存管理
 excerpt: 本文将简单介绍操作系统中评估进程内存占用的四个指标
 ---
 
@@ -20,7 +20,7 @@ excerpt: 本文将简单介绍操作系统中评估进程内存占用的四个�
 
 ## 缘起
 
-最近实验室要求制作一个python程序监控的工具类，在开发的过程中遇到了一些曾经在操作系统中没有学习到的知识在这里进行记录
+最近实验室要求制作一个 python 程序监控的工具类，在开发的过程中遇到了一些曾经在操作系统中没有学习到的知识在这里进行记录
 
 > :notes:本文大部分内容总结自网络，难免有上下文不连贯的地方，望谅解！
 
@@ -37,7 +37,7 @@ excerpt: 本文将简单介绍操作系统中评估进程内存占用的四个�
 
 ## VSS-Virtual Set Size
 
-VSS也称为VSZ，表示一个进程的**虚拟内存占用情况**，包含**共享库占用的全部内存**，以及**分配但未使用内存**，还包括了**可能不在RAM中的内存**，比如一个进程Swap出去的内存
+VSS 也称为 VSZ，表示一个进程的**虚拟内存占用情况**，包含**共享库占用的全部内存**，以及**分配但未使用内存**，还包括了**可能不在 RAM 中的内存**，比如一个进程 Swap 出去的内存
 
 > VSZ is the Virtual Memory Size. It **includes all memory that the process can access**, including memory that is swapped out, memory that is allocated, but not used, and memory that is from shared libraries
 
@@ -45,14 +45,13 @@ VSS也称为VSZ，表示一个进程的**虚拟内存占用情况**，包含**�
 
 {% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/d3a92df3efa0df779418bed820e6dcd31f6cbbc6.png   %}
 
-
 ## RSS-Resident Set Size
 
-RSS称为常驻内存大小，表示一个进程**实际使用的物理内存大小**，以及包含**共享库占用的全部内存**
+RSS 称为常驻内存大小，表示一个进程**实际使用的物理内存大小**，以及包含**共享库占用的全部内存**
 
 > RSS is the Resident Set Size and is used to show how much memory is allocated to that process and is in RAM. It does not include memory that is swapped out. It does include memory from shared libraries as long as the pages from those libraries are actually in memory. It does include all stack and heap memory.
 
-:notes:使用RSS指标还是可能会造成误导，因为它仅仅表示**该进程所使用的所有共享库的大小**，它不管有多少个进程使用该共享库，该共享库仅被加载到内存一次。所以，**RSS并不能准确反映单进程的内存占用情况**
+:notes:使用 RSS 指标还是可能会造成误导，因为它仅仅表示**该进程所使用的所有共享库的大小**，它不管有多少个进程使用该共享库，该共享库仅被加载到内存一次。所以，**RSS 并不能准确反映单进程的内存占用情况**
 
 {% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/d10c3c6e80e70309ce73bfa874d92d56606fa989.png  %}
 
@@ -67,17 +66,17 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 
 ## PSS-Proportional Set Size
 
-通过RSS，可以发现对于一个进程占用内存的实际情况还是**不准确**的，因为**一个共享库实际可以被很多进程共享**，如果将所有进程的RSS指标加起来，必然是会超过计算机本身内存大小的
+通过 RSS，可以发现对于一个进程占用内存的实际情况还是**不准确**的，因为**一个共享库实际可以被很多进程共享**，如果将所有进程的 RSS 指标加起来，必然是会超过计算机本身内存大小的
 
 :dart:为了弥补 RSS 指标的不正常地方，就存在了 PSS 指标
 
 :sparkles:PSS 我将其翻译为比例内存大小，表示一个进程实际使用的物理内存，不过其中共享库的大小是按照进程数等比计算的
 
-> 例如：有三个进程都使用了一个共享库，共占用了30页内存。那么PSS将认为每个进程分别占用该共享库10页的大小。 
+> 例如：有三个进程都使用了一个共享库，共占用了 30 页内存。那么 PSS 将认为每个进程分别占用该共享库 10 页的大小。
 
-:notebook:PSS是非常有用的数据，因为系统中所有进程的PSS相加的话，就刚好反映了系统中的 总共占用的内存。 而当一个进程被销毁之后， 其占用的共享库那部分比例的PSS，将会再次按比例分配给余下使用该库的进程
+:notebook:PSS 是非常有用的数据，因为系统中所有进程的 PSS 相加的话，就刚好反映了系统中的 总共占用的内存。 而当一个进程被销毁之后， 其占用的共享库那部分比例的 PSS，将会再次按比例分配给余下使用该库的进程
 
-:persevere:PSS可能会造成一点的误导，因为当一个进程被销毁后， PSS不能准确地表示返回给全局系统的内存
+:persevere:PSS 可能会造成一点的误导，因为当一个进程被销毁后， PSS 不能准确地表示返回给全局系统的内存
 
 {% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ee8a35925f0aafb160c58b18eb4aee3bf4762398.png%}
 
@@ -87,11 +86,9 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 
 :sparkles:USS 也称为**进程独占内存大小**，不包含共享库占用的内存。
 
-:notebook:USS是非常有用的数据，它反映了运行一个特定进程真实的边际成本（增量成本）。**当一个进程被销毁后，USS是真实返回给系统的内存，当进程中存在一个可疑的内存泄露时，USS是最佳观察数据**
+:notebook:USS 是非常有用的数据，它反映了运行一个特定进程真实的边际成本（增量成本）。**当一个进程被销毁后，USS 是真实返回给系统的内存，当进程中存在一个可疑的内存泄露时，USS 是最佳观察数据**
 
 {% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/255c513123c88d85d5e1137be66d0672368b8931.png %}
-
-
 
 ## 总结
 
@@ -102,5 +99,4 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 [VSS,RSS,PSS,USS](https://www.iteye.com/blog/myeyeofjava-1837860)
 [psutil](https://psutil.readthedocs.io/en/stable/#psutil.Process.memory_info)
 [What is RSS and VSZ in Linux memory management](https://stackoverflow.com/questions/7880784/what-is-rss-and-vsz-in-linux-memory-management)
-[Linux内存管理 一个进程究竟占用多少空间？](https://cloud.tencent.com/developer/article/1683708)
-
+[Linux 内存管理 一个进程究竟占用多少空间？](https://cloud.tencent.com/developer/article/1683708)

@@ -11,34 +11,35 @@ excerpt: 本文主要讲解如何通过 Java 进行报表处理
 date: 2022-02-01 00:55:15
 thumbnailImage:
 ---
+
 <!-- toc -->
 
 ## 概述
 
-在企业级应用开发中，Excel 报表是一种最常见的报表需求，Excel报表开发一般分为两种形式：
+在企业级应用开发中，Excel 报表是一种最常见的报表需求，Excel 报表开发一般分为两种形式：
 
 - 方便操作，基于 Excel 的报表批量上传数据
 - 通过 java 代码生成 Excel 报表
 
-## Excel的两种形式
+## Excel 的两种形式
 
-目前世面上的 Excel 分为两个大的版本Excel2003和Excel2007及以上两个版本，两者之间的区别如下：
+目前世面上的 Excel 分为两个大的版本 Excel2003 和 Excel2007 及以上两个版本，两者之间的区别如下：
 
-|               |                Excel 2003                |              Excel 2003               |
-| :-----------: | :--------------------------------------: | :-----------------------------------: |
-|     后缀      |                  `xls`                   |                `xlsx`                 |
-|     结构      | 二进制格式，核心结构是复合文档类型的结构 |              XML类型结构              |
-| 单sheet数据量 |          行：65535<br />列：256          |      行：1048576<br />列：16384       |
-|     特点      |               存储容量优先               | 基于`xml`压缩，占用空间小、操作效率高 |
+|                 |                Excel 2003                |              Excel 2003               |
+| :-------------: | :--------------------------------------: | :-----------------------------------: |
+|      后缀       |                  `xls`                   |                `xlsx`                 |
+|      结构       | 二进制格式，核心结构是复合文档类型的结构 |             XML 类型结构              |
+| 单 sheet 数据量 |          行：65535<br />列：256          |      行：1048576<br />列：16384       |
+|      特点       |               存储容量优先               | 基于`xml`压缩，占用空间小、操作效率高 |
 
-:sparkles:Java中常见的用来操作Excl的方式一般有 2 种：JXL 和 POI
+:sparkles:Java 中常见的用来操作 Excl 的方式一般有 2 种：JXL 和 POI
 
-- JXL只能对Excel进行操作,属于比较老的框架，它只支持到Excel 95-2000的版本。现在已经停止更新和维护。
-- POI是apache的项目,可对微软的Word、Excel、PPT进行操作,包括 office2003 和 2007,Excel2003 和 2007
+- JXL 只能对 Excel 进行操作,属于比较老的框架，它只支持到 Excel 95-2000 的版本。现在已经停止更新和维护。
+- POI 是 apache 的项目,可对微软的 Word、Excel、PPT 进行操作,包括 office2003 和 2007,Excel2003 和 2007
 
 ## POI
 
-APache POI是Apache软件基金会的开源项目，由 Java 编写的免费开源的跨平台的 Java API，Apache POI提供API给Java语言操作`Microsoft Office`功能
+APache POI 是 Apache 软件基金会的开源项目，由 Java 编写的免费开源的跨平台的 Java API，Apache POI 提供 API 给 Java 语言操作`Microsoft Office`功能
 
 :sparkles:应用场景
 
@@ -68,7 +69,7 @@ APache POI是Apache软件基金会的开源项目，由 Java 编写的免费开�
 
 结构说明
 
-|  结构  |                      对应的office                      |
+|  结构  |                     对应的 office                      |
 | :----: | :----------------------------------------------------: |
 | `HSSF` |    提供读写 **Microsoft Excel XLS** 格式档案的功能     |
 | `XSSF` | 提供读写 **Microsoft Excel OOXML XLSX** 格式档案的功能 |
@@ -80,14 +81,14 @@ APache POI是Apache软件基金会的开源项目，由 Java 编写的免费开�
 
 ### 操作
 
-|  API名称  |                             含义                             |
-| :-------: | :----------------------------------------------------------: |
-| Workbook  | Excel的文档对象,针对不同的Excel类型分为：HSSFWorkbook（2003）和 XSSFWorkbool（2007） |
-|   Sheet   |                         Excel的表单                          |
-|    Row    |                          Excel的行                           |
-|   Cell    |                       Excel的格子单元                        |
-|   Font    |                          Excel字体                           |
-| CellStyle |                         格子单元样式                         |
+| API 名称  |                                          含义                                           |
+| :-------: | :-------------------------------------------------------------------------------------: |
+| Workbook  | Excel 的文档对象,针对不同的 Excel 类型分为：HSSFWorkbook（2003）和 XSSFWorkbool（2007） |
+|   Sheet   |                                      Excel 的表单                                       |
+|    Row    |                                       Excel 的行                                        |
+|   Cell    |                                    Excel 的格子单元                                     |
+|   Font    |                                       Excel 字体                                        |
+| CellStyle |                                      格子单元样式                                       |
 
 ### 创建 `Excel`
 
@@ -163,7 +164,7 @@ fileOutputStream.close();
 		FileInputStream fileInputStream = new FileInputStream("/Users/humingchao/IdeaProjects/SaaS_ihrm/poiTest/p1.jpg");
 		byte[] bytes = IOUtils.toByteArray(fileInputStream);
 		fileInputStream.read(bytes);
-		
+
 		// 向 POI 内存添加一张图片，并返回该图片在 Excel 中的图片集合中的下标
 		int index = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_JPEG);
 		// 绘制图片工具类
@@ -176,11 +177,11 @@ fileOutputStream.close();
 		anchor.setRow1(0);
 		// 列从 0 开始
 		anchor.setCol1(0);
-		
+
 		// 创建图片
 		Picture picture = patriarch.createPicture(anchor, index);
 		picture.resize();
-		
+
 		// 文件流
 		FileOutputStream fileOutputStream = new FileOutputStream("test3.xlsx");
 		// 写入文件
@@ -196,12 +197,12 @@ public static void main(String[] args) throws Exception {
    XSSFWorkbook workbook = new XSSFWorkbook("demo.xlsx");
    // 获取 sheet 从 0 开始
    Sheet sheet = workbook.getSheetAt(0);
-   
+
    int totalRowNum = sheet.getLastRowNum();
-   
+
    Row row = null;
    Cell cell = null;
-  
+
   // 循环所有行
    for (int rowNum = 0; rowNum <=sheet.getLastRowNum(); rowNum++) {
       row = sheet.getRow(rowNum);
@@ -250,7 +251,7 @@ public static Object getValue(Cell cell) {
 
 :question: 那怎么样才能更方便的对报表样式，报表头进行处理呢?
 
-答案是使用已经准备好的Excel模板，只需要关注模板中的数据即可
+答案是使用已经准备好的 Excel 模板，只需要关注模板中的数据即可
 
 :sailboat: 模版打印的操作步骤
 

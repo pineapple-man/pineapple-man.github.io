@@ -11,30 +11,33 @@ tags: SpringBoot
 keywords: spring boot starter
 excerpt: 使用某个组件时，常看到 xxx.starter，那么究竟什么是 starter
 ---
+
 <!-- toc -->
 
-Spring Boot 大大简化了项目初始搭建以及开发过程，而这些都是通过Spring Boot提供的 starter 来完成的，一个项目中的基础模块本质就是一个 Starter，本文主要对 Spring boot 的 starter 进行比较全面深入的记录。
+Spring Boot 大大简化了项目初始搭建以及开发过程，而这些都是通过 Spring Boot 提供的 starter 来完成的，一个项目中的基础模块本质就是一个 Starter，本文主要对 Spring boot 的 starter 进行比较全面深入的记录。
 
 ## 概述
 
-spring boot 在配置上相比 spring 要简单许多, 其核心在于 spring-boot-starter, 在使用 spring boot 来搭建一个项目时, 只需要引入官方提供的starter, 就可以直接使用, 免去了各种配置。starter简单来讲就是引入了一些相关依赖和一些初始化的配置。
+spring boot 在配置上相比 spring 要简单许多, 其核心在于 spring-boot-starter, 在使用 spring boot 来搭建一个项目时, 只需要引入官方提供的 starter, 就可以直接使用, 免去了各种配置。starter 简单来讲就是引入了一些相关依赖和一些初始化的配置。
 
-Spring官方提供了很多starter，第三方也可以定义starter。为了加以区分，starter从名称上进行了如下规范：
+Spring 官方提供了很多 starter，第三方也可以定义 starter。为了加以区分，starter 从名称上进行了如下规范：
 {% alert success no-icon %}
 
-1. Spring官方提供的starter名称为：`spring-boot-starter-xxx`，例如 Spring 官方提供的 `spring-boot-starter-web`
+1. Spring 官方提供的 starter 名称为：`spring-boot-starter-xxx`，例如 Spring 官方提供的 `spring-boot-starter-web`
 2. 第三方提供的 starter 名称为：`xxx-spring-boot-starter`，例如由 mybatis 提供的 `mybatis-spring-boot-starter`
 
 {% endalert %}
 
-Spring Boot之所以能够帮我们简化项目的搭建和开发过程，主要是基于它提供的起步依赖和自动配置
+Spring Boot 之所以能够帮我们简化项目的搭建和开发过程，主要是基于它提供的起步依赖和自动配置
 
 ## 起步依赖
-起步依赖**其实就是将具备某种功能的坐标打包到一起**，可以简化依赖导入的过程。例如，我们导入spring-boot-starter-web这个starter，则和web开发相关的jar包都一起导入到项目中了。如下图所示：
+
+起步依赖**其实就是将具备某种功能的坐标打包到一起**，可以简化依赖导入的过程。例如，我们导入 spring-boot-starter-web 这个 starter，则和 web 开发相关的 jar 包都一起导入到项目中了。如下图所示：
 
 {% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-starter起步依赖.png %}
 
 ## 自动配置
+
 自动配置，就是无须手动配置 xml，自动配置并管理 bean，那么 Spring Boot 是如何完成自动配置的尼？
 :boat: 自动配置涉及到如下几个关键步骤：
 {% alert success no-icon %}
@@ -49,9 +52,9 @@ Spring Boot之所以能够帮我们简化项目的搭建和开发过程，主要
 
 接下来以`Mybatis-spring-boot-starter`来说明自动配置的实现过程
 
-### 基于Java代码的Bean配置
+### 基于 Java 代码的 Bean 配置
 
-当我们在项目中导入了`mybatis-spring-boot-starter`这个jar后，可以看到它包括了很多相关的 jar 包
+当我们在项目中导入了`mybatis-spring-boot-starter`这个 jar 后，可以看到它包括了很多相关的 jar 包
 
 ```xml
 <dependency>
@@ -63,7 +66,7 @@ Spring Boot之所以能够帮我们简化项目的搭建和开发过程，主要
 
 ![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybatisStarter.png)
 
-其中在mybatis-spring-boot-autoconfigure这个jar包中有如下一个**MybatisAutoConfiguration**自动配置类
+其中在 mybatis-spring-boot-autoconfigure 这个 jar 包中有如下一个**MybatisAutoConfiguration**自动配置类
 
 ![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybaits-autoconfiguration.png)
 
@@ -85,14 +88,14 @@ public class MybatisAutoConfiguration {
 }
 ```
 
-**@Configuration**和 **@Bean** 这两个注解一起使用就可以创建一个基于java代码的配置类，可以用来替代传统的xml配置文件，两个注解具体的含义如下：
+**@Configuration**和 **@Bean** 这两个注解一起使用就可以创建一个基于 java 代码的配置类，可以用来替代传统的 xml 配置文件，两个注解具体的含义如下：
 
 |       注解       |                  含义                   |
 | :--------------: | :-------------------------------------: |
 | `@Configuration` |   在类上标注，表明当前类是一个配置类    |
 |     `@Bean`      | 表明需要向 Spring IoC 容器中注入的 Bean |
 
-所以上面的**MybatisAutoConfiguration**这个类，自动帮我们生成了 `SqlSessionFactory` 和 `SqlSessionTemplate` 这些 Mybatis 的重要实例并交给 spring 容器管理，从而完成bean的自动注册
+所以上面的**MybatisAutoConfiguration**这个类，自动帮我们生成了 `SqlSessionFactory` 和 `SqlSessionTemplate` 这些 Mybatis 的重要实例并交给 spring 容器管理，从而完成 bean 的自动注册
 
 ### 自动配置条件依赖
 
@@ -103,30 +106,30 @@ public class MybatisAutoConfiguration {
 @ConditionalOnBean({DataSource.class})
 ```
 
-所以要完成Mybatis的自动配置，需要在类路径中存在`SqlSessionFactory`、`SqlSessionFactoryBean`这两个类，同时需要存在DataSource这个bean且这个bean完成自动注册
+所以要完成 Mybatis 的自动配置，需要在类路径中存在`SqlSessionFactory`、`SqlSessionFactoryBean`这两个类，同时需要存在 DataSource 这个 bean 且这个 bean 完成自动注册
 
 Spring boot 中常见的条件依赖注解有：
 
-|               注解                |                           功能说明                           |
-| :-------------------------------: | :----------------------------------------------------------: |
-|       `@ConditionalOnBean`        |      仅在当前上下文中存在某个bean时，才会实例化这个Bean      |
-|       `@ConditionalOnClass`       |          某个class位于类路径上，才会实例化这个Bean           |
-|    `@ConditionalOnExpression`     |           当表达式为true的时候，才会实例化这个Bean           |
-|    `@ConditionalOnMissingBean`    | 仅在当前上下文中不存在某个bean时，才会实例化这个Bean，防止重复创建 |
-|   `@ConditionalOnMissingClass`    |     某个class在类路径上不存在的时候，才会实例化这个Bean      |
-| `@ConditionalOnNotWebApplication` |               不是web应用时才会实例化这个Bean                |
-|       `@AutoConfigureAfter`       |            在某个bean完成自动配置后实例化这个bean            |
-|      `@AutoConfigureBefore`       |            在某个bean完成自动配置前实例化这个bean            |
+|               注解                |                               功能说明                                |
+| :-------------------------------: | :-------------------------------------------------------------------: |
+|       `@ConditionalOnBean`        |         仅在当前上下文中存在某个 bean 时，才会实例化这个 Bean         |
+|       `@ConditionalOnClass`       |             某个 class 位于类路径上，才会实例化这个 Bean              |
+|    `@ConditionalOnExpression`     |              当表达式为 true 的时候，才会实例化这个 Bean              |
+|    `@ConditionalOnMissingBean`    | 仅在当前上下文中不存在某个 bean 时，才会实例化这个 Bean，防止重复创建 |
+|   `@ConditionalOnMissingClass`    |        某个 class 在类路径上不存在的时候，才会实例化这个 Bean         |
+| `@ConditionalOnNotWebApplication` |                  不是 web 应用时才会实例化这个 Bean                   |
+|       `@AutoConfigureAfter`       |               在某个 bean 完成自动配置后实例化这个 bean               |
+|      `@AutoConfigureBefore`       |               在某个 bean 完成自动配置前实例化这个 bean               |
 
 ### Bean 参数获取
 
 {% alert success no-icon %}
 
-要完成mybatis的自动配置，需要我们在配置文件中提供数据源相关的配置参数，例如数据库驱动、连接url、数据库用户名、密码等。那么spring boot是如何读取 yml 或者 properites 配置文件的的属性来创建数据源对象的？
+要完成 mybatis 的自动配置，需要我们在配置文件中提供数据源相关的配置参数，例如数据库驱动、连接 url、数据库用户名、密码等。那么 spring boot 是如何读取 yml 或者 properites 配置文件的的属性来创建数据源对象的？
 
 {% endalert %}
 
-在我们导入mybatis-spring-boot-starter这个jar包后会传递过来一个spring-boot-autoconfigure包，在这个包中有一个自动配置类**DataSourceAutoConfiguration**，如下所示：
+在我们导入 mybatis-spring-boot-starter 这个 jar 包后会传递过来一个 spring-boot-autoconfigure 包，在这个包中有一个自动配置类**DataSourceAutoConfiguration**，如下所示：
 
 ```java
 @Configuration
@@ -145,7 +148,7 @@ public class DataSourceAutoConfiguration {}
 public class DataSourceProperties implements BeanClassLoaderAware, EnvironmentAware, InitializingBean {}
 ```
 
-上面这个类上加入了**ConfigurationProperties**注解，这个注解的作用就是把 yml 或者 properties 配置文件中的配置参数信息封装到**ConfigurationProperties**注解标注的bean(即**DataSourceProperties**)的相应属性上。
+上面这个类上加入了**ConfigurationProperties**注解，这个注解的作用就是把 yml 或者 properties 配置文件中的配置参数信息封装到**ConfigurationProperties**注解标注的 bean(即**DataSourceProperties**)的相应属性上。
 
 {% alert info no-icon %}
 
@@ -167,7 +170,7 @@ public DataSourceInitializer dataSourceInitializer(DataSourceProperties properti
 
 {% alert success no-icon %}
 
-spring boot默认扫描启动类所在的包下的主类与子类的所有组件，但并没有包括依赖包中的类，那么依赖包中的bean是如何被发现和加载的？
+spring boot 默认扫描启动类所在的包下的主类与子类的所有组件，但并没有包括依赖包中的类，那么依赖包中的 bean 是如何被发现和加载的？
 
 {% endalert %}
 {% alert info no-icon %}
@@ -195,8 +198,8 @@ public @interface SpringBootApplication {...}
 
 其中比较重要是下面这三个注解：
 
-- `@SpringBootConfiguration`：作用就相当`@Configuration`注解，被注解的类将成为一个bean配置类
-- `@ComponentScan`：作用就是自动扫描并加载符合条件的组件，最终将这些bean加载到spring容器中
+- `@SpringBootConfiguration`：作用就相当`@Configuration`注解，被注解的类将成为一个 bean 配置类
+- `@ComponentScan`：作用就是自动扫描并加载符合条件的组件，最终将这些 bean 加载到 spring 容器中
 - `@EnableAutoConfiguration`：这个注解很重要，借助`@Import`的支持，收集和注册依赖包中相关的 Bean 定义
 
 {% endalert %}
@@ -246,7 +249,7 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 }
 ```
 
-`getCandidateConfigurations()` 方法中调用了SpringFactoriesLoader类的loadFactoryNames方法，继续跟踪源码：
+`getCandidateConfigurations()` 方法中调用了 SpringFactoriesLoader 类的 loadFactoryNames 方法，继续跟踪源码：
 
 ```java
     public static List<String> loadFactoryNames(Class<?> factoryClass, ClassLoader classLoader) {
@@ -279,17 +282,20 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 ![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/springboot/springboot-mybatisstarter-spring-factories.png)
 
 其中的内容如下：
+
 ```
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
 ```
+
 {% endalert %}
 
 这样 Spring Boot 就可以加载到 MybatisAutoConfiguration 这个配置类了
 
 ### Bean 到加载
-在Spring Boot应用中要让一个普通类交给Spring容器管理，通常有以下方法：
+
+在 Spring Boot 应用中要让一个普通类交给 Spring 容器管理，通常有以下方法：
 
 {% alert success no-icon %}
 
@@ -297,10 +303,9 @@ org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
 2. 使用`@Controller`、`@Service`、` @Repository`、` @Component` 注解标注该类并且启用`@ComponentScan`自动扫描
 3. 使用`@Import`注解以及对应的方法
 
-
 {% endalert %}
 
-其中Spring Boot实现自动配置使用的是`@Import`注解这种方式，`AutoConfigurationImportSelector`类的`selectImports`方法返回一组从`META-INF/spring.factories`文件中读取的`bean`的全类名，这样Spring Boot就可以加载到这些Bean并完成实例的创建工作
+其中 Spring Boot 实现自动配置使用的是`@Import`注解这种方式，`AutoConfigurationImportSelector`类的`selectImports`方法返回一组从`META-INF/spring.factories`文件中读取的`bean`的全类名，这样 Spring Boot 就可以加载到这些 Bean 并完成实例的创建工作
 
 ### 自动配置总结
 
@@ -308,11 +313,10 @@ org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
 
 {% alert info no-icon %}
 
-1. @Configuration与@Bean：基于Java代码的bean配置
+1. @Configuration 与@Bean：基于 Java 代码的 bean 配置
 2. @Conditional：设置自动配置条件依赖
-3. @EnableConfigurationProperties与@ConfigurationProperties：读取配置文件转换为bean
-4. @EnableAutoConfiguration与@Import：实现bean发现与加载
-
+3. @EnableConfigurationProperties 与@ConfigurationProperties：读取配置文件转换为 bean
+4. @EnableAutoConfiguration 与@Import：实现 bean 发现与加载
 
 {% endalert %}
 
@@ -325,6 +329,7 @@ org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
 1. 创建 starter 工程 hello-spring-boot-starter 并配置 pom.xml 文件
 
 {% endalert %}
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -357,9 +362,10 @@ org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
     </dependencies>
 </project>
 ```
+
 {% alert warning no-icon %}
 
-2. 创建配置属性类HelloProperties
+2. 创建配置属性类 HelloProperties
 
 {% endalert %}
 
@@ -397,9 +403,10 @@ public class HelloProperties {
     }
 }
 ```
+
 {% alert warning no-icon %}
 
-3. 创建服务类HelloService
+3. 创建服务类 HelloService
 
 {% endalert %}
 
@@ -418,9 +425,10 @@ public class HelloService {
     }
 }
 ```
+
 {% alert warning no-icon %}
 
-4. 创建自动配置类HelloServiceAutoConfiguration
+4. 创建自动配置类 HelloServiceAutoConfiguration
 
 {% endalert %}
 
@@ -447,9 +455,10 @@ public class HelloServiceAutoConfiguration {
     }
 }
 ```
+
 {% alert warning no-icon %}
 
-5. 在resources目录下创建META-INF/spring.factories
+5. 在 resources 目录下创建 META-INF/spring.factories
 
 {% endalert %}
 
@@ -457,12 +466,14 @@ public class HelloServiceAutoConfiguration {
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 cn.itcast.config.HelloServiceAutoConfiguration
 ```
+
 通过以上步骤之后，可以通过 `mvn install` 将自定义的 starter 安装到本地 maven 仓库
+
 ## 使用 starter
 
 {% alert warning no-icon %}
 
-1. 创建maven工程myapp并配置pom.xml文件
+1. 创建 maven 工程 myapp 并配置 pom.xml 文件
 
 {% endalert %}
 
@@ -505,11 +516,13 @@ cn.itcast.config.HelloServiceAutoConfiguration
     </dependencies>
 </project>
 ```
+
 {% alert warning no-icon %}
 
-2. 创建application.yml文件
+2. 创建 application.yml 文件
 
 {% endalert %}
+
 ```yml
 server:
   port: 8080
@@ -520,7 +533,7 @@ hello:
 
 {% alert warning no-icon %}
 
-3. 创建HelloController
+3. 创建 HelloController
 
 {% endalert %}
 
@@ -531,18 +544,18 @@ public class HelloController {
 	/** 当前实例已经由自定义的 starter 完成了创建 */
 	@Autowired
 	private HelloService helloService;
-	
+
 	@GetMapping(value ="/say")
 	public String sayHello(){
 		return helloService.sayHello();
 	}
-	
+
 }
 ```
 
 {% alert warning no-icon %}
 
-4. 创建启动类HelloApplication
+4. 创建启动类 HelloApplication
 
 {% endalert %}
 
@@ -554,4 +567,5 @@ public class HelloApplication {
 	}
 }
 ```
+
 至此，就完成了 Spring Boot 的 Starter 的创建以及使用
