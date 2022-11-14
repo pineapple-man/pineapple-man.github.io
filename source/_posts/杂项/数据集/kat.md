@@ -7,7 +7,7 @@ metaAlignment: center
 date: 2022-02-23 10:30:56
 thumbnailImage:
 categories: 通用技能
-tags: 杂七杂八
+tags: 数据集
 keywords: kat
 excerpt: 本文主要介绍故障诊断中使用的一个数据集：KAT
 ---

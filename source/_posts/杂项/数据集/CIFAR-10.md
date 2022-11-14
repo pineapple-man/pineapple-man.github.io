@@ -7,7 +7,7 @@ metaAlignment: center
 date: 2022-02-23 10:05:56
 thumbnailImage:
 categories: 通用技能
-tags: 杂七杂八
+tags: 数据集
 keywords: cifar
 excerpt: 本文主要介绍 cifar-10 数据集
 ---
