@@ -136,7 +136,7 @@ public final class String implements java.io.Serializable,
 
 Jdk6 及以前，字符串常量池存放在永久代
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/imgjvm-stringtabl-jdk6.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/imgjvm-stringtabl-jdk6.png)
 
 Java 7 中 Oracle 的工程师对字符串池的逻辑做了很大的改变，即**将字符串常量池的位置调整到 Java 堆**内
 
@@ -147,7 +147,7 @@ Java 7 中 Oracle 的工程师对字符串池的逻辑做了很大的改变，�
 
 {% endalert %}
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/imgjvm-stringtable-jdk7.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/imgjvm-stringtable-jdk7.png)
 
 :thinking: StringTable 位置为什么要调整
 

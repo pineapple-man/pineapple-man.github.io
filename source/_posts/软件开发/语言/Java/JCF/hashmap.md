@@ -45,7 +45,7 @@ public HashSet() {
 
 :sparkles:**Java7 HashMap 采用的是冲突链表方式**
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/jcf/jcf-HashMap.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/jcf/jcf-HashMap.png)
 
 从上图容易看出，如果选择合适的哈希函数，`put()`和`get()`方法可以在常数时间内完成。但在对*HashMap*进行迭代时，需要遍历整个 table 以及后面跟的冲突链表。因此对于迭代比较频繁的场景，不宜将*HashMap*的初始大小设的过大。
 

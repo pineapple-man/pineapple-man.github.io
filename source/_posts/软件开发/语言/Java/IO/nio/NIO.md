@@ -41,7 +41,7 @@ Java 平台提供了一整套 I/O 隐喻，其抽象程度各有不同。然而�
 
 所谓「 输入/输出 」讲的无非就是把数据移进或移出缓冲区。进程执行 I/O 操作，归结起来，也就是向操作系统发出请求，让它要么把缓冲区里的数据排干 (写)，要么用数据把缓冲区填满(读)。进程使用这一机制处理所有数据进出操作。
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/nio-buffer.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/nio-buffer.png)
 
 上图简单描述了数据从外部磁盘向运行中的进程的内存区域移动的过程。进程使用 read( )系统调用，要求其缓冲区被填满。内核随即向磁盘控制硬件发出命令，要求其从磁盘读取数据。磁盘控制器把数据直接写入内核内存缓冲区，这一步通过 DMA 完成，无需主 CPU 协助。一旦磁盘控制器把缓冲区装满，内核即把数据从内核空间的临时缓冲区拷贝到进程执行`read( )`调用时指定的缓冲区。
 
@@ -115,17 +115,17 @@ RAM)内存地址。这样做好处颇多，总结起来可分为两大类:
 
 #### 传统 IO 方式
 
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/traditional-IO.svg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/traditional-IO.svg %}
 
 #### NIO 方式
 
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/JavaNIO.svg %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/JavaNIO.svg %}
 
 ## NIO 三大核心原理示意图
 
 NIO 有三大核心部分：**Channel( 通道) ，Buffer( 缓冲区), Selector( 选择器)**
 
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/nio3core.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/nio3core.png %}
 
 :sparkles:三大组件特点
 {% alert success no-icon %}

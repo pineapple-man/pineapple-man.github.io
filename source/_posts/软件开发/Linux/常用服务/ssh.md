@@ -49,7 +49,7 @@ SSH 口令登陆的时空原理图如下：
 SSH 的另一个的特点是支持免密登陆，那如何让 SSH 免密登陆，实现**自动登陆需求**呢？
 {%endalert%}
 SSH 公钥免密登陆的时空原理图如下：
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/ssh免密登陆.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ssh免密登陆.png %}
 
 {% alert info no-icon%}
 

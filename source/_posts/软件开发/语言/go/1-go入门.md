@@ -26,7 +26,7 @@ thumbnailImage:
 
 总结而言，能够达到以下五点，就算完全掌握一门语言
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/go如何算完全掌握一门语言？.svg)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/go如何算完全掌握一门语言？.svg)
 
 :thinking:如何做到高效？
 
@@ -43,7 +43,7 @@ thumbnailImage:
 | 自己动手完成一个有一定规模的项目 |  1 - 3 month   |
 |         掌握 Go 的其他库         | life lont time |
 
-{% image fancybox fig-100  center "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/goGolang 学习步骤.svg" %}
+{% image fancybox fig-100  center "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/goGolang 学习步骤.svg" %}
 
 ## 官网文档
 

@@ -56,7 +56,7 @@ Java BIO（Java Blocking IO）是**传统的 Java IO 编程**，其相关的类�
 
 {% endalert %}
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/java-io-bio-1.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/java-io-bio-1.png)
 
 :persevere: 传统 BIO 问题
 {% alert success no-icon %}
@@ -91,7 +91,7 @@ Java BIO（Java Blocking IO）是**传统的 Java IO 编程**，其相关的类�
 
 ​ 接下来我们采用一个伪异步 I/O 的通信框架，采用线程池和任务队列实现，当客户端接入时，将客户端的 Socket 封装成一个 Task(该任务实现 java.lang.Runnable 线程任务接口)交给后端的线程池中进行处理。JDK 的线程池维护一个消息队列和 N 个活跃的线程，对消息队列中 Socket 任务进行处理，由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是可控的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。如下图：
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/java-io-multithread-fakeasync.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/java-io-multithread-fakeasync.png)
 
 :sparkles:采用伪异步方式特点
 
@@ -100,7 +100,7 @@ Java BIO（Java Blocking IO）是**传统的 Java IO 编程**，其相关的类�
 
 ## 实现软件组播
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/img/java/io/java-io-groupcast.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/java/io/java-io-groupcast.png)
 
 ## 深入分析
 

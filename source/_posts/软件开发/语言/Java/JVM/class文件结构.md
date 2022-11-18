@@ -694,7 +694,7 @@ cp_info{
 
 常量池中每一项常量都是一个表，JdK1.7 之后共有 14 种不同的表结构数据
 
-![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/imgjvm-classfile-constantpooltype.png)
+![](https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/imgjvm-classfile-constantpooltype.png)
 
 根据上图每个类型的描述我们也可以知道每个类型是用来描述常量池中哪些内容（主要是字面量、符号引用）的。比如:`CONSTANT_Integer_info`是用来描述常量池中字面量信息的，而且只是整型字面量信息
 
