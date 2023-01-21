@@ -41,7 +41,7 @@ thumbnailImage:
 |           学习基本语法           |   2 - 7 day    |
 |        深入掌握 Go 知识点        |   2 - 5 week   |
 | 自己动手完成一个有一定规模的项目 |  1 - 3 month   |
-|         掌握 Go 的其他库         | life lont time |
+|         掌握 Go 的其他库         | life long time |
 
 {% image fancybox fig-100  center "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/goGolang 学习步骤.svg" %}
 
@@ -54,8 +54,8 @@ thumbnailImage:
 
 ## 附录
 
-[1](https://www.cnblogs.com/code-craftsman/p/12515802.html)
-[2](https://books.studygolang.com/gobyexample/)
+[如何快速高效率地学习 Go 语言](https://www.cnblogs.com/code-craftsman/p/12515802.html)
+[Go by Example 中文](https://books.studygolang.com/gobyexample/)
 [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang)
 [The Way to Go](https://github.com/unknwon/the-way-to-go_ZH_CN)
 [Go 入门指南](https://learnku.com/docs/the-way-to-go)
