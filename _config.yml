@@ -106,21 +106,21 @@ deploy:
   repo: "https://github.com/pineapple-man/pineapple-man.github.io"
   branch: main
 
-algolia:
-  appId: "BT5EAVRTWW"
-  apiKey: "c921172a492a2ac85bc708c47a19188f"
-  adminApiKey: "2a3b4cf5011e5d64e70ce6787e062d1f"
-  chunkSize: 5000
-  indexName: "myblog"
-  fields:
-    - content:strip:truncate,0,500
-    - excerpt:strip
-    - gallery
-    - permalink
-    - photos
-    - slug
-    - tags
-    - title
+# algolia:
+#   appId: "xxxx"
+#   apiKey: "xxx"
+#   adminApiKey: "xxx"
+#   chunkSize: 5000
+#   indexName: "myblog"
+#   fields:
+#     - content:strip:truncate,0,500
+#     - excerpt:strip
+#     - gallery
+#     - permalink
+#     - photos
+#     - slug
+#     - tags
+#     - title
 
 ## markdown 渲染引擎配置，默认是hexo-renderer-marked，这个插件渲染速度更快，且有新特性
 markdown:
@@ -174,16 +174,3 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   version: "7.1.2" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
   #startOnload: true  // default true
-# 统计图表，支持发布文章统计、发布日历、Top标签统计、分类统计、分类雷达。
-# see https://www.npmjs.com/package/hexo-butterfly-charts
-charts:
-  enable: true # 是否启用功能
-  postsChart:
-    title: 文章发布统计 # 设置文章发布统计的标题，默认为空
-    interval: 1 # 横坐标间隔
-  tagsChart:
-    title: Top 10 标签统计 # 设置标签统计的标题，默认为空
-    interval: 1 # 横坐标间隔
-  postsCalendar_Title: #文章发布日历 # 设置发布日历的标题，默认为空
-  categoriesChart_Title: # 设置分类统计的标题，默认为空
-  categoriesRadar_Title: # 设置分类雷达的标题，默认为空
