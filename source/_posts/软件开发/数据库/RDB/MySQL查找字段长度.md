@@ -14,7 +14,7 @@ thumbnailImage:
 
 <!-- toc -->
 
-## length(str) 函数p
+## length(str) 函数
 
 此函数统计的是字节数，数字/字母在 gbk 或 utf8 编码下，一个数字/字母都占用 1 个字节，在 utf8 的编码下，中文字符占用 3 个字节。在 gbk 的编码下，中文字符占用 2 个字节。
 
