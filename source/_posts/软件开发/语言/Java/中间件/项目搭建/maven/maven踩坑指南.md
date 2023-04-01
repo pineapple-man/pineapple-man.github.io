@@ -61,7 +61,7 @@ excerpt: 本文主要记录使用 Maven 的过程中遇到的问题
 ## 附录
 
 [^1]: https://blog.csdn.net/pange1991/article/details/48596869
-[^2]:
-    https://blog.csdn.net/jiangyu1013/article/details/95042611
-    [构建 Maven 多模块项目](https://zhuanlan.zhihu.com/p/84175296)
-    [导入模块生成.iml 模块描述文件](https://blog.csdn.net/u010003835/article/details/84101041)
+[^2]: https://blog.csdn.net/jiangyu1013/article/details/95042611
+
+[构建 Maven 多模块项目](https://zhuanlan.zhihu.com/p/84175296)
+[导入模块生成.iml 模块描述文件](https://blog.csdn.net/u010003835/article/details/84101041)

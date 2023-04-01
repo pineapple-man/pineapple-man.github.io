@@ -4,7 +4,7 @@ toc: true
 clearReading: true
 thumbnailImage: "https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/mysql/mysql.jpg"
 thumbnailImagePosition: right
-metaAlignment: left
+metaAlignment: center
 categories: 数据库
 tags: MySQL
 keywords: mysql

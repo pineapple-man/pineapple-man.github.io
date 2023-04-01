@@ -32,13 +32,8 @@ excerpt: 本文主要介绍如何在 Java 中读取配置文件
 
 :notes:类加载器默认使用的路径是<font style="color:red;font-weight:bold">classPath 下的路径</font>，使用此方法获取文件的时候不能在路径前面
 
-{% alert success no-icon %}
-
-getResourceAsStream 的三种方式
-
-{% endalert %}
-
 ```java
+// getResourceAsStream 的三种方式
 Class.getResourceAsStream(String path);
 Class.getClassLoader.getResourceAsStream(String path);
 ServletContext. getResourceAsStream(String path);

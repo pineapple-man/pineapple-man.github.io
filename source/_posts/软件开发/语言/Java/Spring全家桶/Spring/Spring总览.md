@@ -97,7 +97,7 @@ Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据�
 
 ## 附录
 
-[视频链接]: https://www.bilibili.com/video/BV1gW411W7wy
-[官方中文文档]: https://lfvepclr.gitbooks.io/spring-framework-5-doc-cn/content/
-[官方英文文档]: https://docs.spring.io/spring-framework/docs/current/reference/html/index.html
-[官方文档]: https://docs.spring.io/spring-framework/docs/current/reference/html/index.html
+[视频链接](https://www.bilibili.com/video/BV1gW411W7wy)
+[官方中文文档](https://lfvepclr.gitbooks.io/spring-framework-5-doc-cn/content/)
+[官方英文文档](https://docs.spring.io/spring-framework/docs/current/reference/html/index.html)
+[官方文档](https://docs.spring.io/spring-framework/docs/current/reference/html/index.html)
