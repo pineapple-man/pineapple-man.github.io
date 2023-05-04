@@ -1,5 +1,5 @@
 ---
-title: "深入 C 语言: Bit Filed"
+title: '深入 C 语言: Bit Filed'
 toc: true
 clearReading: true
 thumbnailImagePosition: right

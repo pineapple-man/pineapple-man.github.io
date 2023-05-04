@@ -24,6 +24,7 @@ thumbnailImage:
 ### 添加依赖
 
 {% codeblock pom.xml lang:xml %}
+
 <!--rabbitmq 依赖客户端-->
 <dependency>
 <groupId>com.rabbitmq</groupId>
@@ -44,7 +45,7 @@ thumbnailImage:
 
 {% codeblock Producer.java lang:java %}
 public class Producer {
-private final static String QUEUE_NAME = "hello";
+private final static String QUEUE*NAME = "hello";
 public static void main(String[] args) throws Exception {
 ConnectionFactory factory = new ConnectionFactory();
 String ip = "192.168.117.128";
@@ -55,8 +56,8 @@ String password = "123456";
 factory.setPassword(password);
 try (Connection connection = factory.newConnection();
 Channel channel = connection.createChannel()) {
-/**
-_ 生成一个队列
+/\*\*
+* 生成一个队列
 _ 1.队列名称
 _ 2.队列里面的消息是否持久化 默认消息存储在内存中
 _ 3.该队列是否只供一个消费者进行消费 是否进行共享 true 可以多个消费者消费
@@ -68,13 +69,13 @@ String message;
 while (true) {
 Scanner scanner = new Scanner(System.in);
 message = scanner.next();
-/**
+/\*\*
 _ 发送一个消息
 _ 1.发送到那个交换机
 _ 2.路由的 key 是哪个
 _ 3.其他的参数信息
 _ 4.发送消息的消息体
-_/
+\_/
 channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
 System.out.println("message send success");
 TimeUnit.MILLISECONDS.sleep(100);

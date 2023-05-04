@@ -43,7 +43,7 @@ VSS 也称为 VSZ，表示一个进程的**虚拟内存占用情况**，包含**
 
 :notes:VSS 很少被用于判断一个进程真实内存使用量
 
-{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/d3a92df3efa0df779418bed820e6dcd31f6cbbc6.png   %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/linux/进程内存管理_1.png   %}
 
 ## RSS-Resident Set Size
 
@@ -53,7 +53,7 @@ RSS 称为常驻内存大小，表示一个进程**实际使用的物理内存�
 
 :notes:使用 RSS 指标还是可能会造成误导，因为它仅仅表示**该进程所使用的所有共享库的大小**，它不管有多少个进程使用该共享库，该共享库仅被加载到内存一次。所以，**RSS 并不能准确反映单进程的内存占用情况**
 
-{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/d10c3c6e80e70309ce73bfa874d92d56606fa989.png  %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/linux/进程内存管理_2.png  %}
 
 > :sparkles:这里有一个例子可以更好的加深对以上两个指标的理解：
 >
@@ -78,7 +78,7 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 
 :persevere:PSS 可能会造成一点的误导，因为当一个进程被销毁后， PSS 不能准确地表示返回给全局系统的内存
 
-{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/ee8a35925f0aafb160c58b18eb4aee3bf4762398.png%}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/linux/进程内存管理_3.png.png%}
 
 ## USS-Unique Set Size
 
@@ -88,11 +88,11 @@ VSS:500K(程序本身大小) + 2500K(共享库本身大小) + 200K(占用堆栈�
 
 :notebook:USS 是非常有用的数据，它反映了运行一个特定进程真实的边际成本（增量成本）。**当一个进程被销毁后，USS 是真实返回给系统的内存，当进程中存在一个可疑的内存泄露时，USS 是最佳观察数据**
 
-{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/255c513123c88d85d5e1137be66d0672368b8931.png %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/linux/进程内存管理_4.png %}
 
 ## 总结
 
-{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/c5xbq6wsov.png %}
+{% image fancybox  fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/linux/进程内存管理_5.png %}
 
 ## 附录
 

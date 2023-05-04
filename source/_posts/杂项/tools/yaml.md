@@ -5,7 +5,7 @@ clearReading: true
 thumbnailImagePosition: bottom
 metaAlignment: center
 date: 2021-10-30 19:02:27
-thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/1200px-YAML_Logo.svg.png
+thumbnailImage: https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/icon/yaml.png
 categories: 通用技能
 tags: 必备小技能
 keywords: yaml
@@ -22,7 +22,7 @@ Yaml 是一个可读性高的用来表达资料序列的格式，非常适合用
 
 1. YAML 的可读性好
 2. YAML 和脚本语言的交互性好
-AML 使用实现语言的数据类型
+3. YAML 使用实现语言的数据类型
 4. YAML 有一个一致的信息模型
 5. YAML 易于实现
 6. YAML 可以基于流来处理

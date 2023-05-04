@@ -55,7 +55,7 @@ thumbnailImage:
 
 :sparkles:常见的存在以下九种分布式 ID 生成方式：
 
-{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/分布式ID.jpg%}
+{% image fancybox fig-100  center  https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/分布式ID/分布式id_0.jpg%}
 
 ### UUID
 
@@ -106,7 +106,7 @@ insert into SEQUENCE_ID(value)  VALUES ('values');
 :persevere:强依赖 DB，当 DB 异常时整个系统不可用，属于致命问题。配置主从复制可以尽可能的增加可用性，但是数据一致性在特殊情况下难以保证。主从切换时的不一致可能会导致重复发号;ID 发号性能瓶颈限制在单台 MySQL 的读写性能
 {%endalert%}
 :notebook:当我们需要一个 ID 的时候，向表中插入一条记录返回主键 ID，但这种方式有一个比较致命的缺点，访问量激增时 MySQL 本身就是系统的瓶颈，用它来实现分布式服务风险比较大，不推荐！
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/8a4de8e8.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/分布式ID/分布式id_3.png %}
 
 ### 基于数据库集群模式
 
@@ -124,7 +124,7 @@ auto-increment-offset = 2
 
 假设我们要部署 N 台机器，步长需设置为 N，每台的初始值依次为 0,1,2…N-1 那么整个架构就变成了如下图所示：
 
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/6d2c9ec8.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/分布式ID/分布式id_2.png %}
 
 :question:如果集群后的性能还是扛不住高并发咋办？
 {% alert success no-icon%}
@@ -202,7 +202,7 @@ OK
 
 ### 雪花算法
 
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/snowflake.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/分布式ID/分布式id_4.png %}
 雪花算法（Snowflake）是 twitter 公司内部分布式项目采用的 ID 生成算法，最终生成的是占 8 个字节 Long 类型的 ID
 {% alert success no-icon%}
 Snowflake ID 组成结构：`正数位`（占 1 比特）+ `时间戳`（占 41 比特）+ `机器ID`（占 5 比特）+ `数据中心`（占 5 比特）+ `自增值`（占 12 比特），总共 64 比特组成的一个 Long 类型
@@ -241,7 +241,7 @@ CREATE TABLE `leaf_alloc` (
 ```
 
 然后在项目中开启`号段模式`，配置对应的数据库信息，并关闭`snowflake`模式，字段模式大致架构如下：
-{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/5e4ff128.png %}
+{% image fancybox fig-100  center https://cdn.jsdelivr.net/gh/pineapple-man/blogImage@main/image/others/分布式ID/分布式id_1.png %}
 
 #### snowflake 模式
 
@@ -254,5 +254,4 @@ CREATE TABLE `leaf_alloc` (
 ## 附录
 
 [Leaf——美团点评分布式 ID 生成系统](https://tech.meituan.com/2017/04/21/mt-leaf.html)
-
 [一口气说出 9 种分布式 ID 生成方式，面试官有点懵了](https://juejin.cn/post/6844904065747402759)
